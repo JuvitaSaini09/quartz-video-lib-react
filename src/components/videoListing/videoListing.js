@@ -1,15 +1,29 @@
-import React from 'react'
-import { products } from '../../backend/db/products';
-import { useVideo} from '../../context/VideoListing/videoListingContext';
+import React,{useState,useEffect} from 'react'
+import axios from 'axios';
 
 
 function VideoListing() {
-    const { state }=useVideo();
+
+
+    const [allVideos,setAllVideos]=useState([])
+
+    useEffect(() => {
+      async function fetchData() {
+        try{
+          const response = await axios.get("/api/products");
+          setAllVideos(response.data.products)
+        }
+        catch(e){
+          console.error(e);
+        }  
+      }
+      fetchData();
+    }, []);
     return (
         <div className='videosListing'>
 
             {
-                products.map(item => {
+               allVideos.map(item => {
                     return (
                         <>
                             <div className="video-card">
