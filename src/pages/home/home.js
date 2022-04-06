@@ -2,7 +2,6 @@ import React from 'react'
 // import { videos } from '../../backend/db/products';
 import { Navbar } from '../../components/allComponents';
 import "./home.css";
-import ReactPlayer from 'react-player'
 import { products } from '../../backend/db/products';
 import "../../css/videoCard.css"
 
@@ -40,10 +39,10 @@ function Home() {
             return(
               <>
               <div className="video-card">
-  <img className="img-thumbnail" src={item.thumbnailUrl} />
+  <img className="img-thumbnail" src={item.thumbnailUrl} alt={item.title}/>
   <h1 className="play"><i className="fas fa-play"></i>play</h1>
   <div className="video-description">
-    <img className="video-logo" src={item.logoUrl} />
+    <img className="video-logo" src={item.logoUrl} alt="logo" /> 
     <h4 className="video-title">{item.title}<br/>
     <span style={{fontWeight:"lighter"}}>{item.categoryName}</span>
     </h4>
