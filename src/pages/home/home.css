@@ -5,63 +5,11 @@
 body{
     background-color: rgb(248, 248, 248)
 }
-
-.logo{
-    cursor: pointer;
-    color:var(--white);
-    font-size: 1.5rem;
-    padding-left: 1.5rem;
-}
-
-.logo h1 i{
-    padding-right: 1rem;
-}
-
-
- .header-nav {
-    background-color: var(--pink-dark);
-
-}
-.header-nav{
-    position: fixed;
-    z-index:555;
-    top:0;
-    width:100%;
-    box-shadow: 0px 15px 10px -15px var(--black);  
-
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 1rem;
-    height:7rem;
-}
-
-
-.btn-login{
-    font-size: 1.5rem;
-    font-weight:bold;
-    color:var(--pink-dark);
-    padding:5px;
-    letter-spacing:1px;
-    border-radius: 5px;
-    border-color:var(--pink-dark);
-    margin-right:4rem;
-}
-
-.btn-login:hover{
-   background-color: var(--pink-light1);
-}
-
+ 
 .main-page{
     margin-top:7rem;
     display:grid;
     grid-template-columns: 15rem 1fr;
-}
-.col1{
-    background-color: var(--pink-dark);
 }
 
 .videosListing{
@@ -70,18 +18,7 @@ body{
    justify-content: center;
    gap:0rem 2rem;
 }
-.col1 ul{
-   margin-top:2rem;
-}
 
-.col1 ul li{
-    color:var(--white);
-    letter-spacing: 2px;
-    font-size: 1.3rem;
-    padding:1rem 2rem 1rem 1rem;
-    cursor: pointer;
-    text-align: left;
-}
 .btn-category{
     display: flex;
     column-gap:1rem;
@@ -102,9 +39,7 @@ body{
     border:2px solid var(--pink-dark);
   
 }
-.col1 ul li:hover{
-    background-color: var(--pink-primary2);
-}
+
 .btn-category button:hover{
     background-color:var(--pink-light1);
 }
@@ -114,28 +49,11 @@ body{
     padding-right:10px;
 }
 
-.col1 i{
-    padding-right:10px;
- 
-}
-
-
-@media only screen and (max-width:1300px){
-    
-}
 
 @media only screen and (max-width:950px) {
     .btn-category button{
         font-size:14px;
         width:6rem;
-    }
-    .col1  span{
-        display:none;
-     }
-     .col1 i{
-        font-size: 1.5rem;
-        padding-right:2rem;
-        padding-left:2rem;
     }
     .main-page{
         grid-template-columns: 1fr 4fr;
@@ -146,24 +64,4 @@ body{
     .main-page{
         margin-top:3rem;
     }
-
-    .logo{
-        font-size: 1.3rem;
-        padding-left: 0;
-    }
- 
-    .navbar {
-        height:auto;
-    }
-
-    .btn-login{
-        font-size: 1rem;
-        margin-right:3rem;
-    }
-    .col1 ul li{
-        font-size: 1rem;
-        padding:1rem 0rem 1rem 0rem;
-    }
-
-
 }

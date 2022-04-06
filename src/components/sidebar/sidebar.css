@@ -1,0 +1,42 @@
+.col1{
+    background-color: var(--pink-dark);
+}
+.col1 ul{
+    margin-top:2rem;
+ }
+ 
+ .col1 ul li{
+     color:var(--white);
+     letter-spacing: 2px;
+     font-size: 1.3rem;
+     padding:1rem 2rem 1rem 1rem;
+     cursor: pointer;
+     text-align: left;
+ }
+ .col1 ul li:hover{
+    background-color: var(--pink-primary2);
+}
+
+.col1 i{
+    padding-right:10px;
+ 
+}
+
+@media only screen and (max-width:950px) {
+    .col1  span{
+        display:none;
+     }
+     .col1 i{
+        font-size: 1.5rem;
+        padding-right:2rem;
+        padding-left:2rem;
+    }
+    
+}
+@media only screen and (max-width:700px) {
+
+    .col1 ul li{
+        font-size: 1rem;
+        padding:1rem 0rem;
+    }
+}
