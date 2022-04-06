@@ -21,7 +21,7 @@ function Home() {
             <button>All</button>
             <button>Ice Cream</button>
             <button>Cake</button>
-            <button>Choclate</button>
+            <button>Chocolate</button>
           </div>
           <VideoListing />
         </div>

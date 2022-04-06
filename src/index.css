@@ -1,20 +1,4 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body{
-  font-family: 'Roboto Condensed', sans-serif;
-}
-a{
-  text-decoration: none;
-}
-li{
-  list-style: none;
-}
-
 :root{
   --white:white;
   --black :black ;
@@ -34,4 +18,19 @@ li{
   --pink-light1:#f5bbce;
   --pink-light2:#F9D5E5;
 
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
 }
