@@ -1,0 +1,56 @@
+.video-card{
+    height:22rem;
+    width:19rem;
+    position:relative;
+  }
+  .video-description{
+    display:flex;
+    column-gap:1rem;
+    align-items: center;
+    padding-right:10px;
+  }
+  .video-logo{
+    height:3rem;
+    width:3rem;
+    border-radius:50%;
+  }
+  .video-title{
+    text-align:left;
+  }
+  .img-thumbnail{
+    height:13rem;
+    width:19rem;
+    cursor:pointer;
+  }
+  .play{
+    color:var(--pink-dark);
+    position:absolute;
+    top:5rem;
+    left:8rem;
+    display:none;
+  }
+
+  .fa-play{
+    margin-right:8px;
+  }
+  
+  .img-thumbnail:hover{
+    opacity:0.5;
+  }
+  .img-thumbnail:hover+.play{
+  display:block;
+  }
+  
+
+  .video-setting{
+    padding-top:5px;
+    height:2rem;
+    width:5rem;
+    border-radius: 50%;
+     cursor:pointer;
+  }
+  
+  .video-setting:hover{
+   
+    background-color:var(--grey);
+  }
