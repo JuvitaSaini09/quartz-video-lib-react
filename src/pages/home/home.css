@@ -1,0 +1,67 @@
+/* @import url(/components/color.css); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url(https://build-ui-component-library.netlify.app/components/components.css);
+
+body{
+    background-color: rgb(248, 248, 248)
+}
+ 
+.main-page{
+    margin-top:7rem;
+    display:grid;
+    grid-template-columns: 15rem 1fr;
+}
+
+.videosListing{
+    display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap:0rem 2rem;
+}
+
+.btn-category{
+    display: flex;
+    column-gap:1rem;
+    overflow-y:hidden;
+    overflow-x:scroll;
+    margin-left:1rem;
+}
+
+.btn-category button{
+    margin-top:2rem;
+    font-size:1rem;
+    font-weight: bold;
+    padding:5px;
+    border-radius:20px;
+    width:6rem;
+    cursor:pointer;
+    color: var(--pink-dark);
+    border:2px solid var(--pink-dark);
+  
+}
+
+.btn-category button:hover{
+    background-color:var(--pink-light1);
+}
+
+.fa-user-circle{
+    color:var(--white);
+    padding-right:10px;
+}
+
+
+@media only screen and (max-width:950px) {
+    .btn-category button{
+        font-size:14px;
+        width:6rem;
+    }
+    .main-page{
+        grid-template-columns: 1fr 4fr;
+    }
+    
+}
+@media only screen and (max-width:700px) {
+    .main-page{
+        margin-top:3rem;
+    }
+}
