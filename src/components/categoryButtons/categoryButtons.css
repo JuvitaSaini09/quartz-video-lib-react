@@ -1,0 +1,27 @@
+.btn-category{
+    display: flex;
+    column-gap:1rem;
+    overflow-y:hidden;
+    overflow-x:scroll;
+    margin-left:1rem;
+}
+
+.btn-category button{
+    margin-top:2rem;
+    font-size:1rem;
+    font-weight: bold;
+    padding:5px;
+    border-radius:20px;
+    width:6rem;
+    cursor:pointer;
+    color: var(--pink-dark);
+    border:2px solid var(--pink-dark);
+  
+}
+
+@media only screen and (max-width:950px) {
+    .btn-category button{
+        font-size:14px;
+        width:6rem;
+    }
+}
