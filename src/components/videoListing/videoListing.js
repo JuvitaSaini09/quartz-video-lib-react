@@ -1,29 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import { useApi } from '../../context/apiContext/api';
 
 
 function VideoListing() {
-
-
-    const [allVideos,setAllVideos]=useState([])
-
-    useEffect(() => {
-      async function fetchData() {
-        try{
-          const response = await axios.get("/api/products");
-          setAllVideos(response.data.products)
-        }
-        catch(e){
-          console.error(e);
-        }  
-      }
-      fetchData();
-    }, []);
+    const {apiVideos}=useApi()
     return (
         <div className='videosListing'>
 
             {
-               allVideos.map(item => {
+              apiVideos.map(item => {
                     return (
                         <>
                             <div className="video-card">
