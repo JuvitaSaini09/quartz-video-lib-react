@@ -34,3 +34,12 @@ a{
 li{
   list-style: none;
 }
+
+.flex-row{
+  display:flex;
+}
+
+.flex-column{
+  display:flex;
+  flex-direction:column;
+}
