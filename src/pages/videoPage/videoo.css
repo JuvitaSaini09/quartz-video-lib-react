@@ -56,7 +56,12 @@
 .fa-thumbs-down {
   color: white;
 }
-
+.likedTrue{
+  color:black;
+}
+.likedFalse{
+  color:white;
+}
 .description > * {
   padding-right: 2rem;
 }
