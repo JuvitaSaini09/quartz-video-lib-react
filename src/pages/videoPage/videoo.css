@@ -20,6 +20,7 @@
 .single-video {
   width: 700px;
   height: 393px;
+  position: relative;
 }
 
 .video-player-wrapper {
@@ -56,10 +57,10 @@
 .fa-thumbs-down {
   color: white;
 }
-.likedTrue{
+.selectedTrue{
   color:black;
 }
-.likedFalse{
+.selectedFalse{
   color:white;
 }
 .description > * {
@@ -82,6 +83,12 @@
 .video-recommendation{
   height: 32rem;
   overflow-y: scroll;
+}
+
+.modal{
+  position: absolute;
+top:3rem;
+right:4rem;
 }
 
 @media only screen and (max-width: 1150px) {

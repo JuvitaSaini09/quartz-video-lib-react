@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
+import { PlaylistModal } from "../allComponents";
 
 function SingleVideo() {
   const { singleVideo } = useSingleVideo();
@@ -11,11 +12,24 @@ function SingleVideo() {
   const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}`;
 
   const likeHandler = (event) => {
-    setLiked((prev) => !prev);
+    if(liked===false){
+      setLiked((prev) => !prev);
+      setDisliked(false)
+    }
+    else{
+      setLiked((prev) => !prev);
+    }
+    
   };
 
   const dislikeHandler = (event) => {
-    setDisliked((prev) => !prev);
+    if(disliked===false){
+      setDisliked((prev) => !prev);
+      setLiked(false)
+    }
+    else{
+      setDisliked((prev) => !prev);
+    }
   };
   return (
     <div className="single-video">
@@ -28,8 +42,8 @@ function SingleVideo() {
             <i
               className={
                 liked
-                  ? "fas fa-thumbs-up likedTrue"
-                  : "fas fa-thumbs-up likedFalse"
+                  ? "fas fa-thumbs-up selectedTrue"
+                  : "fas fa-thumbs-up selectedFalse"
               }
             ></i>
           </span>
@@ -37,8 +51,8 @@ function SingleVideo() {
             <i
               className={
                 disliked
-                  ? "fas fa-thumbs-down likedTrue"
-                  : "fas fa-thumbs-down likedFalse"
+                  ? "fas fa-thumbs-down selectedTrue"
+                  : "fas fa-thumbs-down selectedFalse"
               }
             ></i>
           </span>
@@ -48,6 +62,7 @@ function SingleVideo() {
           <span>
             <i className="fas fa-ellipsis-v fa-x"></i>
           </span>
+          <PlaylistModal />
         </div>
 
         <div className="flex-row des-container">

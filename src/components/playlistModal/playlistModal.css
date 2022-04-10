@@ -1,0 +1,66 @@
+.modal li{
+    list-style:none;
+  }
+  .modal {
+    border-radius:5px;
+    width:20rem;
+    max-height:11rem;
+    max-height:20rem;
+    color:white;
+    background-color:rgb(232, 102, 102);
+  }
+  .modal input{
+    height:1.2rem;
+    width: 2rem;
+  }
+  
+  .modal-navbar{
+    padding:10px 1rem;
+    border-bottom: 2px solid white;
+    display:flex;
+    justify-content: space-between;
+  }
+  .create-playlist{
+    border-top: 2px solid white;
+    cursor:pointer;
+  }
+  
+  .list-of-playlist{
+    height:6rem;
+    overflow-y:scroll;
+    align-items: flex-start;
+    padding-left:0.7rem; 
+    gap:5px;
+  }
+  
+  .create-playlist{
+    text-align:center;
+    padding-bottom:10px;
+  }
+  
+  .modal button{
+      color:white;
+      background-color: rgb(182, 14, 14);
+      width:4rem;
+      margin-left:1rem;
+      font-size: 1.2rem;
+      border:2px solid rgb(182, 14, 14);
+      border-radius:5px;
+      height:2rem;
+      cursor:pointer;
+  }
+
+  .modal button:hover{
+    background-color: rgb(212, 28, 28);
+    border-color: rgb(212, 28, 28);
+  }
+
+  .fa-times{
+    width:2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+
+  .fa-times:hover{
+    background-color: rgb(213, 79, 79);
+  }
