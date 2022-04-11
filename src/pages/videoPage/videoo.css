@@ -87,8 +87,17 @@
 
 .modal{
   position: absolute;
-top:3rem;
-right:4rem;
+top:12rem;
+left:30%;
+}
+
+.body-open-modal {
+  height: 100vh;
+  overflow-y: hidden;
+  padding-right: 15px; /* Avoid width reflow */
+  position: fixed;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 @media only screen and (max-width: 1150px) {

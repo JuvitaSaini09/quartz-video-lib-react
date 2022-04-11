@@ -6,8 +6,9 @@ const singleVideoContext=createContext(null)
 
 function SingleVideoProvider({children}) {
     const [singleVideo,setSingleVideo]=useState([])
+    const [display, setdisplay] = useState(false);
   return (
-    <singleVideoContext.Provider value={{singleVideo,setSingleVideo}} >
+    <singleVideoContext.Provider value={{singleVideo,setSingleVideo,display, setdisplay}} >
         {children}
     </singleVideoContext.Provider>
   )

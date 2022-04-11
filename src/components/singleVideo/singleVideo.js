@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
-import { PlaylistModal } from "../allComponents";
 
 function SingleVideo() {
-  const { singleVideo } = useSingleVideo();
+  const { singleVideo, setdisplay } = useSingleVideo();
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
   const splittedvideoUrl = singleVideo.videoUrl.split("=");
   const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}`;
 
-  const likeHandler = (event) => {
+  const likeHandler = () => {
     if(liked===false){
       setLiked((prev) => !prev);
       setDisliked(false)
@@ -22,7 +21,7 @@ function SingleVideo() {
     
   };
 
-  const dislikeHandler = (event) => {
+  const dislikeHandler = () => {
     if(disliked===false){
       setDisliked((prev) => !prev);
       setLiked(false)
@@ -31,6 +30,10 @@ function SingleVideo() {
       setDisliked((prev) => !prev);
     }
   };
+
+  const showDialog = () => {
+    setdisplay(true)
+  }
   return (
     <div className="single-video">
       <div className="video-player-wrapper">
@@ -38,7 +41,7 @@ function SingleVideo() {
       </div>
       <div>
         <div className="video-options">
-          <span onClick={(e) => likeHandler(e)}>
+          <span onClick={() => likeHandler()}>
             <i
               className={
                 liked
@@ -47,7 +50,7 @@ function SingleVideo() {
               }
             ></i>
           </span>
-          <span onClick={(e) => dislikeHandler(e)}>
+          <span onClick={() => dislikeHandler()}>
             <i
               className={
                 disliked
@@ -57,12 +60,11 @@ function SingleVideo() {
             ></i>
           </span>
           <span>
-            <img src={addToList} />
+            <img src={addToList} onClick={showDialog} />
           </span>
           <span>
             <i className="fas fa-ellipsis-v fa-x"></i>
           </span>
-          <PlaylistModal />
         </div>
 
         <div className="flex-row des-container">

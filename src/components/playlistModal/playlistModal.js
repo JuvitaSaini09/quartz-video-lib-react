@@ -1,11 +1,19 @@
 import React from 'react'
+import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext'
 import "./playlistModal.css"
 
 function PlaylistModal() {
+
+  const {display,setdisplay }= useSingleVideo();
+  const hideDialog = () => {
+    setdisplay(false);
+  };
+
+
   return (
-   <div className="modal">
+   <div className={display ? "modal dialog-box-true" : "modal dialog-box-false"}>
   <div className="modal-navbar">
-    <h2>Add To .. </h2><span><i className="fas fa-times"></i></span>
+    <p>Add To .. </p><span onClick={hideDialog}><i className="fas fa-times"></i></span>
   </div>
   <div className="list-of-playlist flex-column">
   
@@ -14,29 +22,11 @@ function PlaylistModal() {
         <label htmlFor="watchLater">Watch Later</label>
         </div>
 
-        <div>
-        <input type="checkbox" id="watchLater" name="watchLater" />
-        <label htmlFor="watchLater">Watch Later</label>
-        </div>
-
-        <div>
-        <input type="checkbox" id="watchLater" name="watchLater" />
-        <label htmlFor="watchLater">Watch Later</label>
-        </div>
-
-        <div>
-        <input type="checkbox" id="watchLater" name="watchLater" />
-        <label htmlFor="watchLater">Watch Later</label>
-        </div>
-
-        <div>
-        <input type="checkbox" id="watchLater" name="watchLater" />
-        <label htmlFor="watchLater">Watch Later</label>
-        </div>
+        {/* later code will be added here to map created playlist by user :user playlist display code  */}
   </div>
  <div className="modal-footer flex-row">
- <h2 className="create-playlist"><i class="fas fa-plus fa-1x"></i> Create new playlist</h2>
-  <button>Done</button>
+ <p className="create-playlist"><i class="fas fa-plus"></i> Create new playlist</p>
+  <button onClick={hideDialog}>Done</button>
  </div>
 </div>
 

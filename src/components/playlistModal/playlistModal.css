@@ -3,8 +3,8 @@
   }
   .modal {
     border-radius:5px;
-    width:20rem;
-    max-height:11rem;
+    width:16rem;
+    min-height:11rem;
     max-height:20rem;
     color:white;
     background-color:rgb(232, 102, 102);
@@ -35,6 +35,7 @@
   
   .create-playlist{
     text-align:center;
+    padding-:10px;
     padding-bottom:10px;
   }
   
@@ -64,3 +65,11 @@
   .fa-times:hover{
     background-color: rgb(213, 79, 79);
   }
+
+  .dialog-box-false {
+    display: none;
+  }
+  .dialog-box-true {
+    display: block;
+  }
+ 
