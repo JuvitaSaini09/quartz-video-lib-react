@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext'
 import "./playlistModal.css"
 
 function PlaylistModal() {
-
+  const [isCreatePlaylistClicked,setIsCreatePlaylistClicked]=useState(false);
   const {display,setdisplay }= useSingleVideo();
   const hideDialog = () => {
     setdisplay(false);
+    setIsCreatePlaylistClicked(false)
   };
 
 
@@ -25,9 +26,13 @@ function PlaylistModal() {
         {/* later code will be added here to map created playlist by user :user playlist display code  */}
   </div>
  <div className="modal-footer flex-row">
- <p className="create-playlist"><i class="fas fa-plus"></i> Create new playlist</p>
-  <button onClick={hideDialog}>Done</button>
+ <p  onClick={()=>{ setIsCreatePlaylistClicked(true)}} className="create-playlist"><i class="fas fa-plus"></i> Create new playlist</p>
+
  </div>
+ <div className={isCreatePlaylistClicked?"create-newPlaylist-wrapper dialog-box-true":"create-newPlaylist-wrapper dialog-box-false"}>
+     <input className="create-newPlaylist" type="text" id="newPlaylist" name="newPlaylist" placeholder="Enter new playlist name"/><br/>
+     <button>Create</button>
+  </div>
 </div>
 
  

@@ -35,7 +35,7 @@
   
   .create-playlist{
     text-align:center;
-    padding-:10px;
+    padding:10px;
     padding-bottom:10px;
   }
   
@@ -43,11 +43,12 @@
       color:white;
       background-color: rgb(182, 14, 14);
       width:4rem;
-      margin-left:1rem;
-      font-size: 1.2rem;
+      margin:5px 0 5px 1rem;
+      font-size: 1rem;
+      letter-spacing:1px;
       border:2px solid rgb(182, 14, 14);
       border-radius:5px;
-      height:2rem;
+      height:1.6rem;
       cursor:pointer;
   }
 
@@ -73,3 +74,12 @@
     display: block;
   }
  
+.create-newPlaylist-wrapper .create-newPlaylist{
+      font-size:1rem;
+      border: 0;
+      outline: 0;
+      background: var(--pink-light1);
+      border-bottom: 2px solid var(--pink-dark);
+      width: 200px;
+  }
+  
