@@ -11,8 +11,6 @@ function VideoListing() {
     <div className="videosListing">
       {apiVideos.map((item) => {
         return (
-          <>
-            {" "}
               <div className="video-card">
               <Link onClick={() => setSingleVideo(item)} to="/video">
                 <img
@@ -23,9 +21,9 @@ function VideoListing() {
                 <h1 className="play">
                   <i className="fas fa-play"></i>play
                 </h1>
-                </Link>
+                  </Link>
                 <div className="video-description">
-                  <img className="video-logo" src={item.logoUrl} alt="log" />
+                  <img className="video-logo" src={item.logoUrl} alt="logo" />
                   <h4 className="video-title">
                     {item.title}
                     <br />
@@ -38,7 +36,6 @@ function VideoListing() {
                   </div>
                 </div>
               </div>
-          </>
         );
       })}
     </div>
