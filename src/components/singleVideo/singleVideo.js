@@ -37,7 +37,7 @@ function SingleVideo() {
   return (
     <div className="single-video">
       <div className="video-player-wrapper">
-        <iframe src={videoUrl}></iframe>
+        <iframe src={videoUrl} title={singleVideo.videoId}></iframe>
       </div>
       <div>
         <div className="video-options">
@@ -60,7 +60,7 @@ function SingleVideo() {
             ></i>
           </span>
           <span>
-            <img src={addToList} onClick={showDialog} />
+            <img src={addToList} onClick={showDialog} alt="addToList"/>
           </span>
           <span>
             <i className="fas fa-ellipsis-v fa-x"></i>
