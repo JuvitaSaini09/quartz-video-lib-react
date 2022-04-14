@@ -13,14 +13,16 @@ function VideoRec() {
       {recommededVideos.map((item) => {
         return (
           <>
-           <Link onClick={() => setSingleVideo(item)} to="/video">
+        
              
             <div className="video-card">
+            <Link onClick={() => setSingleVideo(item)} to="/video">
               <img
                 className="img-thumbnail"
                 src={item.thumbnailUrl}
                 alt={item.title}
               />
+                 </Link>
               <h1 className="play">
                 <i className="fas fa-play"></i>play
               </h1>
@@ -38,7 +40,7 @@ function VideoRec() {
                 </div>
               </div>
             </div>
-            </Link>
+         
           </>
         );
       })}
