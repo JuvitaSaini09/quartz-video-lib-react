@@ -22,10 +22,10 @@ function VideoRec() {
                 src={item.thumbnailUrl}
                 alt={item.title}
               />
-                 </Link>
               <h1 className="play">
                 <i className="fas fa-play"></i>play
               </h1>
+              </Link>
               <div className="video-description">
                 <img className="video-logo" src={item.logoUrl} alt="log" />
                 <h4 className="video-title">

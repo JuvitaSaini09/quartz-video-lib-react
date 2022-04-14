@@ -13,8 +13,8 @@ function VideoListing() {
         return (
           <>
             {" "}
-            <Link onClick={() => setSingleVideo(item)} to="/video">
               <div className="video-card">
+              <Link onClick={() => setSingleVideo(item)} to="/video">
                 <img
                   className="img-thumbnail"
                   src={item.thumbnailUrl}
@@ -23,6 +23,7 @@ function VideoListing() {
                 <h1 className="play">
                   <i className="fas fa-play"></i>play
                 </h1>
+                </Link>
                 <div className="video-description">
                   <img className="video-logo" src={item.logoUrl} alt="log" />
                   <h4 className="video-title">
@@ -37,7 +38,6 @@ function VideoListing() {
                   </div>
                 </div>
               </div>
-            </Link>
           </>
         );
       })}
