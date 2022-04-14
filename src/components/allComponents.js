@@ -1,3 +1,7 @@
 export {Navbar} from "./navbar/navbar"
 export {Sidebar} from "./sidebar/sidebar"
 export {VideoListing} from "./videoListing/videoListing"
+export {CategoryButtons} from "./categoryButtons/categoryButtons"
+export {SingleVideo} from "./singleVideo/singleVideo"
+export {VideoRec} from "./singleVideo/videoRec"
+export {PlaylistModal} from "./playlistModal/playlistModal"
