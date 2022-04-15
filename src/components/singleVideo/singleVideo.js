@@ -75,7 +75,7 @@ function SingleVideo() {
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
-  });
+  },[likedVideoState, singleVideo._id, disLikedVideoState] );
 
   return (
     <div className="single-video">
