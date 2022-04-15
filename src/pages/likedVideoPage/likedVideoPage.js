@@ -3,6 +3,7 @@ import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideo
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { Link } from "react-router-dom";
 import { EmptyPage, Navbar, Sidebar } from "../../components/allComponents";
+import "./likedVideoPage.css"
 
 function LikedVideoPage() {
   const { likedVideoState } = useLikedVideoContext();
@@ -11,13 +12,12 @@ function LikedVideoPage() {
   return (
     <>
       <Navbar />
-
-      <section className="main-page">
+      <section className="main-page like-page">
         <Sidebar />
         <div className="col2">
           {/* <---------Liked Videos-------------> */}
-          <div className="videosListing">
-            {likedVideoState[0] === undefined ? <EmptyPage text="No Liked Video" /> : ""}
+          <div className="videosListing mt-3">
+            {likedVideoState[0] === undefined ? <EmptyPage text="No Liked Video" /> :""}
             {likedVideoState.map((item) => {
               return (
                 <div className="video-card">

@@ -14,7 +14,7 @@ function Home() {
     <>
       <Navbar />
 
-      <section className="main-page">
+      <section className="main-page home-page">
         <Sidebar />
         <div className="col2">
           <CategoryButtons />
