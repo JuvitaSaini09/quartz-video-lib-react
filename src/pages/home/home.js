@@ -21,8 +21,6 @@ function Home() {
           <VideoListing />
         </div>
       </section>
-
-      {/* <ReactPlayer controls url='https://www.youtube.com/watch?v=_kUrW9SEaJc'style={{marginBottom:40+"px",display:"flex",justifyContent:"center"}} /> */}
     </>
   );
 }
