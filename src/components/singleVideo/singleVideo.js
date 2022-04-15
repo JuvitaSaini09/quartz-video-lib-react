@@ -102,15 +102,7 @@ function SingleVideo() {
               <i className="fas fa-thumbs-down selectedFalse"></i>
             )}{" "}
           </span>
-          {/* <span onClick={() => dislikeHandler()}>
-                  <i
-                    className={
-                      disliked
-                        ? "fas fa-thumbs-down selectedTrue"
-                        : "fas fa-thumbs-down selectedFalse"
-                    }
-                  ></i>
-                </span> */}{" "}
+          {" "}
           <span>
             <img src={addToList} onClick={showDialog} alt="addToList" />
           </span>{" "}
