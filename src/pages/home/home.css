@@ -23,7 +23,7 @@ body{
     color:var(--white);
     padding-right:10px;
 }
-.home{
+.home-page .home{
     background-color: var(--pink-primary2);
 }
 .btn-category .btn-all{

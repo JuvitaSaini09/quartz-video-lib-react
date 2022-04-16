@@ -14,15 +14,13 @@ function Home() {
     <>
       <Navbar />
 
-      <section className="main-page">
+      <section className="main-page home-page">
         <Sidebar />
         <div className="col2">
           <CategoryButtons />
           <VideoListing />
         </div>
       </section>
-
-      {/* <ReactPlayer controls url='https://www.youtube.com/watch?v=_kUrW9SEaJc'style={{marginBottom:40+"px",display:"flex",justifyContent:"center"}} /> */}
     </>
   );
 }
