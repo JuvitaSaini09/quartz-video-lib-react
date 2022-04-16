@@ -10,9 +10,7 @@ export const requiresAuth = function (request) {
   );
   if (decodedToken) {
     const user = this.db.users.findBy({ email: decodedToken.email });
-    if (user) {
-      return user._id;
-    }
+    return user;
   }
   return new Response(
     401,
