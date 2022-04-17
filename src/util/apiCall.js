@@ -18,7 +18,7 @@ export async function postLikedVideoApi(singleVideo, likedVideoDispatch) {
     }
     // saving the encodedToken in the localStorage
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
@@ -39,7 +39,7 @@ export async function deleteLikedVideoApi(singleVideo, likedVideoDispatch) {
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
@@ -86,7 +86,7 @@ export async function deleteHistorySingleVideoApi(
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
@@ -105,6 +105,6 @@ export async function deleteHistoryAllVideoApi(historyVideoDispatch) {
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
