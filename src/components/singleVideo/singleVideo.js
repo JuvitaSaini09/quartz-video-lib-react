@@ -99,6 +99,8 @@ function SingleVideo() {
     disLikedVideoState,
     isItemInLikedVideos,
     isItemInHistoryVideos,
+    historyVideoDispatch,
+    singleVideo
   ]);
 
   return (
