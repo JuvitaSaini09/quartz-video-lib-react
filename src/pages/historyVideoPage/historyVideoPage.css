@@ -12,8 +12,8 @@
     cursor:pointer;
   }
 
-  .historyDustbin :hover{
-    color:rgb(80, 80, 80)
+    .historyDustbin :hover{
+    color:rgb(80, 80, 80);
   }
 
   .clearHistoryBtn{
