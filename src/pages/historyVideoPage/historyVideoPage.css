@@ -13,7 +13,7 @@
   }
 
   .historyDustbin :hover{
-    color:rgb(80, 80, 80)
+    color:var(--grey-dark);
   }
 
   .clearHistoryBtn{
