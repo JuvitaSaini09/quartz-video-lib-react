@@ -80,7 +80,7 @@ function SingleVideo() {
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
-  }, [likedVideoState, singleVideo._id, disLikedVideoState]);
+  }, [likedVideoState, singleVideo._id, disLikedVideoState,isItemInLikedVideos]);
 
   return (
     <div className="single-video">
