@@ -11,8 +11,8 @@ const ApiProvider=({children})=> {
     useEffect(() => {
       async function fetchData() {
         try{
-          const response = await axios.get("/api/products");
-          setAllVideos(response.data.products)
+          const response = await axios.get("/api/videos");
+          setAllVideos(response.data.videos)
         }
         catch(e){
           console.error(e);

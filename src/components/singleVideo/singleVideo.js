@@ -3,8 +3,15 @@ import { useDisLikedVideoContext } from "../../context/disLikedVideoContext/disL
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
+import { postLikedVideoApi, deleteLikedVideoApi } from "../../util/apiCall";
 
 function SingleVideo() {
+  // set-token in local storage
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJlMzIzZmY2MC1hMTUzLTQ0MTYtYmEyNS0zNDQ0ZGI1NjliOWMiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ._-fah2UEuueLmRHHl5uV4CYhiQdODX6neUkGbfTvtFM"
+  );
+
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
   const { disLikedVideoState, setDisLikedVideoDispatch } =
     useDisLikedVideoContext();
@@ -16,24 +23,23 @@ function SingleVideo() {
   const splittedvideoUrl = singleVideo.videoUrl.split("=");
   const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}`;
 
+  //checks whether the present video is in likesVideos
+  const isItemInLikedVideos = likedVideoState.find(
+    (stateItem) => singleVideo._id === stateItem._id
+  );
+
   const likeHandler = () => {
     if (liked === false) {
-      likedVideoDispatch({
-        type: "like",
-        payload: singleVideo,
-      });
-      setLiked((prev) => !prev);
+      setLiked(true);
+      postLikedVideoApi(singleVideo, likedVideoDispatch); //calling async function to get data form db
       setDisliked(false);
       setDisLikedVideoDispatch({
         type: "notDisliked",
         payload: singleVideo,
       });
     } else {
-      setLiked((prev) => !prev);
-      likedVideoDispatch({
-        type: "unLike",
-        payload: singleVideo,
-      });
+      setLiked(false);
+      deleteLikedVideoApi(singleVideo, likedVideoDispatch);
     }
   };
 
@@ -41,10 +47,10 @@ function SingleVideo() {
     if (disliked === false) {
       setDisliked((prev) => !prev);
       setLiked(false);
-      likedVideoDispatch({
-        type: "unLike",
-        payload: singleVideo,
-      });
+
+      if (isItemInLikedVideos) {
+        deleteLikedVideoApi(singleVideo, likedVideoDispatch);
+      }
       setDisLikedVideoDispatch({
         type: "disLiked",
         payload: singleVideo,
@@ -63,19 +69,18 @@ function SingleVideo() {
   };
 
   useEffect(() => {
-    const isItemInLikedVideos = likedVideoState.find(
-      (stateItem) => singleVideo._id === stateItem._id
-    );
     if (isItemInLikedVideos) {
+      setLiked(true);
       setIsItemInLIkedVideos(true);
     } else {
+      setLiked(false);
       setIsItemInLIkedVideos(false);
       const isItemInDisLikedVideos = disLikedVideoState.find(
         (stateItem) => singleVideo._id === stateItem._id
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
-  },[likedVideoState, singleVideo._id, disLikedVideoState] );
+  }, [likedVideoState, singleVideo._id, disLikedVideoState,isItemInLikedVideos]);
 
   return (
     <div className="single-video">
@@ -101,8 +106,7 @@ function SingleVideo() {
             ) : (
               <i className="fas fa-thumbs-down selectedFalse"></i>
             )}{" "}
-          </span>
-          {" "}
+          </span>{" "}
           <span>
             <img src={addToList} onClick={showDialog} alt="addToList" />
           </span>{" "}
