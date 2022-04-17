@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDisLikedVideoContext } from "../../context/disLikedVideoContext/disLikedVideoContext";
+import { useHistoryVideoContext } from "../../context/historyVideoContext/historyVideoContext";
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
-import { postLikedVideoApi, deleteLikedVideoApi } from "../../util/apiCall";
+import {
+  postLikedVideoApi,
+  deleteLikedVideoApi,
+  addToHistoryApi,
+} from "../../util/apiCall";
 
 function SingleVideo() {
   // set-token in local storage
@@ -11,7 +16,7 @@ function SingleVideo() {
     "token",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJlMzIzZmY2MC1hMTUzLTQ0MTYtYmEyNS0zNDQ0ZGI1NjliOWMiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ._-fah2UEuueLmRHHl5uV4CYhiQdODX6neUkGbfTvtFM"
   );
-
+  const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
   const { disLikedVideoState, setDisLikedVideoDispatch } =
     useDisLikedVideoContext();
@@ -21,10 +26,15 @@ function SingleVideo() {
   const [isItemInLIkedVideos, setIsItemInLIkedVideos] = useState(false);
 
   const splittedvideoUrl = singleVideo.videoUrl.split("=");
-  const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}`;
+  const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}?autoplay=1&&mute=1`;
 
   //checks whether the present video is in likesVideos
   const isItemInLikedVideos = likedVideoState.find(
+    (stateItem) => singleVideo._id === stateItem._id
+  );
+
+  //checks whether the present video is in HistoryVideos
+  const isItemInHistoryVideos = historyVideoState.find(
     (stateItem) => singleVideo._id === stateItem._id
   );
 
@@ -80,7 +90,16 @@ function SingleVideo() {
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
-  }, [likedVideoState, singleVideo._id, disLikedVideoState,isItemInLikedVideos]);
+    if (isItemInHistoryVideos === undefined) {
+      addToHistoryApi(singleVideo, historyVideoDispatch);
+    }
+  }, [
+    likedVideoState,
+    singleVideo._id,
+    disLikedVideoState,
+    isItemInLikedVideos,
+    isItemInHistoryVideos,
+  ]);
 
   return (
     <div className="single-video">

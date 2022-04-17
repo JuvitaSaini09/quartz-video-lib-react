@@ -42,3 +42,69 @@ export async function deleteLikedVideoApi(singleVideo, likedVideoDispatch) {
     console.log(error);
   }
 }
+
+// ADD TO HISTORY API
+export async function addToHistoryApi(singleVideo, historyVideoDispatch) {
+  try {
+    const response = await axios({
+      method: "post",
+      url: "/api/user/history",
+      headers: { authorization: localStorage.getItem("token") },
+      data: {
+        video: singleVideo,
+      },
+    });
+    if (response.status === 201) {
+      historyVideoDispatch({
+        type: "addToHistory",
+        payload: response.data.history,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//REMOVE SINGLE VIDEO FROM HISTORY
+export async function deleteHistorySingleVideoApi(
+  singleVideo,
+  historyVideoDispatch
+) {
+  try {
+    const response = await axios({
+      method: "delete",
+      url: `/api/user/history/${singleVideo._id}`,
+      headers: { authorization: localStorage.getItem("token") },
+      data: {
+        video: singleVideo,
+      },
+    });
+    if (response.status === 200) {
+      historyVideoDispatch({
+        type: "removeSingeleVideoFromHistory",
+        payload: response.data.history,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//REMOVE ALL VIDEO FROM HISTORY
+export async function deleteHistoryAllVideoApi(historyVideoDispatch) {
+  try {
+    const response = await axios({
+      method: "delete",
+      url: `/api/user/history/all`,
+      headers: { authorization: localStorage.getItem("token") },
+    });
+    if (response.status === 200) {
+      historyVideoDispatch({
+        type: "removeAllVideoFromHistory",
+        payload: response.data.history,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
