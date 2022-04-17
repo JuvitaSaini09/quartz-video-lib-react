@@ -1,0 +1,32 @@
+.history-page .history {
+    background-color: var(--pink-primary2);
+  }
+  
+  /* video-card>historyDustbin */
+  .historyDustbin {
+    position: absolute;
+    right:0;
+    color:var(--grey-dark);
+    background-color:var(--white);
+    padding:5px;
+    cursor:pointer;
+  }
+
+  .historyDustbin :hover{
+    color:rgb(80, 80, 80)
+  }
+
+  .clearHistoryBtn{
+    margin-top:1rem;
+    color:white;
+    background-color: var(--pink-dark);
+    border:none;
+    border-radius:5px;
+    padding:5px;
+    font-size:16px;
+    cursor:pointer;
+  }
+  .clearHistoryBtn:hover{
+    background-color: var(--pink-primary2);
+  
+  }
