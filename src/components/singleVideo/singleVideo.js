@@ -3,6 +3,7 @@ import { useDisLikedVideoContext } from "../../context/disLikedVideoContext/disL
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
+import axios from "axios";
 
 function SingleVideo() {
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
@@ -16,13 +17,32 @@ function SingleVideo() {
   const splittedvideoUrl = singleVideo.videoUrl.split("=");
   const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}`;
 
+  async function fetchData() {
+    const encodedToken = localStorage.getItem("token");
+    axios.defaults.headers.common["authorization"] = encodedToken;
+    try {
+      // const response = await axios.get(`/api/products/${singleVideo._id}`);
+      const response = await axios({
+        method: "get",
+        url: `/api/products/${singleVideo._id}`,
+        data: { singleVideo },
+      });
+      if (response.status === 200) {
+        likedVideoDispatch({
+          type: "like",
+          payload: response.data.product,
+        });
+      }
+      // saving the encodedToken in the localStorage
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const likeHandler = () => {
     if (liked === false) {
-      likedVideoDispatch({
-        type: "like",
-        payload: singleVideo,
-      });
       setLiked((prev) => !prev);
+      fetchData(); //calling async function to get data form db
       setDisliked(false);
       setDisLikedVideoDispatch({
         type: "notDisliked",
@@ -75,7 +95,7 @@ function SingleVideo() {
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
-  },[likedVideoState, singleVideo._id, disLikedVideoState] );
+  }, [likedVideoState, singleVideo._id, disLikedVideoState]);
 
   return (
     <div className="single-video">
@@ -101,8 +121,7 @@ function SingleVideo() {
             ) : (
               <i className="fas fa-thumbs-down selectedFalse"></i>
             )}{" "}
-          </span>
-          {" "}
+          </span>{" "}
           <span>
             <img src={addToList} onClick={showDialog} alt="addToList" />
           </span>{" "}

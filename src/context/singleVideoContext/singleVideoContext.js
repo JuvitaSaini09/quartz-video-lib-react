@@ -1,7 +1,4 @@
 import React,{ createContext,useState,useContext} from 'react'
-
-
-
 const singleVideoContext=createContext(null)
 
 function SingleVideoProvider({children}) {
