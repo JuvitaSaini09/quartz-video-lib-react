@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDisLikedVideoContext,useHistoryVideoContext,useLikedVideoContext,useSingleVideo } from "../../context/allContext";
+import { useDisLikedVideoContext } from "../../context/allContext";
+import { useHistoryVideoContext } from "../../context/historyVideoContext/historyVideoContext";
+import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
+import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
 import {
   postLikedVideoApi,
