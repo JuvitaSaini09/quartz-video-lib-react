@@ -1,0 +1,18 @@
+.main-toast{
+    margin-left:3rem;
+    transition: all 0.5s linear;
+    position:absolute;
+    bottom:0;
+}
+#main-Toast-id{
+    width:20rem;
+}
+.display-none{
+    opacity: 0;
+    visibility: hidden;
+}
+.display-block{
+    visibility: visible;
+    opacity: 1;
+    bottom:2rem;
+}

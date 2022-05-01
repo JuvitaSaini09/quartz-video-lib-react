@@ -1,0 +1,72 @@
+.playlist-page .playlists {
+    background-color: var(--pink-primary2);
+  }
+
+  .playlist-card{
+    border:1px solid black;
+  }
+
+  .PlaylistContainer{
+    margin-top:1rem;
+    margin-left:1rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    color:var(--pink-primary2);
+    border:3px solid  white;
+    border-radius:10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width:70%;
+    cursor:pointer;
+    text-align:center;
+    transition: 0.3s;
+  }
+  .PlaylistContainer:hover{
+    box-shadow: rgba(218, 9, 9, 0.16) 0px 1px 4px, rgb(194, 15, 15) 0px 0px 0px 3px;
+  }
+
+  .playlistHeading{
+    margin-top:2rem;
+    text-align:left;
+    margin-left:1rem;
+    color:  var(--pink-dark);
+  }
+
+  .createPlaylist button,.addVideos button{
+    
+    cursor:pointer;
+     font-size:1rem;
+    font-weight: bold;
+    padding:5px;
+    border-radius:20px;
+    width:9rem; 
+    color: var(--pink-dark);
+    border:0px solid var(--pink-dark);
+  }
+
+  .playlist{
+    position:relative;
+  }
+
+  .playlistDustbin{
+   position:absolute;
+   top:1rem;
+   cursor: pointer;
+   padding-left: 3rem;
+   left:68%;
+  }
+
+  .playlistIcon{
+    position:absolute;
+    opacity:0.5;
+    background-color:var(--pink-dark);
+    height:4.2rem;
+    width:20%;
+    top:0;
+    left:1rem;
+  }
+
+  .iconify{
+    font-size: 4rem;
+    opacity:1;
+    color:white;
+  }

@@ -9,7 +9,9 @@ import { SingleVideoProvider } from "./context/singleVideoContext/singleVideoCon
 import { LikedVideoProvider } from "./context/likedVideoContext/likedVideoContext";
 import { DisLikedVideoProvider } from "./context/disLikedVideoContext/disLikedVideoContext";
 import { HistoryVideoProvider } from "./context/historyVideoContext/historyVideoContext";
-
+import { PlaylistVideoProvider } from "./context/playlist/playlistContext";
+import { VideoPlaylistProvider } from "./context/playlist/videosInPlaylistContext";
+import { ToastProvider } from "./context/toastContext/toastContext";
 
 // Call make Server
 makeServer();
@@ -17,17 +19,23 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ApiProvider>
-      <SingleVideoProvider>
-      <LikedVideoProvider >
-        <DisLikedVideoProvider>
-          <HistoryVideoProvider>
-    <App />
-    </HistoryVideoProvider>
-    </DisLikedVideoProvider>
-    </LikedVideoProvider>
-    </SingleVideoProvider>
-    </ApiProvider>
+      <ApiProvider>
+        <SingleVideoProvider>
+          <LikedVideoProvider>
+            <DisLikedVideoProvider>
+              <HistoryVideoProvider>
+                <PlaylistVideoProvider>
+                  <VideoPlaylistProvider>
+                    <ToastProvider>
+                  <App />
+                  </ToastProvider>
+                  </VideoPlaylistProvider>
+                </PlaylistVideoProvider>
+              </HistoryVideoProvider>
+            </DisLikedVideoProvider>
+          </LikedVideoProvider>
+        </SingleVideoProvider>
+      </ApiProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
