@@ -31,7 +31,7 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
 // add video in a playlist
 export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToggle,toastDispatch) {
   try {
-    const response = await axios({
+    await axios({
       method: "post",
       url: `/api/user/playlists/${playlistId}`,
       headers: { authorization: localStorage.getItem("token") },
@@ -52,7 +52,7 @@ export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispat
 // delete video in a playlist /api/user/playlists/:playlistId/:videoId
 export async function deleteVideoFromPlaylistApi(video,playlistId,videoId,setToggle,toastDispatch) {
   try {
-    const response = await axios({
+   await axios({
       method: "delete",
       url: `/api/user/playlists/${playlistId}/${videoId}`,
       headers: { authorization: localStorage.getItem("token") },
