@@ -88,16 +88,10 @@ function PlaylistModal() {
           </li>
           {/*-----------List of playlist to be checked--------------  */}
           {allPlaylistFromApi.map((item) => {
-            {
-              /*<------------ CHECK IS VIDEO IN CURRENT PLAYLIST(item) ------------------>*/
-            }
+            
             const isVideoInCurrentPlaylist = item.videos.filter(
               (element) => element._id === singleVideo._id
             );
-            {
-              /*<------------------------------------------------------------------------->*/
-            }
-
             return (
               <li
                 key={item._id}
