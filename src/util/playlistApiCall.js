@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // create a playlist
-export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,setToggle,toastDispatch) {
+export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,setToast,toastDispatch) {
   try {
     const response = await axios({
       method: "post",
@@ -20,18 +20,16 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
       }
       //code to show toast here --->
       toastDispatch({type: "PLAYLIST_CREATED"})
-      setToggle(true);
+      setToast(true);
     // saving the encodedToken in the localStorage
   } catch (error) {
-    //code to show toast here --->
-    toastDispatch({type: "ERROR"})
-    setToggle(true);
+    console.log("Error in creating a new playlist",error);
   }
 
 }
 
 // add video in a playlist
-export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToggle,toastDispatch) {
+export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToast,toastDispatch) {
   try {
     await axios({
       method: "post",
@@ -41,20 +39,18 @@ export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispat
     });
      //code to show toast here --->
      toastDispatch({type: "VIDEO_ADDED"})
-     setToggle(true);
+     setToast(true);
        //response.data.playlist--->object
        //object.videos---->array
        //array contains all videos as object
 
   } catch (error) {
-    //code to show toast here --->
-    toastDispatch({type: "ERROR"})
-    setToggle(true);
+    console.log(error);
   }
 }
 
 // delete video in a playlist /api/user/playlists/:playlistId/:videoId
-export async function deleteVideoFromPlaylistApi(video,playlistId,videoId,setToggle,toastDispatch) {
+export async function deleteVideoFromPlaylistApi(video,playlistId,videoId,setToast,toastDispatch) {
   try {
    await axios({
       method: "delete",
@@ -64,16 +60,14 @@ export async function deleteVideoFromPlaylistApi(video,playlistId,videoId,setTog
     });
      //code to show toast here --->
      toastDispatch({type: "VIDEO_DELETED"})
-     setToggle(true);
+     setToast(true);
   } catch (error) {
-    //code to show toast here --->
-    toastDispatch({type: "ERROR"})
-    setToggle(true);
+    console.log("Error while deleting video",error);
   }
 }
 
 // delete a playlist /api/user/playlists/:playlistId
-export async function deletePlaylistApi(playlistId,playlistVideoDispatch,setToggle,toastDispatch) {
+export async function deletePlaylistApi(playlistId,playlistVideoDispatch,setToast,toastDispatch) {
   try {
     const response = await axios({
       method: "delete",
@@ -86,12 +80,10 @@ export async function deletePlaylistApi(playlistId,playlistVideoDispatch,setTogg
     });
       //code to show toast here --->
       toastDispatch({type: "PLAYLIST_DELETED"})
-      setToggle(true);
+      setToast(true);
         
   } catch (error) {
-   //code to show toast here --->
-   toastDispatch({type: "ERROR"})
-   setToggle(true);
+    console.log("Error while deleting playlist",error);
   }
   
 }

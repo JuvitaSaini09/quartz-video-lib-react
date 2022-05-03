@@ -11,7 +11,7 @@ import { Toast } from "../allComponents";
 import "./playlistModal.css";
 
 function PlaylistModal() {
-  const {setToggle,toastState,toastDispatch}=useToast();
+  const {setToast,toastState,toastDispatch}=useToast();
   const {playlistNameValue,setPlaylistNameValue}=usePlaylistVideoContext();
   const { setTrackVideoAddedRemoved } = usePlaylistVideoContext();
   const [isCreatePlaylistClicked, setIsCreatePlaylistClicked] = useState(false);
@@ -32,17 +32,17 @@ function PlaylistModal() {
     if (playlistTitle){
       const isPlaylistNameAlreadyUsed=allPlaylistFromApi.filter(e=>playlistTitle===e.title)
       if(isPlaylistNameAlreadyUsed[0]===undefined)
-      createPlaylistApi(video, playlistTitle, playlistVideoDispatch,setToggle,toastDispatch);
+      createPlaylistApi(video, playlistTitle, playlistVideoDispatch,setToast,toastDispatch);
       else{
         //code to show toast here --->
       toastDispatch({type: "PLAYLIST_ALREADY_EXIST"})
-      setToggle(true);
+      setToast(true);
       }
     }
     else {
       //code to show toast here --->
       toastDispatch({type: "ENTER_PLAYLIST_NAME"})
-      setToggle(true);
+      setToast(true);
     }
     setPlaylistNameValue('')
     setPlaylistTitle('')
@@ -59,12 +59,12 @@ function PlaylistModal() {
       addVideoToPlaylistApi(
         singleVideo,
         currentPlaylist._id,
-        playlistVideoDispatch,setToggle,toastDispatch
+        playlistVideoDispatch,setToast,toastDispatch
       );
       
     } else {
       // call a fucntion to delete a video ="singleVideo" Object from the" playlist" array of objects
-      deleteVideoFromPlaylistApi(singleVideo,currentPlaylist._id,singleVideo._id,setToggle,toastDispatch)
+      deleteVideoFromPlaylistApi(singleVideo,currentPlaylist._id,singleVideo._id,setToast,toastDispatch)
     }
     setTrackVideoAddedRemoved((prev) => !prev);
   };

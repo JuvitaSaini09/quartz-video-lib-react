@@ -4,7 +4,7 @@ const toastContext=createContext(null);
 
 const ToastProvider=({children})=> {
 
-    const [toggle,setToggle]=useState(false);
+    const [toast,setToast]=useState(true);
  
      const toastReducer=(toastState,action)=>{
        switch(action.type){
@@ -24,11 +24,11 @@ const ToastProvider=({children})=> {
 
       //useEffect to fade taost after 3 second
       useEffect(()=>{
-        setTimeout(()=>setToggle(false),3000)
-      },[toggle])
+        setTimeout(()=>setToast(false),3000)
+      },[toast])
 
   return (
-    <toastContext.Provider value={{toggle,setToggle,toastState,toastDispatch}}>
+    <toastContext.Provider value={{toast,setToast,toastState,toastDispatch}}>
         {children}
     </toastContext.Provider>
   )
@@ -39,4 +39,4 @@ const useToast=()=>useContext(toastContext);
 export  {ToastProvider , useToast}
 
 
-//const {toggle,setToggle,toastState,toastDispatch}=useToast();
+//const {toast,setToast,toastState,toastDispatch}=useToast(); toastDispatch

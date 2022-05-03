@@ -17,12 +17,12 @@ import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistConte
 import { useToast } from "../../context/toastContext/toastContext";
 
 function Playlist() {
-  const { setToggle, toastState, toastDispatch } = useToast();
+  const { setToast, toastState, toastDispatch } = useToast();
   const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
   const { setVideosInPlaylist } = useVideoOfPlaylist();
   const { display } = useSingleVideo();
   const { setdisplay } = useSingleVideo();
-  const [setIsCreatePlaylistClicked] = useState(false);
+
   const {
     allPlaylistFromApi,
     playlistTitle,
@@ -36,7 +36,6 @@ function Playlist() {
 
   const hideDialog = () => {
     setdisplay(false);
-    setIsCreatePlaylistClicked(false);
   };
   const playlistTitleHandler = (event) => {
     setPlaylistTitle(event.target.value);
@@ -54,18 +53,18 @@ function Playlist() {
           video,
           playlistTitle,
           playlistVideoDispatch,
-          setToggle,
+          setToast,
           toastDispatch
         );
       else {
         //code to show toast here --->
         toastDispatch({ type: "PLAYLIST_ALREADY_EXIST" });
-        setToggle(true);
+        setToast(true);
       }
     } else {
       //code to show toast here --->
       toastDispatch({ type: "ENTER_PLAYLIST_NAME" });
-      setToggle(true);
+      setToast(true);
     }
     setPlaylistNameValue("");
     setPlaylistTitle("");
@@ -76,7 +75,7 @@ function Playlist() {
     deletePlaylistApi(
       item._id,
       playlistVideoDispatch,
-      setToggle,
+      setToast,
       toastDispatch
     );
   };
