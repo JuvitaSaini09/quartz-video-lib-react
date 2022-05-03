@@ -23,7 +23,9 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
       setToggle(true);
     // saving the encodedToken in the localStorage
   } catch (error) {
-    console.log("Error in creating a new playlist",error);
+    //code to show toast here --->
+    toastDispatch({type: "ERROR"})
+    setToggle(true);
   }
 
 }
@@ -45,7 +47,9 @@ export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispat
        //array contains all videos as object
 
   } catch (error) {
-    console.log(error);
+    //code to show toast here --->
+    toastDispatch({type: "ERROR"})
+    setToggle(true);
   }
 }
 
@@ -62,7 +66,9 @@ export async function deleteVideoFromPlaylistApi(video,playlistId,videoId,setTog
      toastDispatch({type: "VIDEO_DELETED"})
      setToggle(true);
   } catch (error) {
-    console.log("Error while deleting video",error);
+    //code to show toast here --->
+    toastDispatch({type: "ERROR"})
+    setToggle(true);
   }
 }
 
@@ -83,7 +89,9 @@ export async function deletePlaylistApi(playlistId,playlistVideoDispatch,setTogg
       setToggle(true);
         
   } catch (error) {
-    console.log("Error while deleting playlist",error);
+   //code to show toast here --->
+   toastDispatch({type: "ERROR"})
+   setToggle(true);
   }
   
 }
