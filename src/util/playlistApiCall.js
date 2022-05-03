@@ -40,9 +40,6 @@ export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispat
      //code to show toast here --->
      toastDispatch({type: "VIDEO_ADDED"})
      setToast(true);
-       //response.data.playlist--->object
-       //object.videos---->array
-       //array contains all videos as object
 
   } catch (error) {
     console.log(error);

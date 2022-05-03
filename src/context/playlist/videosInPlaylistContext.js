@@ -1,24 +1,19 @@
-import React, { useContext, createContext,useState } from "react";
+import React, { useContext, createContext, useState } from "react";
 
-const videoPlaylistContext=createContext(null);
+const videoPlaylistContext = createContext(null);
 
-const VideoPlaylistProvider=({children})=>{
-    
-   // console.log("title of selected vidoe is :-->",playlistDetail.title);
-    const [videosInPlaylist,setVideosInPlaylist]=useState([]);
-     
-   return(
-    <videoPlaylistContext.Provider value={{videosInPlaylist,setVideosInPlaylist}}>
-    {children}
-</videoPlaylistContext.Provider>
-   )
-}
+const VideoPlaylistProvider = ({ children }) => {
+  const [videosInPlaylist, setVideosInPlaylist] = useState([]);
 
-const useVideoOfPlaylist=()=>useContext(videoPlaylistContext);
+  return (
+    <videoPlaylistContext.Provider
+      value={{ videosInPlaylist, setVideosInPlaylist }}
+    >
+      {children}
+    </videoPlaylistContext.Provider>
+  );
+};
 
-export {useVideoOfPlaylist,VideoPlaylistProvider}
+const useVideoOfPlaylist = () => useContext(videoPlaylistContext);
 
-
-
-
-
+export { useVideoOfPlaylist, VideoPlaylistProvider };
