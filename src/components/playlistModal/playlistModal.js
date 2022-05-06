@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { useToast } from "../../context/toastContext/toastContext";
+import { useWatchLaterCheckbox } from "../../context/watchLaterContext/watchLaterContext";
 import {
   addVideoToPlaylistApi,
   createPlaylistApi,
   deleteVideoFromPlaylistApi,
 } from "../../util/playlistApiCall";
+import { addToWatchLater,  removeFromWatchLater } from "../../util/watchLaterApi";
 import { Toast } from "../allComponents";
 import "./playlistModal.css";
-
 function PlaylistModal() {
+  const {videosInPlaylist,setwatchLaterCheckbox,setWatchLaterCheckboxDisptach}=useWatchLaterCheckbox(); 
   const {setToast,toastState,toastDispatch}=useToast();
   const {playlistNameValue,setPlaylistNameValue}=usePlaylistVideoContext();
   const { setTrackVideoAddedRemoved } = usePlaylistVideoContext();
@@ -69,6 +71,22 @@ function PlaylistModal() {
     setTrackVideoAddedRemoved((prev) => !prev);
   };
 
+  //check whether video is in watchLater
+    const isVideoInWatchLater = 
+    videosInPlaylist.filter(
+     (element) => element._id === singleVideo._id
+    );
+
+  
+  const watchLaterHandler=()=>{
+    if(isVideoInWatchLater[0]===undefined){
+      addToWatchLater(singleVideo,setWatchLaterCheckboxDisptach,toastDispatch,setToast)
+    }else{
+      removeFromWatchLater(singleVideo,setWatchLaterCheckboxDisptach,toastDispatch,setToast)
+    }
+    setwatchLaterCheckbox(prev=>!prev)
+  }
+
   return (
     <>
     <div
@@ -81,9 +99,10 @@ function PlaylistModal() {
         </span>
       </div>
       <div className="list-of-playlist flex-column">
+        
         <ul style={{ textAlign: "left" }}>
-          <li>
-            <input type="checkbox" id="watchLater" name="watchLater" />
+          <li onClick={()=>watchLaterHandler(singleVideo)}>
+            <input type="checkbox" id="watchLater" name="watchLater" checked={isVideoInWatchLater[0]? true : false}/>
             <label htmlFor="watchLater">Watch Later</label>
           </li>
           {/*-----------List of playlist to be checked--------------  */}
@@ -153,3 +172,4 @@ function PlaylistModal() {
 }
 
 export { PlaylistModal };
+

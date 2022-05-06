@@ -26,7 +26,7 @@
 
   .playlistHeading{
     margin-top:2rem;
-    text-align:left;
+    text-align:center;
     margin-left:1rem;
     color:  var(--pink-dark);
   }

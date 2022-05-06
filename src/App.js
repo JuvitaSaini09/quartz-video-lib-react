@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { HistoryVideoPage, Home, LikedVideoPage, Video, VideosInPlaylistPage } from "./pages/allPages";
+import { HistoryVideoPage, Home, LikedVideoPage, Video, VideosInPlaylistPage, WatchLater } from "./pages/allPages";
 import { Playlist } from "./pages/playlist/playlist";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route path="/historyVideo" element={<HistoryVideoPage/>} />
         <Route path="/playlist" element={<Playlist/>} />
         <Route path="/videosInPlaylistPage" element={<VideosInPlaylistPage/>} />
-        
+        <Route path="/watchlater" element={<WatchLater/>} />
       </Routes>
     </div>
   );
