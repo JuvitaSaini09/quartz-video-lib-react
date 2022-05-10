@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { Link } from "react-router-dom";

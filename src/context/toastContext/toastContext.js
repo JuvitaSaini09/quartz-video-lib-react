@@ -15,7 +15,9 @@ const ToastProvider=({children})=> {
          case "ERROR" : return "Error !";
          case "ENTER_PLAYLIST_NAME" : return "Enter name of playlist !";
          case "VIDEO_ADDED" : return "Video added succesfully";
-         case "VIDEO_DELETED" : return "video removed successfully";
+         case "VIDEO_DELETED" : return "Video removed successfully";
+         case "ADDED_TO_WATCH_LATER" :return "Video added to watch later";
+         case "REMOVED_FROM_WATCH_LATER" :return "Video removed watch later";
          default : return '';
        }
      }

@@ -12,6 +12,7 @@ import { HistoryVideoProvider } from "./context/historyVideoContext/historyVideo
 import { PlaylistVideoProvider } from "./context/playlist/playlistContext";
 import { VideoPlaylistProvider } from "./context/playlist/videosInPlaylistContext";
 import { ToastProvider } from "./context/toastContext/toastContext";
+import { WatchLaterProvider } from "./context/watchLaterContext/watchLaterContext";
 
 // Call make Server
 makeServer();
@@ -27,7 +28,9 @@ ReactDOM.render(
                 <PlaylistVideoProvider>
                   <VideoPlaylistProvider>
                     <ToastProvider>
+                      <WatchLaterProvider >
                   <App />
+                  </WatchLaterProvider>
                   </ToastProvider>
                   </VideoPlaylistProvider>
                 </PlaylistVideoProvider>
