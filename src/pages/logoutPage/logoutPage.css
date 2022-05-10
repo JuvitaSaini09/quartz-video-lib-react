@@ -1,0 +1,24 @@
+
+
+.login-page-container{
+    padding:3rem;
+    background-color: var(--white);
+    
+}
+
+.login-page-container h1{
+    color:var(--black);
+    margin-bottom:2rem;
+}
+
+.login-bottom button{
+    margin:1rem;
+}
+
+.login-page-container{
+    height:20rem;
+}
+
+.login-bottom a{
+    color:white;
+}

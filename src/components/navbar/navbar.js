@@ -11,7 +11,7 @@ const Navbar=()=>{
     </div>
     <nav className="nav">
     <i className="fas fa-user-circle fa-2x"></i>
-      <Link to="/"><button className="btn-login" >Login</button></Link>
+      <Link to="/loginPage"><button className="btn-login" >Login</button></Link>
     </nav>
   </div>
 </header>
