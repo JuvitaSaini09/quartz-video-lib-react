@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistoryVideoContext } from '../../context/historyVideoContext/historyVideoContext';
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { Link } from "react-router-dom";
-import { EmptyPage, Navbar, Sidebar } from "../../components/allComponents";
+import { EmptyPage, NavbarPrivate, Sidebar } from "../../components/allComponents";
 import "./historyVideoPage.css"
 import { deleteHistoryAllVideoApi, deleteHistorySingleVideoApi } from '../../util/apiCall';
 function HistoryVideoPage() {
@@ -21,7 +21,7 @@ function HistoryVideoPage() {
     }
   return (
     <>
-      <Navbar />
+      <NavbarPrivate />
       <section className="main-page history-page">
         <Sidebar />
         <div className="col2">

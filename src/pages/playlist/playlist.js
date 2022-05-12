@@ -4,7 +4,7 @@ import { useSingleVideo } from "../../context/singleVideoContext/singleVideoCont
 import { Link } from "react-router-dom";
 import {
   EmptyPage,
-  Navbar,
+  NavbarPrivate,
   Sidebar,
   Toast,
 } from "../../components/allComponents";
@@ -83,7 +83,7 @@ function Playlist() {
   return (
     <>
       <div className={display ? "body-open-modal" : ""}>
-        <Navbar />
+        <NavbarPrivate />
         <section className="main-page playlist-page">
           <Sidebar />
           <div className="col2">
