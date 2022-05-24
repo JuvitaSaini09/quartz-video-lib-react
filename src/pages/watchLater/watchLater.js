@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { EmptyPage, Navbar, Sidebar, Toast } from '../../components/allComponents';
+import { EmptyPage,NavbarPrivate, Sidebar, Toast } from '../../components/allComponents';
 import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext';
 import { useToast } from '../../context/toastContext/toastContext';
 import { useWatchLaterCheckbox } from '../../context/watchLaterContext/watchLaterContext';
@@ -20,7 +20,7 @@ function WatchLater() {
     
   return (
     <>
-    <Navbar />
+    <NavbarPrivate />
     <section className="main-page watchlater-page">
       <Sidebar />
       <div className="col2">
