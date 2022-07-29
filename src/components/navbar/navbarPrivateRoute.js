@@ -1,7 +1,9 @@
 import React from 'react'
 import  "./navbar.css";
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/authContext/authContext';
 const NavbarPrivate=()=>{
+  const {logout,isLoggedIn}=useAuth();
     return(
         <>
         <header className="header-nav">
@@ -11,7 +13,7 @@ const NavbarPrivate=()=>{
     </div>
     <nav className="nav">
     <i className="fas fa-user-circle fa-2x"></i>
-      <Link to="/logoutPage"><button className="btn-login" >Logout</button></Link>
+      <Link to={isLoggedIn?"/logoutPage":"loginPage"}><button className="btn-login" onClick={()=>logout()}>{isLoggedIn?"Logout":"Login"}</button></Link>.
     </nav>
   </div>
 </header>

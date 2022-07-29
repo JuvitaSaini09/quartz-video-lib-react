@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../../context/authContext/authContext";
 import { useDisLikedVideoContext } from "../../context/disLikedVideoContext/disLikedVideoContext";
 import { useHistoryVideoContext } from "../../context/historyVideoContext/historyVideoContext";
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
@@ -24,6 +25,7 @@ function SingleVideo() {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
   const [isItemInLIkedVideos, setIsItemInLIkedVideos] = useState(false);
+  const {isLoggedIn}=useAuth();
 
   const splittedvideoUrl = singleVideo.videoUrl.split("=");
   const videoUrl = `https://www.youtube.com/embed/${splittedvideoUrl[1]}?autoplay=1&&mute=1`;
@@ -39,6 +41,7 @@ function SingleVideo() {
   );
 
   const likeHandler = () => {
+  if(isLoggedIn){
     if (liked === false) {
       setLiked(true);
       postLikedVideoApi(singleVideo, likedVideoDispatch); //calling async function to get data form db
@@ -51,33 +54,38 @@ function SingleVideo() {
       setLiked(false);
       deleteLikedVideoApi(singleVideo, likedVideoDispatch);
     }
+  }
+  else console.log("login for liking videos and show toast for please login")
   };
 
   const dislikeHandler = () => {
-    if (disliked === false) {
-      setDisliked((prev) => !prev);
-      setLiked(false);
-
-      if (isItemInLikedVideos) {
-        deleteLikedVideoApi(singleVideo, likedVideoDispatch);
+    if(isLoggedIn){
+      if (disliked === false) {
+        setDisliked((prev) => !prev);
+        setLiked(false);
+  
+        if (isItemInLikedVideos) {
+          deleteLikedVideoApi(singleVideo, likedVideoDispatch);
+        }
+        setDisLikedVideoDispatch({
+          type: "disLiked",
+          payload: singleVideo,
+        });
+      } else {
+        setDisliked((prev) => !prev);
+        setDisLikedVideoDispatch({
+          type: "notDisliked",
+          payload: singleVideo,
+        });
       }
-      setDisLikedVideoDispatch({
-        type: "disLiked",
-        payload: singleVideo,
-      });
-    } else {
-      setDisliked((prev) => !prev);
-      setDisLikedVideoDispatch({
-        type: "notDisliked",
-        payload: singleVideo,
-      });
     }
+    else console.log("login for disliking videos")
   };
 
  
 
   const showDialog = () => {
-    setdisplay(true);
+    isLoggedIn? setdisplay(true) : console.log("login for adding videos into playlist");
   };
 
   useEffect(() => {

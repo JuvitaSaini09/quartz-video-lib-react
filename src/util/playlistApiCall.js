@@ -25,11 +25,11 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
   } catch (error) {
     console.log("Error in creating a new playlist",error);
   }
-
 }
 
 // add video in a playlist
 export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToast,toastDispatch) {
+  console.log("testing",playlistId,localStorage.getItem("token"))
   try {
     await axios({
       method: "post",
