@@ -47,6 +47,8 @@ export async function deleteLikedVideoApi(singleVideo, likedVideoDispatch) {
 
 // ADD TO HISTORY API
 export async function addToHistoryApi(singleVideo, historyVideoDispatch) {
+
+  console.log("i am in history")
   try {
     const response = await axios({
       method: "post",

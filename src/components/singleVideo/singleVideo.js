@@ -100,7 +100,9 @@ function SingleVideo() {
       );
       isItemInDisLikedVideos ? setDisliked(true) : setDisliked(false);
     }
+    console.log("Is item in history Videos",isItemInHistoryVideos)
     if (isItemInHistoryVideos === undefined) {
+      console.log("video was not in history")
       addToHistoryApi(singleVideo, historyVideoDispatch);
     }
   }, [
@@ -109,10 +111,8 @@ function SingleVideo() {
     disLikedVideoState,
     isItemInLikedVideos,
     isItemInHistoryVideos,
-
     historyVideoDispatch,
     singleVideo
-
   ]);
 
   return (

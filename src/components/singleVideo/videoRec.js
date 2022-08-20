@@ -12,9 +12,7 @@ function VideoRec() {
     <div className="video-recommendation">
       {recommededVideos.map((item) => {
         return (
-          <>
-        
-             
+          <>  
             <div className="video-card">
             <Link onClick={() => setSingleVideo(item)} to="/video">
               <img
