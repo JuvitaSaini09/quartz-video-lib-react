@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// create a playlist
+// create a playlist                    
 export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,setToast,toastDispatch) {
   try {
     const response = await axios({
@@ -16,7 +16,7 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
       const lengthOfPlaylist=(response.data.playlists.length)
       const playlistID =response.data.playlists[lengthOfPlaylist-1]._id;
       if(singleVideo){
-        addVideoToPlaylistApi(singleVideo,playlistID,playlistVideoDispatch)
+        addVideoToPlaylistApi(singleVideo,playlistID,playlistVideoDispatch,setToast,toastDispatch)
       }
       //code to show toast here --->
       toastDispatch({type: "PLAYLIST_CREATED"})
@@ -27,7 +27,7 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
   }
 }
 
-// add video in a playlist
+// add video in a playlist                  
 export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToast,toastDispatch) {
   console.log("testing",playlistId,localStorage.getItem("token"))
   try {
