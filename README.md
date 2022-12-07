@@ -1,3 +1,12 @@
-## E-Commerce Backend
+## Video Library Web App
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+This is a video library web app.This is a front end Project.It has 
+#### It has Following mainly following features :
+1) Home
+2) Playlists
+3) Liked
+4) Watch Later 
+5) History
+
+#### Technologies used 
+ ReactJS,Mockbee for mock backend
