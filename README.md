@@ -10,3 +10,5 @@ This is a video library web app.This is a front end Project.It has
 
 #### Technologies used 
  ReactJS,Mockbee for mock backend
+ 
+ Live : https://quartz-video-library.netlify.app/
