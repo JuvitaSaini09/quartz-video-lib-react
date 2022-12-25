@@ -13,6 +13,7 @@ import { PlaylistVideoProvider } from "./context/playlist/playlistContext";
 import { VideoPlaylistProvider } from "./context/playlist/videosInPlaylistContext";
 import { ToastProvider } from "./context/toastContext/toastContext";
 import { WatchLaterProvider } from "./context/watchLaterContext/watchLaterContext";
+import {AuthProivder, AuthProvider} from "./context/authContext/AuthContext"
 
 // Call make Server
 makeServer();
@@ -20,6 +21,7 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <AuthProvider>
       <ApiProvider>
         <SingleVideoProvider>
           <LikedVideoProvider>
@@ -39,6 +41,7 @@ ReactDOM.render(
           </LikedVideoProvider>
         </SingleVideoProvider>
       </ApiProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
