@@ -4,6 +4,7 @@ import { useHistoryVideoContext } from "../../context/historyVideoContext/histor
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
+import {useAuth} from "../../context/authContext/AuthContext"
 import {
   postLikedVideoApi,
   deleteLikedVideoApi,
@@ -11,11 +12,9 @@ import {
 } from "../../util/apiCall";
 
 function SingleVideo() {
-  // set-token in local storage
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJlMzIzZmY2MC1hMTUzLTQ0MTYtYmEyNS0zNDQ0ZGI1NjliOWMiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ._-fah2UEuueLmRHHl5uV4CYhiQdODX6neUkGbfTvtFM"
-  );
+
+  const {token} = useAuth();
+  
   const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
   const { disLikedVideoState, setDisLikedVideoDispatch } =
@@ -116,7 +115,7 @@ function SingleVideo() {
       </div>{" "}
       <div>
         <div className="video-options">
-          <span onClick={likeHandler}>
+          <span onClick={token?likeHandler:null}>
             {" "}
             {isItemInLIkedVideos ? (
               <i className="fas fa-thumbs-up selectedTrue"> </i>
@@ -124,7 +123,7 @@ function SingleVideo() {
               <i className="fas fa-thumbs-up selectedFalse"></i>
             )}{" "}
           </span>
-          <span onClick={dislikeHandler}>
+          <span onClick={token?dislikeHandler:null}>
             {" "}
             {disliked ? (
               <i className="fas fa-thumbs-down selectedTrue"> </i>
@@ -133,7 +132,7 @@ function SingleVideo() {
             )}{" "}
           </span>{" "}
           <span>
-            <img src={addToList} onClick={showDialog} alt="addToList" />
+            <img src={addToList} onClick={token?showDialog:null} alt="addToList" />
           </span>{" "}
           <span>
             <i className="fas fa-ellipsis-v fa-x"> </i>{" "}

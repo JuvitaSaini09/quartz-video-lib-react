@@ -5,4 +5,4 @@ export const AuthRoute = ({ children }) => {
   const location = useLocation();
   let from = location?.state?.from?.pathname || "/home";
   return token ? <Navigate to="/" replace={true} /> : <Outlet />;
-};
+}; 

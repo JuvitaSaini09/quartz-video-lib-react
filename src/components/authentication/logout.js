@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Logout() {
+  
   return (
     <>
     <main className="login-page-container logout-page-container">
