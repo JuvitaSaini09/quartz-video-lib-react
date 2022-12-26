@@ -5,5 +5,6 @@ export const PrivateRoute = ({ children }) => {
   const location = useLocation();
   console.log("going to private page location --> ",location)
   let from = location?.state?.from?.pathname || "/home";
+  // Hi
   return token ? <Outlet /> :<Navigate to="/loginPage" replace={true} /> ;
 };
