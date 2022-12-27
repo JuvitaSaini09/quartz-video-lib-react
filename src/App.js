@@ -15,6 +15,7 @@ function App() {
         <Route element={<AuthRoute />} >
         <Route path="/loginPage" element={<LoginPage/>} />
         <Route path="/signupPage" element={<SingupPage />} />
+        <Route path="/logoutPage" element={<LogoutPage/>} />
         </Route>
 
         <Route element={<PrivateRoute />} >
@@ -23,7 +24,6 @@ function App() {
         <Route path="/playlist" element={<Playlist/>} />
         <Route path="/videosInPlaylistPage" element={<VideosInPlaylistPage/>} />
         <Route path="/watchlater" element={<WatchLater/>} />
-        <Route path="/logoutPage" element={<LogoutPage/>} />
         </Route>
        
       </Routes>

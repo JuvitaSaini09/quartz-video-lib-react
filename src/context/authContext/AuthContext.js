@@ -45,7 +45,7 @@ const authContext=createContext();
      }
 
     return (
-        <authContext.Provider value={{token,setToken,login,signUp}}>
+        <authContext.Provider value={{token,setUser,setToken,login,signUp}}>
             {children}
         </authContext.Provider>
     )
