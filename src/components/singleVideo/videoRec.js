@@ -7,7 +7,6 @@ function VideoRec() {
   const { apiVideos } = useApi();
   const {singleVideo,setSingleVideo}=useSingleVideo();
   const recommededVideos=apiVideos.filter(item=>item.categoryName===singleVideo.categoryName)
-
   return (
     <div className="video-recommendation">
       {recommededVideos.map((item) => {
@@ -15,7 +14,7 @@ function VideoRec() {
           <>
         
              
-            <div className="video-card">
+            <div className="video-card" key={item.id}>
             <Link onClick={() => setSingleVideo(item)} to="/video">
               <img
                 className="img-thumbnail"

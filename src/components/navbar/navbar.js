@@ -16,13 +16,14 @@ const Navbar = () => {
     <>
       <header className="header-nav">
         <div className="navbar">
-          <div className="logo">
+         <Link to="/">
+         <div className="logo">
             <h1>
               <i className="fab fa-artstation" />
               Quartz
             </h1>
           </div>
-
+         </Link>
           <nav className="nav">
             <i className="fas fa-user-circle fa-2x"></i>
             {token ? (
