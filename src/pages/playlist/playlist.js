@@ -101,7 +101,7 @@ function Playlist() {
             </div>
             {allPlaylistFromApi.map((item) => {
               return (
-                <div className="playlist">
+                <div className="playlist" key={item._id}>
                   <Link
                     to="/videosInPlaylistPage"
                     onClick={() => {

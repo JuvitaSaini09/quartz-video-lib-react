@@ -11,7 +11,7 @@ function VideoListing() {
     <div className="videosListing">
       {apiVideos.map((item) => {
         return (
-              <div className="video-card">
+              <div className="video-card" key={item.id}>
               <Link onClick={() => setSingleVideo(item)} to="/video">
                 <img
                   className="img-thumbnail"

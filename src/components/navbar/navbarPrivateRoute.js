@@ -1,6 +1,6 @@
 import React from 'react'
 import  "./navbar.css";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const NavbarPrivate=()=>{
     return(
         <>
@@ -11,7 +11,7 @@ const NavbarPrivate=()=>{
     </div>
     <nav className="nav">
     <i className="fas fa-user-circle fa-2x"></i>
-      <Link to="/logoutPage"><button className="btn-login" >Logout</button></Link>
+      <NavLink to="/logoutPage"><button className="btn-login" >Logout</button></NavLink>
     </nav>
   </div>
 </header>

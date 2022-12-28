@@ -16,7 +16,7 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
       const lengthOfPlaylist=(response.data.playlists.length)
       const playlistID =response.data.playlists[lengthOfPlaylist-1]._id;
       if(singleVideo){
-        addVideoToPlaylistApi(singleVideo,playlistID,playlistVideoDispatch)
+        addVideoToPlaylistApi(singleVideo,playlistID,setToast,playlistVideoDispatch)
       }
       //code to show toast here --->
       toastDispatch({type: "PLAYLIST_CREATED"})
@@ -29,7 +29,7 @@ export async function createPlaylistApi(singleVideo,title,playlistVideoDispatch,
 }
 
 // add video in a playlist
-export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispatch,setToast,toastDispatch) {
+export async function addVideoToPlaylistApi(video,playlistId,setToast,toastDispatch) {
   try {
     await axios({
       method: "post",
@@ -42,7 +42,7 @@ export async function addVideoToPlaylistApi(video,playlistId,playlistVideoDispat
      setToast(true);
 
   } catch (error) {
-    console.log(error);
+    console.error("Error in adding video into the playlist",error);
   }
 }
 

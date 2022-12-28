@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import { Link, Navigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
 
 const Navbar = () => {
@@ -16,26 +16,26 @@ const Navbar = () => {
     <>
       <header className="header-nav">
         <div className="navbar">
-         <Link to="/">
+         <NavLink to="/">
          <div className="logo">
             <h1>
               <i className="fab fa-artstation" />
               Quartz
             </h1>
           </div>
-         </Link>
+         </NavLink>
           <nav className="nav">
             <i className="fas fa-user-circle fa-2x"></i>
             {token ? (
-              <Link to="/logoutPage">
+              <NavLink to="/logoutPage">
                 <button className="btn-login" onClick={logoutUser} >
                   Logoutt
                 </button>
-              </Link>
+              </NavLink>
             ) : (
-              <Link to="/loginPage">
+              <NavLink to="/loginPage">
                 <button className="btn-login">Login</button>
-              </Link>
+              </NavLink>
             )}
           </nav>
         </div>

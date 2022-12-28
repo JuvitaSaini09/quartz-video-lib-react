@@ -11,9 +11,7 @@ function VideoRec() {
     <div className="video-recommendation">
       {recommededVideos.map((item) => {
         return (
-          <>
-        
-             
+          
             <div className="video-card" key={item.id}>
             <Link onClick={() => setSingleVideo(item)} to="/video">
               <img
@@ -40,7 +38,7 @@ function VideoRec() {
               </div>
             </div>
          
-          </>
+          
         );
       })}
     </div>

@@ -20,7 +20,7 @@ function LikedVideoPage() {
             {likedVideoState[0] === undefined ? <EmptyPage text="No Liked Video" /> :""}
             {likedVideoState.map((item) => {
               return (
-                <div className="video-card">
+                <div className="video-card" key={item._id}>
                   <Link onClick={() => setSingleVideo(item)} to="/video">
                     <img
                       className="img-thumbnail"

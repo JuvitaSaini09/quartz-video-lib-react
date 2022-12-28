@@ -60,8 +60,8 @@ function PlaylistModal() {
       //call a function which will add singleVideo to the playlist
       addVideoToPlaylistApi(
         singleVideo,
-        currentPlaylist._id,
-        playlistVideoDispatch,setToast,toastDispatch
+        currentPlaylist._id
+        ,setToast,toastDispatch
       );
       
     } else {

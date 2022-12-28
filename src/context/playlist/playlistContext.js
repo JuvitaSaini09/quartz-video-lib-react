@@ -30,21 +30,24 @@ const PlaylistVideoProvider = ({ children }) => {
 
   //get playlist from api call
   useEffect(()=>{
-    async function getPlaylistApi() {
-      try {
-        const response = await axios({
-          method: "get",
-          url: "/api/user/playlists",
-          headers: { authorization: localStorage.getItem("token") },
-        });
-
-       setAllPlaylistFromApi(response.data.playlists)
-      } catch (error) {
-        console.log(error);
+    if(localStorage.getItem("token")){
+      async function getPlaylistApi() {
+        try {
+          const response = await axios({
+            method: "get",
+            url: "/api/user/playlists",
+            headers: { authorization: localStorage.getItem("token") },
+          });
+  
+         setAllPlaylistFromApi(response.data.playlists)
+        } catch (error) {
+          console.log(error);
+        }
+      
       }
-    
+      getPlaylistApi(playlistVideoDispatch);
     }
-    getPlaylistApi(playlistVideoDispatch);
+   
   }
   ,[playlistVideoState,trackVideoAddedRemoved])
 

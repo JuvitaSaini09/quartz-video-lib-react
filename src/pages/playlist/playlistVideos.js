@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 import "../../css/videoCard.css";
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
+import "./playlist.css";
 
 function VideosInPlaylistPage() {
   const { videosInPlaylist } = useVideoOfPlaylist();
   const { setSingleVideo } = useSingleVideo();
-
+  console.log("here")
   return (
     <>
       <Navbar />
 
-      <section className="main-page home-page">
+      <section className="main-page playlist-page">
         <Sidebar />
         {/*----------------------------------------- */}
         <div className="col2">
@@ -29,7 +30,7 @@ function VideosInPlaylistPage() {
           <div className="videosListing">
             {videosInPlaylist.map((item) => {
               return (
-                <div className="video-card">
+                <div className="video-card" key={item._id}>
                   <Link onClick={() => setSingleVideo(item)} to="/video">
                     <img
                       className="img-thumbnail"
