@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Logout() {
 
@@ -9,18 +9,18 @@ function Logout() {
         <div>
           <h1>Log out Succesful !</h1>
           <div className="login-bottom">
-            <Link to="/loginPage">
+            <NavLink to="/loginPage">
               <a href="/components/authentication-page/login-page.html">
                 {" "}
                 <button>Log In</button>{" "}
               </a>
-            </Link>
-            <Link to="/">
+            </NavLink>
+            <NavLink to="/">
               <a href="/index.html">
                 {" "}
                 <button >Home</button>
               </a>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </main>

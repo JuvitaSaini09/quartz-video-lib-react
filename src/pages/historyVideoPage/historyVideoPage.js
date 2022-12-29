@@ -4,7 +4,7 @@ import { useSingleVideo } from "../../context/singleVideoContext/singleVideoCont
 import { Link } from "react-router-dom";
 import {
   EmptyPage,
-  NavbarPrivate,
+  Navbar,
   Sidebar,
 } from "../../components/allComponents";
 import "./historyVideoPage.css";
@@ -27,7 +27,7 @@ function HistoryVideoPage() {
   };
   return (
     <>
-      <NavbarPrivate />
+      <Navbar />
       <section className="main-page history-page">
         <Sidebar />
         <div className="col2">

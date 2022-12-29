@@ -2,7 +2,7 @@ import React from "react";
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { Link } from "react-router-dom";
-import { EmptyPage, NavbarPrivate, Sidebar } from "../../components/allComponents";
+import { EmptyPage, Navbar, Sidebar } from "../../components/allComponents";
 import "./likedVideoPage.css"
 
 function LikedVideoPage() {
@@ -11,7 +11,7 @@ function LikedVideoPage() {
  
   return (
     <>
-      <NavbarPrivate />
+      <Navbar />
       <section className="main-page like-page">
         <Sidebar />
         <div className="col2">

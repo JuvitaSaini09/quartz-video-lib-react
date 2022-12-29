@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
 
 function Login() {
@@ -55,9 +55,9 @@ function Login() {
           }}>Test credentials</button>
           <p>
             Create Account{" "}
-            <Link to="/signupPage" style={{ color: "blue" }}>
+            <NavLink to="/signupPage" style={{ color: "blue" }}>
               Sign up
-            </Link>
+            </NavLink>
           </p>
         </div>
       </main>
