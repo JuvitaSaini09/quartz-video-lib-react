@@ -65,6 +65,8 @@ export async function addToHistoryApi(singleVideo, historyVideoDispatch) {
   }
 }
 
+
+
 //REMOVE SINGLE VIDEO FROM HISTORY
 export async function deleteHistorySingleVideoApi(
   singleVideo,
