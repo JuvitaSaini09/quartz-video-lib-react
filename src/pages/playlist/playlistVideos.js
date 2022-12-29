@@ -9,7 +9,6 @@ import "./playlist.css";
 function VideosInPlaylistPage() {
   const { videosInPlaylist } = useVideoOfPlaylist();
   const { setSingleVideo } = useSingleVideo();
-  console.log("here")
   return (
     <>
       <Navbar />
@@ -24,8 +23,7 @@ function VideosInPlaylistPage() {
             <h1 className="playlistHeading">Videos</h1>
           )}
 
-      {/* Create playlist icon ----------> */}
-   
+          {/* Create playlist icon ----------> */}
 
           <div className="videosListing">
             {videosInPlaylist.map((item) => {

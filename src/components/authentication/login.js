@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
+import { useToast } from "../../context/toastContext/toastContext";
+import { Toast } from "../allComponents";
 
 function Login() {
+  const { toastState, toastDispatch, setToast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, accNotFound } = useAuth();
+  const [LoginClick, setLoginClick] = useState(null);
 
   const loginBtn = (e) => {
-    login(e, email, password);
-    setEmail("");
-    setPassword("");
+    setLoginClick(e);
+    if (email && password) {
+      login(e, email, password);
+      setEmail("");
+      setPassword("");
+    } else {
+      toastDispatch({ type: "INPUT_ALL_VALUES" });
+      setToast(true);
+    }
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token") && LoginClick !== null) {
+      toastDispatch({ type: "LOGIN_ACC_NOT_Found" });
+      setToast(true);
+    }
+  }, [accNotFound]);
 
   return (
     <>
@@ -49,10 +66,14 @@ function Login() {
         </div>
         <div className="login-bottom">
           <button onClick={(e) => loginBtn(e)}>Login</button>
-          <button onClick={()=>{
-            setEmail("adarshbalika@gmail.com");
-            setPassword("adarshBalika123");
-          }}>Test credentials</button>
+          <button
+            onClick={() => {
+              setEmail("adarshbalika@gmail.com");
+              setPassword("adarshBalika123");
+            }}
+          >
+            Test credentials
+          </button>
           <p>
             Create Account{" "}
             <NavLink to="/signupPage" style={{ color: "blue" }}>
@@ -60,6 +81,9 @@ function Login() {
             </NavLink>
           </p>
         </div>
+
+        {/*<------------- TOAST --------------> */}
+        <Toast text={toastState} />
       </main>
     </>
   );
