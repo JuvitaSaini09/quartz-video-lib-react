@@ -18,7 +18,6 @@ const PlaylistVideoProvider = ({ children }) => {
          case "DELETE_PLAYLIST":
           return action.payload;
       default:
-        console.log("default case")
         return playlistVideoState;
     }
   };
