@@ -3,7 +3,7 @@ import "./categoryButtons.css";
 import { useApi } from "../../context/apiContext/api";
 
 function CategoryButtons() {
-  const { category, setCategory } = useApi();
+  const { setCategory } = useApi();
 
   const allVideos = () => {
     setCategory("All");
