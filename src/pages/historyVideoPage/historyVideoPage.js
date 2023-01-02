@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistoryVideoContext } from "../../context/historyVideoContext/historyVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   EmptyPage,
   Navbar,
@@ -49,7 +49,7 @@ function HistoryVideoPage() {
                 {historyVideoState.map((item) => {
                   return (
                     <div className="video-card" key={item._id}>
-                      <Link onClick={() => setSingleVideo(item)} to="/video">
+                      <NavLink onClick={() => setSingleVideo(item)} to="/video">
                         <img
                           className="img-thumbnail"
                           src={item.thumbnailUrl}
@@ -59,7 +59,7 @@ function HistoryVideoPage() {
                         <h1 className="play">
                           <i className="fas fa-play"></i>play
                         </h1>
-                      </Link>
+                      </NavLink>
                       <span
                         onClick={() => deleteVideoFromHistoryHandler(item)}
                         className="historyDustbin"

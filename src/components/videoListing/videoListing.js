@@ -1,6 +1,6 @@
 import React from "react";
 import { useApi } from "../../context/apiContext/api";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 
 function VideoListing() {
@@ -22,7 +22,7 @@ function VideoListing() {
       {videos.map((item) => {
         return (
           <div className="video-card" key={item.id}>
-            <Link onClick={() => setSingleVideo(item)} to="/video">
+            <NavLink onClick={() => setSingleVideo(item)} to="/video">
               <img
                 className="img-thumbnail"
                 src={item.thumbnailUrl}
@@ -31,7 +31,7 @@ function VideoListing() {
               <h1 className="play">
                 <i className="fas fa-play"></i>play
               </h1>
-            </Link>
+            </NavLink>
             <div className="video-description">
               <img className="video-logo" src={item.logoUrl} alt="logo" />
               <h4 className="video-title">

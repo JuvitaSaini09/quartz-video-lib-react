@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useApi } from "../../context/apiContext/api";
 import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext'
 
@@ -13,7 +13,7 @@ function VideoRec() {
         return (
           
             <div className="video-card" key={item.id}>
-            <Link onClick={() => setSingleVideo(item)} to="/video">
+            <NavLink onClick={() => setSingleVideo(item)} to="/video">
               <img
                 className="img-thumbnail"
                 src={item.thumbnailUrl}
@@ -22,7 +22,7 @@ function VideoRec() {
               <h1 className="play">
                 <i className="fas fa-play"></i>play
               </h1>
-              </Link>
+              </NavLink>
               <div className="video-description">
                 <img className="video-logo" src={item.logoUrl} alt="log" />
                 <h4 className="video-title">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
 import { useToast } from "../../context/toastContext/toastContext";
 import { Toast } from "../allComponents";
@@ -83,9 +83,9 @@ function Signup() {
           <button onClick={(e) => signUpBtnClick(e)}>Sign Up</button>
           <p>
             Already have an Account{" "}
-            <Link to="/loginPage" style={{ color: "blue" }}>
+            <NavLink to="/loginPage" style={{ color: "blue" }}>
               Log In
-            </Link>
+            </NavLink>
           </p>
         </div>
         {/*<------------- TOAST --------------> */}

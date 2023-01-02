@@ -1,7 +1,7 @@
 import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   EmptyPage,
   Navbar,
@@ -102,7 +102,7 @@ function Playlist() {
             {allPlaylistFromApi.map((item) => {
               return (
                 <div className="playlist" key={item._id}>
-                  <Link
+                  <NavLink
                     to="/videosInPlaylistPage"
                     onClick={() => {
                       setVideosInPlaylist(item.videos);
@@ -120,7 +120,7 @@ function Playlist() {
                         data-icon="carbon:playlist"
                       ></span>
                     </div>
-                  </Link>
+                  </NavLink>
 
                   <span
                     onClick={() => deletePlaylist(item)}

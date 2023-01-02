@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { EmptyPage,Navbar, Sidebar, Toast } from '../../components/allComponents';
 import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext';
 import { useToast } from '../../context/toastContext/toastContext';
@@ -31,7 +31,7 @@ function WatchLater() {
           {videosInPlaylist.map((item) => {
             return (
               <div className="video-card" key={item._id}>
-                <Link onClick={() => setSingleVideo(item)} to="/video">
+                <NavLink onClick={() => setSingleVideo(item)} to="/video">
                   <img
                     className="img-thumbnail"
                     src={item.thumbnailUrl}
@@ -41,7 +41,7 @@ function WatchLater() {
                   <h1 className="play">
                     <i className="fas fa-play"></i>play
                   </h1>
-                </Link>
+                </NavLink>
                 <span onClick={()=>deleteVideoFromWatchLaterHandler(item)} className="historyDustbin"><i className="fas fa-trash-alt fa-2x"></i></span>
                 <div className="video-description">
                   <img className="video-logo" src={item.logoUrl} alt="logo" />

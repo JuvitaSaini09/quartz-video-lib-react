@@ -10,16 +10,16 @@ function Logout() {
           <h1>Log out Succesful !</h1>
           <div className="login-bottom">
             <NavLink to="/loginPage">
-              <a href="/components/authentication-page/login-page.html">
+              
                 {" "}
                 <button>Log In</button>{" "}
-              </a>
+              
             </NavLink>
             <NavLink to="/">
-              <a href="/index.html">
+              
                 {" "}
                 <button >Home</button>
-              </a>
+             
             </NavLink>
           </div>
         </div>
