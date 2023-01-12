@@ -36,10 +36,15 @@ const ToastProvider = ({ children }) => {
         return "Account not found !!";
       case "INPUT_ALL_VALUES":
         return "Enter all values !!";
+        case "Login for like":
+        return "Login for this action !!";
+        case "Login for dislike":
+        return "Login for this action !!";
       default:
         return "";
     }
   };
+  
 
   const [toastState, toastDispatch] = useReducer(toastReducer, "");
 

@@ -8,9 +8,12 @@ import {
 } from "../../components/allComponents";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import "./videoo.css";
+import {Toast} from "../../components/allComponents";
+import { useToast } from "../../context/toastContext/toastContext"
 
 function Video() {
   const {display}=useSingleVideo();
+  const { toastState } = useToast();
   return (
     <>
      <div className={display ? "body-open-modal" : ""}>
@@ -24,6 +27,8 @@ function Video() {
       </section>
      </div>
       <PlaylistModal />
+      {/*<------------- TOAST --------------> */}
+      <Toast text={toastState} />
     </>
   );
 }

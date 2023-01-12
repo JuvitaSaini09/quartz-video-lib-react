@@ -10,10 +10,11 @@ import {
   deleteLikedVideoApi,
   addToHistoryApi,
 } from "../../util/apiCall";
+import { useToast } from "../../context/toastContext/toastContext";
 
 function SingleVideo() {
   const { token } = useAuth();
-
+  const { toastDispatch, setToast } = useToast();
   const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
   const { disLikedVideoState, setDisLikedVideoDispatch } =
@@ -120,7 +121,13 @@ function SingleVideo() {
                 <i className="fas fa-thumbs-up selectedFalse"></i>
               )
             ) : (
-              <i className="fas fa-thumbs-up selectedFalse"></i>
+              <i
+                className="fas fa-thumbs-up selectedFalse"
+                onClick={() => {
+                  toastDispatch({ type: "Login for like" });
+                  setToast(true);
+                }}
+              ></i>
             )}{" "}
           </span>
           <span onClick={token ? dislikeHandler : null}>
@@ -132,7 +139,13 @@ function SingleVideo() {
                 <i className="fas fa-thumbs-down selectedFalse"></i>
               )
             ) : (
-              <i className="fas fa-thumbs-down selectedFalse"></i>
+              <i
+                className="fas fa-thumbs-down selectedFalse"
+                onClick={() => {
+                  toastDispatch({ type: "Login for dislike" });
+                  setToast(true);
+                }}
+              ></i>
             )}{" "}
           </span>{" "}
           <span>
