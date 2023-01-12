@@ -4,7 +4,7 @@ import { useHistoryVideoContext } from "../../context/historyVideoContext/histor
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
-import {useAuth} from "../../context/authContext/AuthContext"
+import { useAuth } from "../../context/authContext/AuthContext";
 import {
   postLikedVideoApi,
   deleteLikedVideoApi,
@@ -12,9 +12,8 @@ import {
 } from "../../util/apiCall";
 
 function SingleVideo() {
+  const { token } = useAuth();
 
-  const {token} = useAuth();
-  
   const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
   const { disLikedVideoState, setDisLikedVideoDispatch } =
@@ -73,8 +72,6 @@ function SingleVideo() {
     }
   };
 
- 
-
   const showDialog = () => {
     setdisplay(true);
   };
@@ -102,8 +99,7 @@ function SingleVideo() {
     isItemInHistoryVideos,
 
     historyVideoDispatch,
-    singleVideo
-
+    singleVideo,
   ]);
 
   return (
@@ -115,24 +111,36 @@ function SingleVideo() {
       </div>{" "}
       <div>
         <div className="video-options">
-          <span onClick={token?likeHandler:null}>
+          <span onClick={token ? likeHandler : null}>
             {" "}
-            {isItemInLIkedVideos ? (
-              <i className="fas fa-thumbs-up selectedTrue"> </i>
+            {token ? (
+              isItemInLIkedVideos ? (
+                <i className="fas fa-thumbs-up selectedTrue"> </i>
+              ) : (
+                <i className="fas fa-thumbs-up selectedFalse"></i>
+              )
             ) : (
               <i className="fas fa-thumbs-up selectedFalse"></i>
             )}{" "}
           </span>
-          <span onClick={token?dislikeHandler:null}>
+          <span onClick={token ? dislikeHandler : null}>
             {" "}
-            {disliked ? (
-              <i className="fas fa-thumbs-down selectedTrue"> </i>
+            {token ? (
+              disliked ? (
+                <i className="fas fa-thumbs-down selectedTrue"> </i>
+              ) : (
+                <i className="fas fa-thumbs-down selectedFalse"></i>
+              )
             ) : (
               <i className="fas fa-thumbs-down selectedFalse"></i>
             )}{" "}
           </span>{" "}
           <span>
-            <img src={addToList} onClick={token?showDialog:null} alt="addToList" />
+            <img
+              src={addToList}
+              onClick={token ? showDialog : null}
+              alt="addToList"
+            />
           </span>{" "}
           <span>
             <i className="fas fa-ellipsis-v fa-x"> </i>{" "}
