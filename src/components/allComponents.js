@@ -1,5 +1,4 @@
 export {Navbar} from "./navbar/navbar"
-export {NavbarPrivate} from "./navbar/navbarPrivateRoute"
 export {Sidebar} from "./sidebar/sidebar"
 export {VideoListing} from "./videoListing/videoListing"
 export {CategoryButtons} from "./categoryButtons/categoryButtons"

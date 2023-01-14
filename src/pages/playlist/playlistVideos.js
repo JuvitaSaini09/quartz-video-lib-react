@@ -1,19 +1,19 @@
 import React from "react";
 import { EmptyPage, Navbar, Sidebar } from "../../components/allComponents";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../../css/videoCard.css";
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
+import "./playlist.css";
 
 function VideosInPlaylistPage() {
   const { videosInPlaylist } = useVideoOfPlaylist();
   const { setSingleVideo } = useSingleVideo();
-
   return (
     <>
       <Navbar />
 
-      <section className="main-page home-page">
+      <section className="main-page playlist-page">
         <Sidebar />
         {/*----------------------------------------- */}
         <div className="col2">
@@ -23,14 +23,13 @@ function VideosInPlaylistPage() {
             <h1 className="playlistHeading">Videos</h1>
           )}
 
-      {/* Create playlist icon ----------> */}
-   
+          {/* Create playlist icon ----------> */}
 
           <div className="videosListing">
             {videosInPlaylist.map((item) => {
               return (
-                <div className="video-card">
-                  <Link onClick={() => setSingleVideo(item)} to="/video">
+                <div className="video-card" key={item._id}>
+                  <NavLink onClick={() => setSingleVideo(item)} to="/video">
                     <img
                       className="img-thumbnail"
                       src={item.thumbnailUrl}
@@ -39,7 +38,7 @@ function VideosInPlaylistPage() {
                     <h1 className="play">
                       <i className="fas fa-play"></i>play
                     </h1>
-                  </Link>
+                  </NavLink>
                   <div className="video-description">
                     <img className="video-logo" src={item.logoUrl} alt="logo" />
                     <h4 className="video-title">

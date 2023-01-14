@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useApi } from "../../context/apiContext/api";
 import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext'
 
@@ -7,16 +7,13 @@ function VideoRec() {
   const { apiVideos } = useApi();
   const {singleVideo,setSingleVideo}=useSingleVideo();
   const recommededVideos=apiVideos.filter(item=>item.categoryName===singleVideo.categoryName)
-
   return (
     <div className="video-recommendation">
       {recommededVideos.map((item) => {
         return (
-          <>
-        
-             
-            <div className="video-card">
-            <Link onClick={() => setSingleVideo(item)} to="/video">
+          
+            <div className="video-card" key={item.id}>
+            <NavLink onClick={() => setSingleVideo(item)} to="/video">
               <img
                 className="img-thumbnail"
                 src={item.thumbnailUrl}
@@ -25,7 +22,7 @@ function VideoRec() {
               <h1 className="play">
                 <i className="fas fa-play"></i>play
               </h1>
-              </Link>
+              </NavLink>
               <div className="video-description">
                 <img className="video-logo" src={item.logoUrl} alt="log" />
                 <h4 className="video-title">
@@ -41,7 +38,7 @@ function VideoRec() {
               </div>
             </div>
          
-          </>
+          
         );
       })}
     </div>

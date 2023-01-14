@@ -14,11 +14,14 @@ import { VideoPlaylistProvider } from "./context/playlist/videosInPlaylistContex
 import { ToastProvider } from "./context/toastContext/toastContext";
 import { WatchLaterProvider } from "./context/watchLaterContext/watchLaterContext";
 import {AuthProivder, AuthProvider} from "./context/authContext/AuthContext"
+import {createRoot} from 'react-dom/client' 
 
+const container=document.getElementById('root');
+const root=createRoot(container);
 // Call make Server
 makeServer();
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <BrowserRouter>
     <AuthProvider>
@@ -44,5 +47,5 @@ ReactDOM.render(
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
 );
+

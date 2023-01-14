@@ -1,8 +1,8 @@
 import React from "react";
 import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { Link } from "react-router-dom";
-import { EmptyPage, NavbarPrivate, Sidebar } from "../../components/allComponents";
+import { NavLink } from "react-router-dom";
+import { EmptyPage, Navbar, Sidebar } from "../../components/allComponents";
 import "./likedVideoPage.css"
 
 function LikedVideoPage() {
@@ -11,7 +11,7 @@ function LikedVideoPage() {
  
   return (
     <>
-      <NavbarPrivate />
+      <Navbar />
       <section className="main-page like-page">
         <Sidebar />
         <div className="col2">
@@ -20,8 +20,8 @@ function LikedVideoPage() {
             {likedVideoState[0] === undefined ? <EmptyPage text="No Liked Video" /> :""}
             {likedVideoState.map((item) => {
               return (
-                <div className="video-card">
-                  <Link onClick={() => setSingleVideo(item)} to="/video">
+                <div className="video-card" key={item._id}>
+                  <NavLink onClick={() => setSingleVideo(item)} to="/video">
                     <img
                       className="img-thumbnail"
                       src={item.thumbnailUrl}
@@ -30,7 +30,7 @@ function LikedVideoPage() {
                     <h1 className="play">
                       <i className="fas fa-play"></i>play
                     </h1>
-                  </Link>
+                  </NavLink>
                   <div className="video-description">
                     <img className="video-logo" src={item.logoUrl} alt="logo" />
                     <h4 className="video-title">

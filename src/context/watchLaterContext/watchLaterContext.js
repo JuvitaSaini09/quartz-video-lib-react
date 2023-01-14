@@ -16,20 +16,23 @@ const WatchLaterProvider=({children})=> {
      const [videosInPlaylist,setVideoInPlaylist]=useState([])
      
      useEffect(() => {
+      if(localStorage.getItem("token")){
         async function fetchWatchLaterData() {
-            try {
-                const response = await axios({
-                  method: "get",
-                  url: "/api/user/watchlater",
-                  headers: { authorization: localStorage.getItem("token") },
-                });
-               setVideoInPlaylist(response.data.watchlater);
-              // saving the encodedToken in the localStorage
-              } catch (error) {
-                console.log("Error in getting watchlater",error);
-              }  
-        }
-        fetchWatchLaterData();
+          try {
+              const response = await axios({
+                method: "get",
+                url: "/api/user/watchlater",
+                headers: { authorization: localStorage.getItem("token") },
+              });
+             setVideoInPlaylist(response.data.watchlater);
+            // saving the encodedToken in the localStorage
+            } catch (error) {
+              console.log("Error in getting watchlater",error);
+            }  
+      }
+      fetchWatchLaterData();
+      }
+        
       }, [watchLaterCheckboxState,watchLaterCheckbox]);
 
   return (

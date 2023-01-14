@@ -1,24 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function Logout() {
+
   return (
     <>
-    <main className="login-page-container logout-page-container">
-  <div>
-    <h1>Log out Succesful !</h1>
-    <div className="login-bottom">
-    <Link to="/loginPage">
-      <a href="/components/authentication-page/login-page.html"> <button>Log In</button> </a>
-      </Link>
-      <Link to="/">
-      <a href="/index.html"> <button>Home</button></a>
-      </Link >
-    </div>
-  </div></main> 
-
+      <main className="login-page-container logout-page-container">
+        <div>
+          <h1>Log out Succesful !</h1>
+          <div className="login-bottom">
+            <NavLink to="/loginPage">
+              
+                {" "}
+                <button>Log In</button>{" "}
+              
+            </NavLink>
+            <NavLink to="/">
+              
+                {" "}
+                <button >Home</button>
+             
+            </NavLink>
+          </div>
+        </div>
+      </main>
     </>
-  )
+  );
 }
 
-export {Logout}
+export { Logout };

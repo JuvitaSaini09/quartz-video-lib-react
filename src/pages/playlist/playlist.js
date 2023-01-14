@@ -1,10 +1,10 @@
 import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   EmptyPage,
-  NavbarPrivate,
+  Navbar,
   Sidebar,
   Toast,
 } from "../../components/allComponents";
@@ -83,7 +83,7 @@ function Playlist() {
   return (
     <>
       <div className={display ? "body-open-modal" : ""}>
-        <NavbarPrivate />
+        <Navbar />
         <section className="main-page playlist-page">
           <Sidebar />
           <div className="col2">
@@ -101,8 +101,8 @@ function Playlist() {
             </div>
             {allPlaylistFromApi.map((item) => {
               return (
-                <div className="playlist">
-                  <Link
+                <div className="playlist" key={item._id}>
+                  <NavLink
                     to="/videosInPlaylistPage"
                     onClick={() => {
                       setVideosInPlaylist(item.videos);
@@ -120,7 +120,7 @@ function Playlist() {
                         data-icon="carbon:playlist"
                       ></span>
                     </div>
-                  </Link>
+                  </NavLink>
 
                   <span
                     onClick={() => deletePlaylist(item)}
