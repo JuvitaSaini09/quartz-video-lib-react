@@ -6,7 +6,7 @@ import { AuthRoute } from "./components/authentication/authRoute";
 import {PrivateRoute} from "./components/authentication/privateRoute"
 
 function App() {
-  //home page
+  //improve design
   return (
     <div className="App">.
       <Routes>
