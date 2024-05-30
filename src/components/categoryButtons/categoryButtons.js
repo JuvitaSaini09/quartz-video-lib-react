@@ -1,111 +1,74 @@
 import React, { useState } from "react";
 import "./categoryButtons.css";
 import { useApi } from "../../context/apiContext/api";
+import { Box, Button, styled } from "@mui/material";
+
+const StyledButton = styled(Button)(({ theme, isActive, borderRadius }) => ({
+  fontSize: "13px",
+  color: isActive ? "var(--background-color)" : "white",
+  backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
+  borderColor: isActive ? "var(--light-yellow)" : "#343a40",
+  borderRadius: borderRadius || 0,
+  "&:hover": {
+    color: isActive ? "var(--background-color)" : "white",
+    backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
+    borderColor: isActive ? "var(--light-yellow)" : "#343a40",
+  },
+}));
 
 function CategoryButtons() {
   const { setCategory } = useApi();
+
   const [isActiveCategory, setIsActiveCategory] = useState({
-    "All": true,
+    All: true,
     "Ice Cream": false,
-    "Cake": false,
+    Cake: false,
     "Sweet Dish": false,
   });
 
-  const allVideos = (e) => {
-    setCategory("All");
+  const handleCategoryChange = (category) => {
+    setCategory(category);
     setIsActiveCategory({
-      "All": true,
-      "Ice Cream": false,
-      "Cake": false,
-      "Sweet Dish": false,
+      All: category === "All",
+      "Ice Cream": category === "Ice Cream",
+      Cake: category === "Cake",
+      "Sweet Dish": category === "Sweet Dish",
     });
-  };
-  const iceCreamVideos = (e) => {
-    setCategory("Ice Cream");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": true,
-      "Cake": false,
-      "Sweet Dish": false,
-    });
-  };
-
-  const cakeVideos = (e) => {
-    setCategory("Cake");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": false,
-      "Cake": true,
-      "Sweet Dish": false,
-    });
-  };
-  const sweetDishVideos = (e) => {
-    setCategory("Sweet Dish");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": false,
-      "Cake": false,
-      "Sweet Dish": true,
-    });
-  };
-
-  const activeCategoryButtonStyle = {
-    color: "white",
-    backgroundColor: "#EC0023",
-  };
-
-  const inActiveCategoryButtonStyle = {
-    color: "#EC0023",
-    backgroundColor: "white",
   };
 
   return (
-    <div className="btn-category">
-      <button
-        className="btn-all"
-        onClick={(e) => allVideos(e)}
-        style={
-          isActiveCategory.All
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+    <Box>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory.All}
+        onClick={() => handleCategoryChange("All")}
+        borderRadius="5px 0 0 5px"
       >
         All
-      </button>
-      <button
-        className="btn-iceCream"
-        onClick={(e) => iceCreamVideos(e)}
-        style={
-          isActiveCategory["Ice Cream"]
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory["Ice Cream"]}
+        onClick={() => handleCategoryChange("Ice Cream")}
       >
         Ice Cream
-      </button>
-      <button
-        className="btn-cake"
-        onClick={(e) => cakeVideos(e)}
-        style={
-          isActiveCategory.Cake
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory.Cake}
+        onClick={() => handleCategoryChange("Cake")}
       >
         Cake
-      </button>
-      <button
-        className="btn-chocolate"
-        onClick={(e) => sweetDishVideos(e)}
-        style={
-          isActiveCategory["Sweet Dish"]
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory["Sweet Dish"]}
+        onClick={() => handleCategoryChange("Sweet Dish")}
+        borderRadius="0 5px 5px 0"
       >
         Sweet Dish
-      </button>
-    </div>
+      </StyledButton>
+    </Box>
   );
 }
 

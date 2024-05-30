@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Grid, Stack, Typography, styled, Button } from "@mui/material";
 import { animeHeroes, animeWorldLogo } from "../../images/allImages";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
-import { Navbar } from "../../components/allComponents";
 import PlayCircleFilledWhiteRoundedIcon from "@mui/icons-material/PlayCircleFilledWhiteRounded";
 import { useNavigate } from "react-router-dom";
 
@@ -13,8 +12,6 @@ const LandingPageContainer = styled(Box)({
   alignItems: "center",
   background:
     "linear-gradient(to bottom, rgba(255, 255, 255, 0.2), 20%,rgba(255, 255, 255, 0))",
-  // background:
-  //   "linear-gradient(to bottom, rgba(255, 255, 255, 0.2), 25%,rgba(255, 255, 255, 0)), linear-gradient(to top, rgba(255, 255, 255, 0.2), 25%,rgba(255, 255, 255, 0))",
 });
 
 const CustomGrid1 = styled(Grid)({

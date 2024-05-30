@@ -18,7 +18,7 @@ function VideoListing() {
       : iceCreamVideos;
 
   return (
-    <div className="videosListing">
+    <div className="videosListing" style={{marginTop:"10px"}}>
       {videos.map((item) => {
         return (
           <div className="video-card" key={item.id}>
