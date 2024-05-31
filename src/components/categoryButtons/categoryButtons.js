@@ -21,21 +21,21 @@ function CategoryButtons() {
 
   const [isActiveCategory, setIsActiveCategory] = useState({
     All: true,
-    "Ice Cream": false,
-    Cake: false,
-    "Sweet Dish": false,
+    "Sci-Fi": false,
+    Adventure: false,
+    Drama: false,
   });
 
   const handleCategoryChange = (category) => {
     setCategory(category);
     setIsActiveCategory({
       All: category === "All",
-      "Ice Cream": category === "Ice Cream",
-      Cake: category === "Cake",
-      "Sweet Dish": category === "Sweet Dish",
+      "Sci-Fi": category === "Sci-Fi",
+      Adventure: category === "Adventure",
+      Drama: category === "Drama",
     });
   };
-
+  console.log("isActiveCategory", isActiveCategory);
   return (
     <Box>
       <StyledButton
@@ -48,25 +48,25 @@ function CategoryButtons() {
       </StyledButton>
       <StyledButton
         variant="outlined"
-        isActive={isActiveCategory["Ice Cream"]}
-        onClick={() => handleCategoryChange("Ice Cream")}
+        isActive={isActiveCategory["Sci-Fi"]}
+        onClick={() => handleCategoryChange("Sci-Fi")}
       >
-        Ice Cream
+        Sci-Fi
       </StyledButton>
       <StyledButton
         variant="outlined"
-        isActive={isActiveCategory.Cake}
-        onClick={() => handleCategoryChange("Cake")}
+        isActive={isActiveCategory.Adventure}
+        onClick={() => handleCategoryChange("Adventure")}
       >
-        Cake
+        Adventure
       </StyledButton>
       <StyledButton
         variant="outlined"
-        isActive={isActiveCategory["Sweet Dish"]}
-        onClick={() => handleCategoryChange("Sweet Dish")}
+        isActive={isActiveCategory["Drama"]}
+        onClick={() => handleCategoryChange("Drama")}
         borderRadius="0 5px 5px 0"
       >
-        Sweet Dish
+        Drama
       </StyledButton>
     </Box>
   );

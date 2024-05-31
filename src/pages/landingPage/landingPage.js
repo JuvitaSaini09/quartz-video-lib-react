@@ -23,10 +23,10 @@ const CustomGrid1 = styled(Grid)({
 const CustomGrid2 = styled(Grid)({});
 
 const AnimeHeroesContainer = styled(Box)(({ theme }) => ({
-  width: "auto",
-  height: "auto",
-  backgroundImage:
-    "radial-gradient(circle 180px at center, rgba(255, 192, 203, 0.5), transparent), radial-gradient(circle 180px at center, rgba(255, 255, 255, 0.5), transparent)",
+  width: "600px",
+  height: "473.2px",
+  // backgroundImage:
+  //   "radial-gradient(circle 180px at center, rgba(255, 192, 203, 0.5), transparent), radial-gradient(circle 180px at center, rgba(255, 255, 255, 0.5), transparent)",
   [theme.breakpoints.down("1073px")]: {
     width: "400px",
     height: "auto",
@@ -35,11 +35,25 @@ const AnimeHeroesContainer = styled(Box)(({ theme }) => ({
 
 const AnimeHeroesImg = styled("img")(({ theme }) => ({
   objectFit: "cover",
-  width: "100%",
-  height: "auto",
+  width: "auto",
+  height: "100%",
 
   [theme.breakpoints.down("lg")]: {
     marginTop: 30,
+  },
+
+  width: "600px",
+  height: "473.2px",
+  position: "relative",
+
+  [theme.breakpoints.down("lg")]: {
+    width: "450px",
+    height: "354.9px",
+  },
+
+  [theme.breakpoints.down("md")]: {
+    width: "400px",
+    height: "315.4px",
   },
 }));
 
@@ -144,7 +158,7 @@ const LandingPage = () => {
               justifyContent="center"
             >
               <AnimeHeroesContainer>
-                <AnimeHeroesImg src={animeHeroes}></AnimeHeroesImg>
+                <AnimeHeroesImg src="https://aniwatchtv.to/images/anw-min.webp"></AnimeHeroesImg>
               </AnimeHeroesContainer>
             </CustomGrid2>
           </Grid>

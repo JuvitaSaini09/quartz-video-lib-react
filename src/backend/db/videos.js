@@ -14,11 +14,13 @@ import {
  * You can add products of your wish with different attributes
  * */
 
+// Sci-Fi,Drama, Adventure,All
+
 export const videos = [
   {
     _id: uuid(),
-    categoryName: "Sweet Dish",
-    creator: "Hebbars Kitchen",
+    categoryName: "Sci-Fi",
+    creator: "CK Anime",
     videoUrl: "https://www.youtube.com/watch?v=EgrehrOCpcA",
     thumbnailUrl:
       "https://img.flawlessfiles.com/_r/300x400/100/41/84/418414182fc8d705ec8a46c5cfd7bc52/418414182fc8d705ec8a46c5cfd7bc52.jpg",
@@ -26,111 +28,90 @@ export const videos = [
     logoUrl: logo1,
     videoId: "EgrehrOCpcA",
     description:
-      "A man travels in time from the year 2027 to relive his school years and to correct a bad decision.",
+      "The year is 2027, and the city of Kyoto has undergone tremendous technological advancement. Within the city lives Naomi Katagaki, a socially awkward and introverted boy with a love for books, and Ruri Ichigyou, a girl with a cold personality who is often blunt with people, but shares his love for reading. Despite having similar interests, Naomi is afraid to approach Ruri due to her unfriendly nature. One day, as Naomi goes out for a walk, a crimson aurora pierces through the sky for a brief moment before vanishing. Shortly after, he sees a three-legged crow and a mysterious hooded man who reveals himself to be Naomi from 10 years in the future, explaining that he has come to change an imminent tragic event that happens to Ruri shortly after they start dating. Initially taking his words with a grain of salt, present-day Naomi follows his future self's instructions and starts getting closer to Ruri, determined to save her. Hello World focuses on the present Naomi alongside himself from 10 years into the future. With the help of his future self, Naomi begins his preparations to save Ruri. Will he be able to change the future?",
   },
 
   {
     _id: uuid(),
-    categoryName: "Ice Cream",
-    creator: "Chef Ranveer Brar",
-    videoUrl: "https://www.youtube.com/watch?v=DGFAltVowvo",
-    thumbnailUrl: "https://img.youtube.com/vi/DGFAltVowvo/maxresdefault.jpg",
-    title:
-      "Eggless Ice Cream | तीन चीजों से मनपसंद आइस क्रीम | Bonus Condensed Milk recipe | Chef Ranveer",
+    categoryName: "Drama",
+    creator: "Anime Adventures",
+    videoUrl: "https://www.youtube.com/watch?v=fdk_OMwgjpA",
+    thumbnailUrl:
+      "https://img.flawlessfiles.com/_r/300x400/100/16/ee/16eec56baf8f3fcc6430607f58ce3d12/16eec56baf8f3fcc6430607f58ce3d12.jpg",
+    title: "Your Name",
     logoUrl: logo2,
-    videoId: "DGFAltVowvo",
+    videoId: "fdk_OMwgjpA",
     description:
-      "Process For Condensed Milk In a sauce pot, add milk, sugar and mix it well. Cook on medium flame for 5 minutes. In a bowl mix milk powder, baking soda and then transfer this mixture into the sauce pot. Keep stirring continuously on medium flame. The mixture will start to thicken slightly.After 3 minutes, the mixture will turn into a frothy and silky smooth texture.Now turn off the flame and let it cool completely. make sure to turn off the flame when the mixture is slightly Thin. as it thickens once cooled completely.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Ice Cream",
-    creator: "Masala Kitchen",
-    videoUrl: "https://www.youtube.com/watch?v=N6m6JgimUSg",
-    thumbnailUrl: "https://img.youtube.com/vi/N6m6JgimUSg/maxresdefault.jpg",
-    title:
-      "सिर्फ 1/2 litre दूध से बाजार जैसी क्रीमी आइसक्रीम बनाये बिना झंझट | Homemade Custard Ice Cream |",
-    logoUrl: logo3,
-    videoId: "N6m6JgimUSg",
-    description:
-      "आज मसाला किचन में हम लाये है कस्टर्ड आइस क्रीम की रेसिपी | कस्टर्ड आइस क्रीम अब आप बना सकते है घर पर वो भी बहुत आसानी से और कम सामान के साथ | एक बार ये कस्टर्ड आइस क्रीम इस तरीके से आपने बना ली तो बाजार की आइस क्रीम भूल जाओगे | यह मैंगो आइस क्रीम अगर इस तरीके से बनाएंगे तो फ़र्क़ बता ही नहीं पाएंगे की बाजार की कौन सी है और घर की कौन सी है | यह कस्टर्ड आइस क्रीम अगर आपने घर में बना ली तो बच्चे खुश हो जायेंगे | कस्टर्ड आइस क्रीम बनाने का आसान तरीका, मैंगो आइस क्रीम बनाने का आसान तरीका और भी कई आइस क्रीम बनाने का आसान तरीका आप देख सकते है मसाला किचन की आइस क्रीम रेसिपी में देख सकते है | मसाला किचन | पूनम देवनानी रेसिपीज | ",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Ice Cream",
-    creator: "Aliza In The Kitchen",
-    videoUrl: "https://www.youtube.com/watch?v=qksZcqogaLQ",
-    thumbnailUrl: "https://img.youtube.com/vi/qksZcqogaLQ/maxresdefault.jpg",
-    title:
-      "Homemade Vanilla Ice Cream Recipe (Only 3 Ingredients) | No Eggs | No Ice Cream Machine",
-    logoUrl: logo4,
-    videoId: "qksZcqogaLQ",
-    description:
-      "Vanilla Ice Cream is a mouth watering loved dessert and Learn how to make vanilla ice cream at home! This easy ice cream recipe needs only 3 ingredients. ",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Cake",
-    creator: "Masala Kitchen",
-    videoUrl: "https://www.youtube.com/watch?v=pfsch-5d5f4",
-    thumbnailUrl: "https://img.youtube.com/vi/pfsch-5d5f4/maxresdefault.jpg",
-    title:
-      "😍गारंटी है रुई जितना सॉफ्ट और स्पंजी केक घर की चीजों से | Super Soft Sponge Cake with Tips & Tricks",
-    logoUrl: logo3,
-    videoId: "pfsch-5d5f4",
-    description:
-      "Aaj Masala Kitchen me hum laye hain Super Soft Vanilla Sponge Cake. Cotton Soft Sponge Cake banega bahot hi easily aur Quick Sponge Cake Recipe aapko bahot pasand aayega. Vanilla Cake ghar par banane ka sabse aasan tarika aap is Sponge Cake Recipe Video me dekh sakte hain. Sirf 4 ingredients se banaye Cake jo banega bahot hi Soft & Fluffy Cake. Bina baking soda ke Sponge Cake banaye aur tasty Vanilla Cake bacchon ko bahot pasand aayega. Custard Cake Recipe ek baar zarur try kijiye. Eggless Sponge Cake banane ka isse aasan tarika aapne nahi dekha hoga. Easy Sponge Cake Recipe aap bana sakte hain bina oven ke perfect Cake. Instant Cake zarur banaiye aur is Eggless Cake Without Oven Recipe ko jyada se jyada share kijiye | Masala Kitchen | Recipes By Poonam Devnani",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Cake",
-    creator: "Cook With Parul",
-    videoUrl: "https://www.youtube.com/watch?v=m3e1n-0YxyI",
-    thumbnailUrl: "https://img.youtube.com/vi/m3e1n-0YxyI/maxresdefault.jpg",
-    title:
-      "न चॉकलेट न क्रीम न अंडा ओवन मिंटो में सबसे आसन सस्ती बेकरी Easy Chocolate Cake | Best Chocolate Cake",
-    logoUrl: logo5,
-    videoId: "m3e1n-0YxyI",
-    description:
-      "Super Easy Chocolate cake without  Chocolate without cream No Egg No Oven Chocolate Cake Recipe in Kadahi without chaocolate or pressure cooker on Stove Top with Moist & Soft Choco Cake Frosting. This eggless chocolate cake recipe is a eggless Chocolate cake recipe . Learn How To Make Chocolate Cake Decorating So its become so Yummy chocolate cake. This is simple chocolate cake recipe moist chocolate cake and best chocolate cake . simple moist chocolate cake recipe always love by everyone.  Learn and cook Best Chocolate Cake Recipe this is a Easy Chocolate Cake Recipe Eggless and Without Oven Birthday Cake. The Most Amazing Chocolate Cake is full of moist, chocolatey perfection. This is the chocolate cake you’ve been dreaming of make easily in Kadahi Chocolate cake. Best Chocolate Cake Recipe, Easy Chocolate Cake Recipe, Eggless and Without Oven, Birthday Cake",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Cake",
-    creator: "CookingShooking ",
-    videoUrl: "https://www.youtube.com/watch?v=HtX7f_dKWTw",
-    thumbnailUrl: "https://img.youtube.com/vi/HtX7f_dKWTw/maxresdefault.jpg",
-    title:
-      "2 Min Mug Cake Recipe - Super Soft & Rich Eggless Microwave Cakes - CookingShooking",
-    logoUrl: logo6,
-    videoId: "HtX7f_dKWTw",
-    description:
-      "In this video, we will cook together 2 minute mug cake recipes, this is a very easy and very tasty, rich and spongy eggless cake recipe, made right in microwave inside a mug. ",
+      "Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture.",
   },
 
   {
     _id: uuid(),
-    categoryName: "Sweet Dish",
-    creator: "Kunal Kapur",
-    videoUrl: "https://www.youtube.com/watch?v=tjwdH3NFSaA",
-    thumbnailUrl: "https://img.youtube.com/vi/tjwdH3NFSaA/maxresdefault.jpg",
-    title:
-      "Moong Dal Halwa | शादी वाला मूंग की दाल का हलवा | Winter Special Dessert | Chef Kunal Kapur Recipes",
-    logoUrl: logo7,
-    videoId: "tjwdH3NFSaA",
+    categoryName: "Drama",
+    creator: "Kyoto Animation",
+    videoUrl: "https://www.youtube.com/watch?v=mXYvNHlVSsQ",
+    thumbnailUrl:
+      "https://img.flawlessfiles.com/_r/300x400/100/7f/c6/7fc61d82b89949dff4319bd73ff2d456/7fc61d82b89949dff4319bd73ff2d456.jpg",
+    title: "A Silent Voice",
+    logoUrl: logo1,
+    videoId: "mXYvNHlVSsQ",
     description:
-      "Method:Wash and soak moong dal for 4 hours. Drain the water. Add the dal to a grinder and grind it to a fine paste using Manual mode. Use little or no water to make the dal into a fine paste. Heat a pan add ghee. Add sooji and besan, cook on low heat till it turns light brown. Turn the heat to low and let the ghee cool down a bit. Now add the ground dal and stir. On very low heat cook the dal till it starts to brown. As the dal will get cooked it will get a sandy texture. In another pan add water, sugar, saffron and cardamom powder. Give a boil to dissolve the sugar and turn off the heat and remove. Once the dal is evenly browned add the sugar syrup. Cook till the dal absorbs all of the syrup. Add chopped nuts. Add grated khoya at this stage. Stir, remove and serve hot.",
+      "As a wild youth, elementary school student Shouya Ishida sought to beat boredom in the cruelest ways. When the deaf Shouko Nishimiya transfers into his class, Shouya and the rest of his class thoughtlessly bully her for fun. However, when her mother notifies the school, he is singled out and blamed for everything done to her. With Shouko transferring out of the school, Shouya is left at the mercy of his classmates. He is heartlessly ostracized all throughout elementary and middle school, while teachers turn a blind eye. Now in his third year of high school, Shouya is still plagued by his wrongdoings as a young boy. Sincerely regretting his past actions, he sets out on a journey of redemption: to meet Shouko once more and make amends. Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and his honest attempts to redeem himself, all while being continually haunted by the shadows of his past",
   },
+
   {
     _id: uuid(),
-    categoryName: "Sweet Dish",
-    creator: "Hebbars Kitchen",
-    videoUrl: "https://www.youtube.com/watch?v=7uCqAtSVJU4",
-    thumbnailUrl: "https://img.youtube.com/vi/7uCqAtSVJU4/maxresdefault.jpg",
-    title:
-      "Just 10 Minutes Dessert with few Ingredients | Instant & Easy Dessert Recipe",
-    logoUrl: logo1,
+    categoryName: "Drama",
+    creator: " Cix Wave Films",
+    videoUrl: "https://www.youtube.com/watch?v=64cu3yhoOQo",
+    thumbnailUrl:
+      "https://img.flawlessfiles.com/_r/300x400/100/fd/24/fd2425b4fb8fe7aec860e4706d981392/fd2425b4fb8fe7aec860e4706d981392.jpg",
+    title: "The Garden of Words",
+
+    logoUrl: logo2,
+    videoId: "64cu3yhoOQo",
     description:
-      "kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with detailed photo and video recipe. a popular indian sweet dessert recipe made with powdered cashew and sugar syrup. it is perhaps one of the popular indian sweet recipe which is made for all the celebrations, occasions and festival seasons. it is a simple and easy sweet snack recipe made with only 2 ingredients, but can be tricky with the sugar syrup consistency which may actually spoil the texture.kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with step by step photo and video recipe. dry fruits based sweets or desserts are very common recipes across india. it is generally made with just one choice of nuts, but can also be used as a combination of dry fruits to make a sugarless sweet snack. out of these the premium sweet recipe is the kaju katli recipe or the kaju barfi known for its mouth-watering and soothing texture and taste.",
+      "On a rainy morning in Tokyo, Takao Akizuki, an aspiring shoemaker, decides to skip class to sketch designs in a beautiful garden. This is where he meets Yukari Yukino, a beautiful yet mysterious woman, for the very first time. Offering to make her new shoes, Takao continues to meet with Yukari throughout the rainy season, and without even realizing it, the two are able to alleviate the worries hidden in their hearts just by being with each other. However, their personal struggles have not disappeared completely, and as the end of the rainy season approaches, their relationship will be put to the test.",
+  },
+
+  {
+    _id: uuid(),
+    categoryName: "Sci-Fi",
+    creator: "CK Anime",
+    videoUrl: "https://www.youtube.com/watch?v=EgrehrOCpcA",
+    thumbnailUrl:
+      "https://img.flawlessfiles.com/_r/300x400/100/41/84/418414182fc8d705ec8a46c5cfd7bc52/418414182fc8d705ec8a46c5cfd7bc52.jpg",
+    title: "Hello World New Sci-Fi Anime",
+    logoUrl: logo1,
+    videoId: "EgrehrOCpcA",
+    description:
+      "The year is 2027, and the city of Kyoto has undergone tremendous technological advancement. Within the city lives Naomi Katagaki, a socially awkward and introverted boy with a love for books, and Ruri Ichigyou, a girl with a cold personality who is often blunt with people, but shares his love for reading. Despite having similar interests, Naomi is afraid to approach Ruri due to her unfriendly nature. One day, as Naomi goes out for a walk, a crimson aurora pierces through the sky for a brief moment before vanishing. Shortly after, he sees a three-legged crow and a mysterious hooded man who reveals himself to be Naomi from 10 years in the future, explaining that he has come to change an imminent tragic event that happens to Ruri shortly after they start dating. Initially taking his words with a grain of salt, present-day Naomi follows his future self's instructions and starts getting closer to Ruri, determined to save her. Hello World focuses on the present Naomi alongside himself from 10 years into the future. With the help of his future self, Naomi begins his preparations to save Ruri. Will he be able to change the future?",
+  },
+
+  {
+    _id: uuid(),
+    categoryName: "Adventure",
+    creator: "Anime Adventures",
+    videoUrl: "https://www.youtube.com/watch?v=fdk_OMwgjpA",
+    thumbnailUrl:
+      "https://img.flawlessfiles.com/_r/300x400/100/16/ee/16eec56baf8f3fcc6430607f58ce3d12/16eec56baf8f3fcc6430607f58ce3d12.jpg",
+    title: "Your Name",
+    logoUrl: logo2,
+    videoId: "fdk_OMwgjpA",
+    description:
+      "Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture.",
   },
 ];
+
+//  {
+//     _id: uuid(),
+//     categoryName: "Sweet Dish",
+//     creator: "Hebbars Kitchen",
+//     videoUrl: "https://www.youtube.com/watch?v=7uCqAtSVJU4",
+//     thumbnailUrl: "https://img.youtube.com/vi/7uCqAtSVJU4/maxresdefault.jpg",
+//     title:
+//       "Just 10 Minutes Dessert with few Ingredients | Instant & Easy Dessert Recipe",
+//     logoUrl: logo1,
+//     description:
+//       "kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with detailed photo and video recipe. a popular indian sweet dessert recipe made with powdered cashew and sugar syrup. it is perhaps one of the popular indian sweet recipe which is made for all the celebrations, occasions and festival seasons. it is a simple and easy sweet snack recipe made with only 2 ingredients, but can be tricky with the sugar syrup consistency which may actually spoil the texture.kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with step by step photo and video recipe. dry fruits based sweets or desserts are very common recipes across india. it is generally made with just one choice of nuts, but can also be used as a combination of dry fruits to make a sugarless sweet snack. out of these the premium sweet recipe is the kaju katli recipe or the kaju barfi known for its mouth-watering and soothing texture and taste.",
+//   },
