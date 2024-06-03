@@ -21,7 +21,6 @@ const CardTitle = styled(Typography)({
   color: "white",
   fontFamily: "Poppins, sans-serif",
   fontWeight: 600,
-
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
@@ -78,10 +77,12 @@ function VideoListing() {
       justifyContent="center"
     >
       {videos.map((item) => (
-        <Grid item xs={6} sm={4} md={3} lg={2.2} key={item.id}>
+        <Grid item xs={6} sm={4} md={3} lg={3} key={item.id}>
           <HoverCard
             sx={{
               width: "100%",
+              height: "100%",
+
               backgroundColor: "var(--background-black)",
               borderRadius: "0px",
             }}
@@ -90,7 +91,8 @@ function VideoListing() {
             <NavLink onClick={() => setSingleVideo(item)} to="/video">
               <CardMedia
                 component="img"
-                height="auto"
+                // height="auto"
+                height="80%"
                 image={item.thumbnailUrl}
                 alt={item.title}
               />
