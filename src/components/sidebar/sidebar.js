@@ -1,22 +1,113 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import "./sidebar.css"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import HomeIcon from "@mui/icons-material/Home";
+import FolderIcon from "@mui/icons-material/Folder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import HistoryIcon from "@mui/icons-material/History";
+import MenuIcon from "@mui/icons-material/Menu";
+import "./sidebar.css";
 
-function Sidebar() {
+function Sidebar({isSidebarOpen,setIsSideBarOpen}) {
+
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setIsSideBarOpen({ ...isSidebarOpen, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <NavLink to="/" className="nav-link">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+        <NavLink to="/playlist" className="nav-link">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <FolderIcon />
+              </ListItemIcon>
+              <ListItemText primary="Playlists" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+        <NavLink to="/likedVideo" className="nav-link">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <FavoriteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Liked" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+        <NavLink to="/watchlater" className="nav-link">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <WatchLaterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Watch Later" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+        <NavLink to="/historyVideo" className="nav-link">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HistoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="History" />
+            </ListItemButton>
+          </ListItem>
+        </NavLink>
+      </List>
+      <Divider />
+    </Box>
+  );
+
   return (
-   <>
-   {/* sidebar */}
-   <div className="col1">
-     <ul>
-      <NavLink to="/"> <li className="home"><i className="fas fa-home"></i><span>Home</span> </li></NavLink>
-      <NavLink to="/playlist"> <li className="playlists"><i className="fas fa-folder"></i><span>Playlists</span> </li></NavLink>
-      <NavLink to="/likedVideo"> <li className="liked"><i className="fas fa-heart"></i><span>Liked </span></li></NavLink>
-      <NavLink to="/watchlater" ><li className="watchlater"><i className="fas fa-clock"></i><span>Watch Later</span> </li></NavLink>
-      <NavLink to="/historyVideo"><li className="history"><i className="fas fa-history"></i><span>History</span> </li></NavLink>
-     </ul>
-      </div>
-   </>
-  )
+    <div>
+      <Button onClick={toggleDrawer("left", true)}>
+        <MenuIcon />
+      </Button>
+      <Drawer
+        anchor="left"
+        open={isSidebarOpen.left}
+        onClose={toggleDrawer("left", false)}
+      >
+        {list("left")}
+      </Drawer>
+    </div>
+  );
 }
 
-export { Sidebar }
+export { Sidebar };

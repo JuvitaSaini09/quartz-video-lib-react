@@ -129,17 +129,5 @@ function VideoListing() {
   );
 }
 {
-  /* <IconButton
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  color: "white",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <PlayArrowIcon />
-              </IconButton> */
 }
 export { VideoListing };

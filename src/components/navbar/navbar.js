@@ -14,6 +14,7 @@ import {
 import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import { animeWorldLogo } from "../../images/allImages";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Sidebar } from "../allComponents";
 
 const ExploreButton = styled(Button)({
   width: "70px",
@@ -55,6 +56,21 @@ const LogoSubText = styled(LogoTextBase)({
 });
 
 const Navbar = () => {
+  const [isSidebarOpen, setIsSideBarOpen] = React.useState({
+    left: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setIsSideBarOpen({ ...isSidebarOpen, [anchor]: open });
+  };
+
   const navigate = useNavigate();
   const { token, setUser, setToken, user } = useAuth();
   const logoutUser = () => {
@@ -110,7 +126,7 @@ const Navbar = () => {
       >
         <Stack direction="row" alignItems="center" spacing={2}>
           <Stack>
-            <IconButton>
+            <IconButton onClick={toggleDrawer("left", true)}>
               <MenuIcon sx={{ color: "white", fontSize: "30px" }} />
             </IconButton>
           </Stack>
@@ -141,6 +157,11 @@ const Navbar = () => {
           </IconButton> */}
         </Stack>
       </AppBar>
+
+      <Sidebar
+        isSidebarOpen={isSidebarOpen}
+        setIsSideBarOpen={setIsSideBarOpen}
+      />
     </>
   );
 };
