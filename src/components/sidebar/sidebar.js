@@ -25,13 +25,6 @@ const CustomDivider = styled(Divider)({
 
 function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
   const toggleDrawer = (anchor, open) => (event) => {
-    // if (
-    //   event.type === "keydown" &&
-    //   (event.key === "Tab" || event.key === "Shift")
-    // ) {
-    //   return;
-    // }
-
     setIsSideBarOpen(false);
   };
 
@@ -39,10 +32,9 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer( false)}
+      onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-
       <Button>Close</Button>
       <List>
         <NavLink to="/" className="nav-link">
@@ -154,17 +146,12 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
       open={isSidebarOpen}
       onClose={toggleDrawer(false)}
       sx={{
-        backgroundColor: "rgba(255, 255, 255, .1)", // Adjust background color opacity
+        backgroundColor: "rgba(255, 255, 255, .1)",
         "& .MuiPaper-root": {
-          backgroundColor: "rgba(255, 255, 255, .1)", // Adjust sidebar background color opacity
+          backgroundColor: "rgba(255, 255, 255, .1)",
           color: "pink",
         },
-        // Add backdrop styles for opacity and blur effect
-        backdropFilter: "blur(8px)", // Add blur effect
-        // Adjust backdrop opacity
-        "& .MuiBackdrop-root": {
-          // backgroundColor: "rgba(0, 0, 0, 0.6)", // Adjust backdrop opacity
-        },
+        backdropFilter: "blur(8px)",
       }}
     >
       {list("left")}
