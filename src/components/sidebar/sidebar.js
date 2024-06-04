@@ -18,9 +18,34 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
 import "./sidebar.css";
+import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 const CustomDivider = styled(Divider)({
   borderColor: "rgba(255, 255, 255, .05)",
+});
+
+const CustomCloseButton = styled(Button)({
+  fontSize: "14px",
+  fontWeight: 400,
+  textTransform: "none",
+  backgroundColor: "#56565b",
+  borderRadius: "20px",
+  color: "white",
+  padding: "7px 10px",
+  fontFamily: "Poppins, sans-serif",
+  margin: "20px 0 0 10px",
+
+  "&:hover": {
+    backgroundColor: "#69696D",
+  },
+});
+
+const CustomListItemText = styled(ListItemText)({
+  fontFamily: "Poppins, sans-serif",
+  color: "white",
+  "& .MuiTypography-root": {
+    fontWeight: 700,
+  },
 });
 
 function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
@@ -35,27 +60,24 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <Button>Close</Button>
+      <CustomCloseButton>
+        <ArrowBackIosRoundedIcon sx={{ fontSize: "14px", fontWeight: 900 }} />{" "}
+        Close Menu
+      </CustomCloseButton>
       <List>
-        <NavLink to="/" className="nav-link">
+        <NavLink to="/home" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <HomeIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText
-                primary="Home"
-                sx={{
-                  color: "white",
-                  "& .MuiTypography-root": {
-                    fontWeight: 700,
-                  },
-                }}
-              />
+              <CustomListItemText primary="Home" />
             </ListItemButton>
           </ListItem>
         </NavLink>
         <CustomDivider sx={{ borderColor: "rgba(255, 255, 255, .05)" }} />
+
+        
 
         <NavLink to="/playlist" className="nav-link">
           <ListItem disablePadding>
@@ -63,15 +85,7 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
               <ListItemIcon>
                 <FolderIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText
-                primary="Playlists"
-                sx={{
-                  color: "white",
-                  "& .MuiTypography-root": {
-                    fontWeight: 700,
-                  },
-                }}
-              />
+              <CustomListItemText primary="Playlists" />
             </ListItemButton>
           </ListItem>
         </NavLink>
@@ -83,15 +97,7 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
               <ListItemIcon>
                 <FavoriteIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText
-                primary="Liked"
-                sx={{
-                  color: "white",
-                  "& .MuiTypography-root": {
-                    fontWeight: 700,
-                  },
-                }}
-              />
+              <CustomListItemText primary="Liked" />
             </ListItemButton>
           </ListItem>
         </NavLink>
@@ -103,15 +109,7 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
               <ListItemIcon>
                 <WatchLaterIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText
-                primary="Watch Later"
-                sx={{
-                  color: "white",
-                  "& .MuiTypography-root": {
-                    fontWeight: 700,
-                  },
-                }}
-              />
+              <CustomListItemText primary="Watch Later" />
             </ListItemButton>
           </ListItem>
         </NavLink>
@@ -123,15 +121,7 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
               <ListItemIcon>
                 <HistoryIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText
-                primary="History"
-                sx={{
-                  color: "white",
-                  "& .MuiTypography-root": {
-                    fontWeight: 700,
-                  },
-                }}
-              />
+              <CustomListItemText primary="History" />
             </ListItemButton>
           </ListItem>
         </NavLink>
