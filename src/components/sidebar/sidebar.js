@@ -24,7 +24,7 @@ const CustomDivider = styled(Divider)({
 });
 
 function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = () => {
     setIsSideBarOpen(false);
   };
 
@@ -32,8 +32,8 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
     >
       <Button>Close</Button>
       <List>
@@ -144,7 +144,7 @@ function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
     <Drawer
       anchor="left"
       open={isSidebarOpen}
-      onClose={toggleDrawer(false)}
+      onClose={() => toggleDrawer(false)}
       sx={{
         backgroundColor: "rgba(255, 255, 255, .1)",
         "& .MuiPaper-root": {

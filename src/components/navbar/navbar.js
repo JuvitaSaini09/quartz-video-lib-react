@@ -56,17 +56,9 @@ const LogoSubText = styled(LogoTextBase)({
 });
 
 const Navbar = () => {
-  const [isSidebarOpen, setIsSideBarOpen] = React.useState(
-  false);
+  const [isSidebarOpen, setIsSideBarOpen] = React.useState(false);
 
-  const toggleDrawer = () => (event) => {
-    // if (
-    //   event.type === "keydown" &&
-    //   (event.key === "Tab" || event.key === "Shift")
-    // ) {
-    //   return;
-    // }
-
+  const toggleDrawer = () => {
     setIsSideBarOpen(true);
   };
 
@@ -125,7 +117,7 @@ const Navbar = () => {
       >
         <Stack direction="row" alignItems="center" spacing={2}>
           <Stack>
-            <IconButton onClick={toggleDrawer()}>
+            <IconButton onClick={() => toggleDrawer()}>
               <MenuIcon sx={{ color: "white", fontSize: "30px" }} />
             </IconButton>
           </Stack>
