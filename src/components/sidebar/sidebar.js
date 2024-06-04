@@ -1,112 +1,174 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
+import {
+  Box,
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  styled,
+  Button,
+} from "@mui/material";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import FolderIcon from "@mui/icons-material/Folder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import HistoryIcon from "@mui/icons-material/History";
-import MenuIcon from "@mui/icons-material/Menu";
 import "./sidebar.css";
 
-function Sidebar({isSidebarOpen,setIsSideBarOpen}) {
+const CustomDivider = styled(Divider)({
+  borderColor: "rgba(255, 255, 255, .05)",
+});
 
-
+function Sidebar({ isSidebarOpen, setIsSideBarOpen }) {
   const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+    // if (
+    //   event.type === "keydown" &&
+    //   (event.key === "Tab" || event.key === "Shift")
+    // ) {
+    //   return;
+    // }
 
-    setIsSideBarOpen({ ...isSidebarOpen, [anchor]: open });
+    setIsSideBarOpen(false);
   };
 
-  const list = (anchor) => (
+  const list = () => (
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer( false)}
+      onKeyDown={toggleDrawer(false)}
     >
+
+      <Button>Close</Button>
       <List>
         <NavLink to="/" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText
+                primary="Home"
+                sx={{
+                  color: "white",
+                  "& .MuiTypography-root": {
+                    fontWeight: 700,
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </NavLink>
+        <CustomDivider sx={{ borderColor: "rgba(255, 255, 255, .05)" }} />
+
         <NavLink to="/playlist" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <FolderIcon />
+                <FolderIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText primary="Playlists" />
+              <ListItemText
+                primary="Playlists"
+                sx={{
+                  color: "white",
+                  "& .MuiTypography-root": {
+                    fontWeight: 700,
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </NavLink>
+        <CustomDivider />
+
         <NavLink to="/likedVideo" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <FavoriteIcon />
+                <FavoriteIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText primary="Liked" />
+              <ListItemText
+                primary="Liked"
+                sx={{
+                  color: "white",
+                  "& .MuiTypography-root": {
+                    fontWeight: 700,
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </NavLink>
+        <CustomDivider />
+
         <NavLink to="/watchlater" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <WatchLaterIcon />
+                <WatchLaterIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText primary="Watch Later" />
+              <ListItemText
+                primary="Watch Later"
+                sx={{
+                  color: "white",
+                  "& .MuiTypography-root": {
+                    fontWeight: 700,
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </NavLink>
+        <CustomDivider />
+
         <NavLink to="/historyVideo" className="nav-link">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <HistoryIcon />
+                <HistoryIcon sx={{ color: "white" }} />
               </ListItemIcon>
-              <ListItemText primary="History" />
+              <ListItemText
+                primary="History"
+                sx={{
+                  color: "white",
+                  "& .MuiTypography-root": {
+                    fontWeight: 700,
+                  },
+                }}
+              />
             </ListItemButton>
           </ListItem>
         </NavLink>
+        <CustomDivider />
       </List>
-      <Divider />
     </Box>
   );
 
   return (
-    <div>
-      <Button onClick={toggleDrawer("left", true)}>
-        <MenuIcon />
-      </Button>
-      <Drawer
-        anchor="left"
-        open={isSidebarOpen.left}
-        onClose={toggleDrawer("left", false)}
-      >
-        {list("left")}
-      </Drawer>
-    </div>
+    <Drawer
+      anchor="left"
+      open={isSidebarOpen}
+      onClose={toggleDrawer(false)}
+      sx={{
+        backgroundColor: "rgba(255, 255, 255, .1)", // Adjust background color opacity
+        "& .MuiPaper-root": {
+          backgroundColor: "rgba(255, 255, 255, .1)", // Adjust sidebar background color opacity
+          color: "pink",
+        },
+        // Add backdrop styles for opacity and blur effect
+        backdropFilter: "blur(8px)", // Add blur effect
+        // Adjust backdrop opacity
+        "& .MuiBackdrop-root": {
+          // backgroundColor: "rgba(0, 0, 0, 0.6)", // Adjust backdrop opacity
+        },
+      }}
+    >
+      {list("left")}
+    </Drawer>
   );
 }
 

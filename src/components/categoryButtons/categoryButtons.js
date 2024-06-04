@@ -35,7 +35,6 @@ function CategoryButtons() {
       Drama: category === "Drama",
     });
   };
-  console.log("isActiveCategory", isActiveCategory);
   return (
     <Box>
       <StyledButton
