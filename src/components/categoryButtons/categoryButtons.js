@@ -4,7 +4,7 @@ import { useApi } from "../../context/apiContext/api";
 import { Box, Button, styled } from "@mui/material";
 
 const StyledButton = styled(Button)(({ theme, isActive, borderRadius }) => ({
-  fontSize: "13px",
+  fontSize: "9px",
   color: isActive ? "var(--background-color)" : "white",
   backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
   borderColor: isActive ? "var(--light-yellow)" : "#343a40",
@@ -13,6 +13,11 @@ const StyledButton = styled(Button)(({ theme, isActive, borderRadius }) => ({
     color: isActive ? "var(--background-color)" : "white",
     backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
     borderColor: isActive ? "var(--light-yellow)" : "#343a40",
+  },
+
+  //600+
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "13px",
   },
 }));
 

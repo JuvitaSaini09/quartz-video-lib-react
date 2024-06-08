@@ -10,13 +10,30 @@ import "./home.css";
 import "../../css/videoCard.css";
 import { Box, Typography, styled } from "@mui/material";
 
-const CustomTitle = styled(Typography)({
+const CustomTitle = styled(Typography)(({theme})=>({
   color: "var(--light-yellow)",
-  fontSize: "22px",
+  fontSize: "18px",
   fontFamily: "Poppins, sans-serif",
   fontWeight: 600,
   lineHeight: 1.3,
-});
+
+  //600+
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "22px",
+  },
+}))
+
+const CustomBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  // flexDirection: "column",
+  // alignItems: "flex-start",
+
+  //600+
+  [theme.breakpoints.up("sm")]: {
+    flexDirection: "row",
+  },
+}));
 
 function Home() {
   return (
@@ -38,10 +55,10 @@ function Home() {
           padding: "100px 30px 0 30px",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <CustomBox>
           <CustomTitle>All Movies</CustomTitle>
           <CategoryButtons />
-        </Box>
+        </CustomBox>
 
         <VideoListing />
       </Box>
