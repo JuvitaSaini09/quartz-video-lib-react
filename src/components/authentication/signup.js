@@ -18,22 +18,23 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignupContainer = styled(Container)(({ theme }) => ({
   width: "100%",
-  maxWidth: "32rem",
-  padding: "4px",
-  margin: "0rem auto 2rem auto",
+  maxWidth: "40rem",
+  padding: "1rem", // Added padding for inner spacing
+  margin: "0 auto 2rem auto",
   border: `2px solid ${theme.palette.grey[800]}`,
   backgroundColor: "#1c1c1c",
   borderRadius: "8px",
 
+ 
   [theme.breakpoints.down("md")]: {
     maxWidth: "24rem",
   },
   [theme.breakpoints.down("sm")]: {
-    maxWidth: "20rem",
+    maxWidth: "25rem",
   },
   [theme.breakpoints.down("xs")]: {
-    maxWidth: "16rem",
-    marginTop: "4rem",
+    maxWidth: "20rem",
+    marginTop: "8rem",
   },
 }));
 
