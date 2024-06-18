@@ -10,7 +10,7 @@ import "./home.css";
 import "../../css/videoCard.css";
 import { Box, Typography, styled } from "@mui/material";
 
-const CustomTitle = styled(Typography)(({theme})=>({
+const CustomTitle = styled(Typography)(({ theme }) => ({
   color: "var(--light-yellow)",
   fontSize: "18px",
   fontFamily: "Poppins, sans-serif",
@@ -21,7 +21,7 @@ const CustomTitle = styled(Typography)(({theme})=>({
   [theme.breakpoints.up("sm")]: {
     fontSize: "22px",
   },
-}))
+}));
 
 const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -39,14 +39,6 @@ function Home() {
   return (
     <>
       <Navbar />
-
-      {/* <section className="main-page home-page">
-        <Sidebar />
-        <div className="col2">
-          <CategoryButtons />
-          <VideoListing />
-        </div>
-      </section> */}
 
       <Box
         sx={{
