@@ -18,20 +18,20 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const SignupContainer = styled(Container)(({ theme }) => ({
   width: "100%",
-  maxWidth: "40rem",
-  padding: "8px",
-  margin: "0rem auto 4rem auto",
+  maxWidth: "32rem",
+  padding: "4px",
+  margin: "0rem auto 2rem auto",
   border: `2px solid ${theme.palette.grey[300]}`,
 
   [theme.breakpoints.down("md")]: {
-    maxWidth: "30rem",
+    maxWidth: "24rem",
   },
   [theme.breakpoints.down("sm")]: {
-    maxWidth: "25rem",
+    maxWidth: "20rem",
   },
   [theme.breakpoints.down("xs")]: {
-    maxWidth: "20rem",
-    marginTop: "8rem",
+    maxWidth: "16rem",
+    marginTop: "4rem",
   },
 }));
 
@@ -45,12 +45,12 @@ const InputContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   backgroundColor: "rgb(248, 245, 245)",
   margin: "auto",
-  padding: "1rem 0",
+  padding: "0.25rem 0",
   border: "none",
 }));
 
 const SignupButton = styled(Button)(({ theme }) => ({
-  height: "3rem",
+  height: "2.5rem",
   width: "100%",
   border: "none",
   borderRadius: "2px",
@@ -96,11 +96,11 @@ function Signup() {
   return (
     <Box
       sx={{
-        paddingTop: "150px",
+        paddingTop: "100px",
       }}
     >
       <SignupContainer maxWidth="sm">
-        <SignupTitle variant="h4" gutterBottom>
+        <SignupTitle variant="h5" gutterBottom>
           Create an Account{" "}
         </SignupTitle>
         <Box component="form" noValidate autoComplete="off">
