@@ -56,11 +56,13 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     color: "white",
   },
   "& .MuiInputLabel-root": {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: "white",
+    
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       borderColor: "rgba(255, 255, 255, 0.2)",
+
     },
     "&:hover fieldset": {
       borderColor: "rgba(255, 255, 255, 0.5)",
