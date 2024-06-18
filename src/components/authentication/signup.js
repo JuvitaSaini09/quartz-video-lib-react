@@ -21,7 +21,9 @@ const SignupContainer = styled(Container)(({ theme }) => ({
   maxWidth: "32rem",
   padding: "4px",
   margin: "0rem auto 2rem auto",
-  border: `2px solid ${theme.palette.grey[300]}`,
+  border: `2px solid ${theme.palette.grey[800]}`,
+  backgroundColor: "#1c1c1c",
+  borderRadius: "8px",
 
   [theme.breakpoints.down("md")]: {
     maxWidth: "24rem",
@@ -37,16 +39,36 @@ const SignupContainer = styled(Container)(({ theme }) => ({
 
 const SignupTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  color: "rgba(36, 36, 40, 0.8)",
+  color: "var(--light-yellow)",
   fontFamily: "Poppins, sans-serif",
 }));
 
 const InputContainer = styled(Box)(({ theme }) => ({
   position: "relative",
-  backgroundColor: "rgb(248, 245, 245)",
   margin: "auto",
   padding: "0.25rem 0",
   border: "none",
+  borderRadius: "4px",
+}));
+
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  "& .MuiInputBase-root": {
+    color: "white",
+  },
+  "& .MuiInputLabel-root": {
+    color: "rgba(255, 255, 255, 0.7)",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "rgba(255, 255, 255, 0.2)",
+    },
+    "&:hover fieldset": {
+      borderColor: "rgba(255, 255, 255, 0.5)",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "var(--light-yellow)",
+    },
+  },
 }));
 
 const SignupButton = styled(Button)(({ theme }) => ({
@@ -56,12 +78,11 @@ const SignupButton = styled(Button)(({ theme }) => ({
   borderRadius: "2px",
   marginBottom: "1rem",
   fontFamily: "Poppins, sans-serif",
-
-  backgroundColor: "rgb(247, 195, 83)",
-  color: "var(--background-color)",
+  backgroundColor: "var(--light-yellow)",
+  color: "#1c1c1c",
 
   "&:hover": {
-    backgroundColor: "rgb(247, 195, 83)",
+    backgroundColor: "var(--light-yellow)",
   },
 }));
 
@@ -97,6 +118,8 @@ function Signup() {
     <Box
       sx={{
         paddingTop: "100px",
+        backgroundColor: "#121212",
+        minHeight: "100vh",
       }}
     >
       <SignupContainer maxWidth="sm">
@@ -105,7 +128,7 @@ function Signup() {
         </SignupTitle>
         <Box component="form" noValidate autoComplete="off">
           <InputContainer>
-            <TextField
+            <StyledTextField
               fullWidth
               margin="normal"
               label="E-mail"
@@ -121,7 +144,7 @@ function Signup() {
             />
           </InputContainer>
           <InputContainer>
-            <TextField
+            <StyledTextField
               fullWidth
               margin="normal"
               label="First Name"
@@ -134,7 +157,7 @@ function Signup() {
             />
           </InputContainer>
           <InputContainer>
-            <TextField
+            <StyledTextField
               fullWidth
               margin="normal"
               label="Last Name"
@@ -147,7 +170,7 @@ function Signup() {
             />
           </InputContainer>
           <InputContainer>
-            <TextField
+            <StyledTextField
               fullWidth
               margin="normal"
               label="Password"
@@ -165,6 +188,7 @@ function Signup() {
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
+                      style={{ color: "rgba(255, 255, 255, 0.7)" }}
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -180,11 +204,16 @@ function Signup() {
             >
               Sign Up
             </SignupButton>
-            <Typography sx={{ fontFamily: "Poppins, sans-serif" }}>
+            <Typography
+              sx={{ fontFamily: "Poppins, sans-serif", color: "white" }}
+            >
               Already have an account?{" "}
               <NavLink
                 to="/loginPage"
-                style={{ color: "blue", fontFamily: "Poppins, sans-serif" }}
+                style={{
+                  color: "var(--light-yellow)",
+                  fontFamily: "Poppins, sans-serif",
+                }}
               >
                 Log In
               </NavLink>
