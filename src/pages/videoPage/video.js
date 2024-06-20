@@ -46,11 +46,11 @@ function Video() {
     <>
       <StyledBox display={display}>
         <Navbar />
-        <MainPageVideo sx={{ border: "2px solid red" }}>
-          <Sidebar />
+        <MainPageVideo >
+          {/* <Sidebar /> */}
           <VideoContainer>
             <SingleVideo />
-            <VideoRec />
+            {/* <VideoRec /> */}
           </VideoContainer>
         </MainPageVideo>
       </StyledBox>
