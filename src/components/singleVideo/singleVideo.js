@@ -13,7 +13,8 @@ import {
 import { useToast } from "../../context/toastContext/toastContext";
 
 function SingleVideo() {
-  const { token } = useAuth();
+  // const { token } = useAuth();
+  const token=true;
   const { toastDispatch, setToast } = useToast();
   const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
