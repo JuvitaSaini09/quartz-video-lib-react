@@ -26,11 +26,8 @@ const StyledBox = styled(Box)(({ display }) => ({
 function Video() {
   const { display, singleVideo } = useSingleVideo();
   const { toastState } = useToast();
-  console.log(singleVideo);
   const MainPageVideo = styled("section")(({ theme }) => ({
     marginTop: "6rem",
-    // display: "grid",
-    // gridTemplateColumns: "5rem 1fr",
     [theme.breakpoints.down("md")]: {
       marginTop: "2rem",
     },
@@ -53,7 +50,7 @@ function Video() {
     <>
       <StyledBox display={display}>
         <Navbar />
-        <MainPageVideo sx={{padding:"0 20px"}}>
+        <MainPageVideo sx={{ padding: "0 20px" }}>
           {/* <Sidebar /> */}
           <Stack direction="row" spacing={1} sx={{ marginLeft: "10px" }}>
             <CustomVideoHeading>
@@ -70,7 +67,7 @@ function Video() {
           </Stack>
           <VideoContainer>
             <SingleVideo />
-            {/* <VideoRec /> */}
+            <VideoRec />
           </VideoContainer>
         </MainPageVideo>
       </StyledBox>

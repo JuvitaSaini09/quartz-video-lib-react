@@ -13,8 +13,6 @@ import {
   styled,
   Box,
 } from "@mui/material";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
 const CardTitle = styled(Typography)({
@@ -68,12 +66,11 @@ function VideoListing() {
       : category === "Adventure"
       ? adventureVideos
       : dramaVideos;
-
   return (
     <Grid
       container
       spacing={3}
-      style={{ marginTop: "20px", width: "100%", margin: "auto" }}
+      sx={{ marginTop: "20px", width: "100%", margin: "auto" }}
       justifyContent="center"
     >
       {videos.map((item) => (
