@@ -194,6 +194,10 @@ import { Box, IconButton, Stack } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt"; //not  disliked
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt"; // disliked
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const SingleVideoContainer = styled("div")(({ theme }) => ({}));
 const VideoOptions = styled("div")({
@@ -245,6 +249,7 @@ const SingleVideoTitle = styled("h4")({
   color: "white",
   fontFamily: "Poppins, sans-serif",
   fontWeight: 300,
+  fontSize: "20px",
 });
 
 const VideoPlayerWrapper = styled("div")(({ theme }) => ({
@@ -267,13 +272,33 @@ const StyledIframe = styled("iframe")({
 
 const CustomLikedIcon = styled(ThumbUpIcon)({
   color: "var(--light-yellow2)",
+  fontSize: "33px",
 });
 
 const CustomNeutralThumbIcon = styled(ThumbUpOffAltIcon)({
-  color: "var(--light-yellow2)",
+  color: "var(--light-yellow)",
+  fontSize: "36px",
 });
 
-// CustomNeutralThumbIcon;
+const CustomNotDislikedIcon = styled(ThumbDownOffAltIcon)({
+  color: "var(--light-yellow)",
+  fontSize: "36px",
+});
+
+const CustomDislikedIcon = styled(ThumbDownAltIcon)({
+  color: "var(--light-yellow2)",
+  fontSize: "33px",
+});
+
+const CustomPlaylistAddIcon = styled(PlaylistAddIcon)({
+  color: "var(--light-yellow)",
+  fontSize: "44px",
+});
+
+const CustomMoreVertIcon = styled(MoreVertIcon)({
+  color: "var(--light-yellow)",
+  fontSize: "40px",
+});
 
 function SingleVideo() {
   const { token } = useAuth();
@@ -379,14 +404,21 @@ function SingleVideo() {
         ></StyledIframe>
       </VideoPlayerWrapper>
       <div>
-        <VideoOptions sx={{ border: "3px solid blue" }}>
-          <Box>
+        <VideoOptions>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <DescriptionContainer>
-              <PlayCircleIcon sx={{ color: "var(--light-yellow)" }} />
+              <PlayCircleIcon
+                sx={{ color: "var(--light-yellow)", fontSize: "36px" }}
+              />
               <SingleVideoTitle>{singleVideo.title} </SingleVideoTitle>{" "}
             </DescriptionContainer>
           </Box>
-          <Box sx={{ border: "2px solid red" }}>
+          <Box>
             <IconButton onClick={token ? likeHandler : null}>
               {token ? (
                 isItemInLIkedVideos ? (
@@ -397,28 +429,22 @@ function SingleVideo() {
                     }}
                   />
                 ) : (
-                  <ThumbUpOffAltIcon
-                    style={{ color: "white", fontSize: "36px" }}
-                  />
-
-                  // <ThumbUpIcon style={{ color: "pink" }} />  //remove
+                  <CustomNeutralThumbIcon />
                 )
               ) : (
-                <ThumbUpOffAltIcon
-                  style={{ color: "var(--light-yellow2)", fontSize: "36px" }}
-                />
+                <CustomNeutralThumbIcon />
               )}{" "}
             </IconButton>
             <IconButton onClick={token ? dislikeHandler : null}>
               {" "}
               {token ? (
                 disliked ? (
-                  <ThumbDownIcon />
+                  <CustomDislikedIcon />
                 ) : (
-                  <ThumbDownIcon />
+                  <CustomNeutralThumbIcon />
                 )
               ) : (
-                <ThumbDownIcon
+                <CustomNotDislikedIcon
                   onClick={() => {
                     toastDispatch({ type: "Login for dislike" });
                     setToast(true);
@@ -426,16 +452,23 @@ function SingleVideo() {
                 />
               )}{" "}
             </IconButton>{" "}
+            <IconButton onClick={token ? showDialog : null}>
+              <CustomPlaylistAddIcon />
+            </IconButton>
             <span>
-              <StyledImg
+              {/* <StyledImg
                 src={addToList}
                 onClick={token ? showDialog : null}
                 alt="addToList"
-              />
+              /> */}
             </span>{" "}
-            <span>
+            {/* <span>
               <StyledIcon className="fas fa-ellipsis-v fa-x"> </StyledIcon>{" "}
-            </span>{" "}
+              
+            </span> */}
+            <IconButton>
+              <CustomMoreVertIcon />
+            </IconButton>
           </Box>
         </VideoOptions>
       </div>{" "}
