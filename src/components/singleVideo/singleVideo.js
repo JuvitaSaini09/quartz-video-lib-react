@@ -441,7 +441,7 @@ function SingleVideo() {
                 disliked ? (
                   <CustomDislikedIcon />
                 ) : (
-                  <CustomNeutralThumbIcon />
+                  <CustomNotDislikedIcon />
                 )
               ) : (
                 <CustomNotDislikedIcon
@@ -455,17 +455,7 @@ function SingleVideo() {
             <IconButton onClick={token ? showDialog : null}>
               <CustomPlaylistAddIcon />
             </IconButton>
-            <span>
-              {/* <StyledImg
-                src={addToList}
-                onClick={token ? showDialog : null}
-                alt="addToList"
-              /> */}
-            </span>{" "}
-            {/* <span>
-              <StyledIcon className="fas fa-ellipsis-v fa-x"> </StyledIcon>{" "}
-              
-            </span> */}
+            <span></span>{" "}
             <IconButton>
               <CustomMoreVertIcon />
             </IconButton>
