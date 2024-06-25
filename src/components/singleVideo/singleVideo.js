@@ -182,6 +182,7 @@ import { useLikedVideoContext } from "../../context/likedVideoContext/likedVideo
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
 import { addToList } from "../../images/allImages";
 import { useAuth } from "../../context/authContext/AuthContext";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import {
   postLikedVideoApi,
   deleteLikedVideoApi,
@@ -189,37 +190,20 @@ import {
 } from "../../util/apiCall";
 import { useToast } from "../../context/toastContext/toastContext";
 import { styled, useTheme } from "@mui/material/styles";
+import { Box, IconButton, Stack } from "@mui/material";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
-const SingleVideoContainer = styled("div")(({ theme }) => ({
-  border: "2px solid red",
-}));
-
-const VideoPlayerWrapper = styled("div")(({ theme }) => ({
-  width: "100vw",
-  height: "100vh",
-  [theme.breakpoints.down("lg")]: {
-    width: "100vw",
-    height: "70vh",
-  },
-  [theme.breakpoints.down("md")]: {
-    width: "100vw",
-    height: "40vh",
-  },
-  // [theme.breakpoints.down("sm")]: {
-  //   width: "400px",
-  //   height: "225px",
-  // },
-
-  border: "2px solid orange",
-}));
-
+const SingleVideoContainer = styled("div")(({ theme }) => ({}));
 const VideoOptions = styled("div")({
-  backgroundColor: "var(--pink-dark)",
-  paddingTop: "10px",
-  paddingRight: "10px",
+  backgroundColor: "#08090b", //one
+  // backgroundColor: "red",
+
+  padding: "20px 20px 10px 20px",
   display: "flex",
-  justifyContent: "flex-end",
-  gap: "3rem",
+  justifyContent: "space-between",
+  alignContent: "center",
 });
 
 const StyledImg = styled("img")({
@@ -244,10 +228,10 @@ const StyledIcon = styled("i")({
 });
 
 const DescriptionContainer = styled("div")({
-  backgroundColor: "var(--pink-dark)",
+  backgroundColor: "#08090b", //two
   display: "flex",
-  flexDirection: "row",
-  paddingRight: "2rem",
+  alignItems: "center",
+  gap: "10px",
 });
 
 const SingleVideoLogo = styled("img")({
@@ -258,18 +242,42 @@ const SingleVideoLogo = styled("img")({
 
 const SingleVideoTitle = styled("h4")({
   textAlign: "left",
-  marginLeft: "1rem",
-  marginTop: "8px",
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 300,
 });
+
+const VideoPlayerWrapper = styled("div")(({ theme }) => ({
+  height: "90vh",
+  [theme.breakpoints.down("lg")]: {
+    height: "90vh",
+  },
+  [theme.breakpoints.down("md")]: {
+    height: "70vh",
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "50vh",
+  },
+}));
 
 const StyledIframe = styled("iframe")({
   width: "100%",
   height: "100%",
 });
 
+const CustomLikedIcon = styled(ThumbUpIcon)({
+  color: "var(--light-yellow2)",
+});
+
+const CustomNeutralThumbIcon = styled(ThumbUpOffAltIcon)({
+  color: "var(--light-yellow2)",
+});
+
+// CustomNeutralThumbIcon;
+
 function SingleVideo() {
-  // const { token } = useAuth();
-  const token = true;
+  const { token } = useAuth();
+  // const token = true;
   const { toastDispatch, setToast } = useToast();
   const { historyVideoState, historyVideoDispatch } = useHistoryVideoContext();
   const { likedVideoDispatch, likedVideoState } = useLikedVideoContext();
@@ -294,6 +302,7 @@ function SingleVideo() {
   );
 
   const likeHandler = () => {
+    console.log("likeHandler");
     if (liked === false) {
       setLiked(true);
       postLikedVideoApi(singleVideo, likedVideoDispatch); //calling async function to get data form db
@@ -309,6 +318,8 @@ function SingleVideo() {
   };
 
   const dislikeHandler = () => {
+    console.log("dilikeHandler");
+
     if (disliked === false) {
       setDisliked((prev) => !prev);
       setLiked(false);
@@ -354,7 +365,6 @@ function SingleVideo() {
     disLikedVideoState,
     isItemInLikedVideos,
     isItemInHistoryVideos,
-
     historyVideoDispatch,
     singleVideo,
   ]);
@@ -362,70 +372,76 @@ function SingleVideo() {
   return (
     <SingleVideoContainer>
       <VideoPlayerWrapper>
-        <StyledIframe src={videoUrl} title={singleVideo.videoId}></StyledIframe>
-
-        {/* <VideoPlayer videoUrl={videoUrl} videoId={singleVideo.videoId} /> */}
-      </VideoPlayerWrapper>{" "}
+        <StyledIframe
+          sx={{ border: "none" }}
+          src={videoUrl}
+          title={singleVideo.videoId}
+        ></StyledIframe>
+      </VideoPlayerWrapper>
       <div>
-        <VideoOptions>
-          <span onClick={token ? likeHandler : null}>
-            {" "}
-            {token ? (
-              isItemInLIkedVideos ? (
-                <StyledIcon className="fas fa-thumbs-up selectedTrue">
-                  {" "}
-                </StyledIcon>
+        <VideoOptions sx={{ border: "3px solid blue" }}>
+          <Box>
+            <DescriptionContainer>
+              <PlayCircleIcon sx={{ color: "var(--light-yellow)" }} />
+              <SingleVideoTitle>{singleVideo.title} </SingleVideoTitle>{" "}
+            </DescriptionContainer>
+          </Box>
+          <Box sx={{ border: "2px solid red" }}>
+            <IconButton onClick={token ? likeHandler : null}>
+              {token ? (
+                isItemInLIkedVideos ? (
+                  <CustomLikedIcon
+                    onClick={() => {
+                      toastDispatch({ type: "Login for like" });
+                      setToast(true);
+                    }}
+                  />
+                ) : (
+                  <ThumbUpOffAltIcon
+                    style={{ color: "white", fontSize: "36px" }}
+                  />
+
+                  // <ThumbUpIcon style={{ color: "pink" }} />  //remove
+                )
               ) : (
-                <StyledIcon className="fas fa-thumbs-up selectedFalse"></StyledIcon>
-              )
-            ) : (
-              <StyledIcon
-                className="fas fa-thumbs-up selectedFalse"
-                onClick={() => {
-                  toastDispatch({ type: "Login for like" });
-                  setToast(true);
-                }}
-              ></StyledIcon>
-            )}{" "}
-          </span>
-          <span onClick={token ? dislikeHandler : null}>
-            {" "}
-            {token ? (
-              disliked ? (
-                <StyledIcon className="fas fa-thumbs-down selectedTrue">
-                  {" "}
-                </StyledIcon>
+                <ThumbUpOffAltIcon
+                  style={{ color: "var(--light-yellow2)", fontSize: "36px" }}
+                />
+              )}{" "}
+            </IconButton>
+            <IconButton onClick={token ? dislikeHandler : null}>
+              {" "}
+              {token ? (
+                disliked ? (
+                  <ThumbDownIcon />
+                ) : (
+                  <ThumbDownIcon />
+                )
               ) : (
-                <StyledIcon className="fas fa-thumbs-down selectedFalse"></StyledIcon>
-              )
-            ) : (
-              <StyledIcon
-                className="fas fa-thumbs-down selectedFalse"
-                onClick={() => {
-                  toastDispatch({ type: "Login for dislike" });
-                  setToast(true);
-                }}
-              ></StyledIcon>
-            )}{" "}
-          </span>{" "}
-          <span>
-            <StyledImg
-              src={addToList}
-              onClick={token ? showDialog : null}
-              alt="addToList"
-            />
-          </span>{" "}
-          <span>
-            <StyledIcon className="fas fa-ellipsis-v fa-x"> </StyledIcon>{" "}
-          </span>{" "}
+                <ThumbDownIcon
+                  onClick={() => {
+                    toastDispatch({ type: "Login for dislike" });
+                    setToast(true);
+                  }}
+                />
+              )}{" "}
+            </IconButton>{" "}
+            <span>
+              <StyledImg
+                src={addToList}
+                onClick={token ? showDialog : null}
+                alt="addToList"
+              />
+            </span>{" "}
+            <span>
+              <StyledIcon className="fas fa-ellipsis-v fa-x"> </StyledIcon>{" "}
+            </span>{" "}
+          </Box>
         </VideoOptions>
-        <DescriptionContainer>
-          <SingleVideoLogo src={singleVideo.logoUrl} alt="logo" />
-          <SingleVideoTitle> {singleVideo.title} </SingleVideoTitle>{" "}
-        </DescriptionContainer>{" "}
       </div>{" "}
     </SingleVideoContainer>
   );
 }
 
 export { SingleVideo };
+// #08090b
