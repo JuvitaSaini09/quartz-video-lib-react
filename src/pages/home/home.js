@@ -25,13 +25,17 @@ const CustomTitle = styled(Typography)(({ theme }) => ({
 
 const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "space-between",
-  // flexDirection: "column",
-  // alignItems: "flex-start",
-
+  justifyContent: "start",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  paddingLeft: "30px",
+  gap: 5,
   //600+
   [theme.breakpoints.up("sm")]: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: "0px",
+    gap: 0,
   },
 }));
 
@@ -44,7 +48,11 @@ function Home() {
         sx={{
           minHeight: "100vh",
           backgroundColor: "var(--background-color)",
-          padding: "100px 30px 0 30px",
+          // padding: "100px 30px 0 30px",
+          padding: {
+            xs: "100px 10px 0 0px", // under 'sm' screen
+            sm: "100px 30px 0 30px", // over 'sm' screen
+          },
         }}
       >
         <CustomBox>

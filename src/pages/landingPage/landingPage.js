@@ -5,14 +5,19 @@ import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRou
 import PlayCircleFilledWhiteRoundedIcon from "@mui/icons-material/PlayCircleFilledWhiteRounded";
 import { useNavigate } from "react-router-dom";
 
-const LandingPageContainer = styled(Box)({
+const LandingPageContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "var(--background-color)",
   minHeight: "90vh",
   display: "flex",
   alignItems: "center",
   background:
     "linear-gradient(to bottom, rgba(255, 255, 255, 0.2), 20%,rgba(255, 255, 255, 0))",
-});
+  padding: 10,
+  //600+
+  [theme.breakpoints.up("sm")]: {
+    padding: 0,
+  },
+}));
 
 const CustomGrid1 = styled(Grid)({
   display: "flex",
@@ -54,6 +59,10 @@ const AnimeHeroesImg = styled("img")(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     width: "400px",
     height: "315.4px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "370px",
+    height: "300.4px",
   },
 }));
 
@@ -120,7 +129,12 @@ const LandingPage = () => {
   };
   return (
     <>
-      <Box sx={{ backgroundColor: "var(--background-color2)" }}>
+      <Box
+        sx={{
+          backgroundColor: "var(--background-color2)",
+          border: "2px solid red",
+        }}
+      >
         <LandingPageContainer>
           <Grid container>
             <CustomGrid1 item xs={12} sm={12} md={6}>
@@ -165,7 +179,10 @@ const LandingPage = () => {
         </LandingPageContainer>
         <ExploreButton
           sx={{
-            width: "80%",
+            width: {
+              xs: "100%",
+              sm: "80%",
+            },
             minHeight: "10vh",
             borderRadius: "0 0 40px 40px",
           }}
