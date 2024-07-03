@@ -244,13 +244,30 @@ const SingleVideoLogo = styled("img")({
   borderRadius: "50%",
 });
 
-const SingleVideoTitle = styled("h4")({
+const SingleVideoTitle = styled("h4")(({ theme }) => ({
   textAlign: "left",
+  maxWidth: "400px",
   color: "white",
   fontFamily: "Poppins, sans-serif",
   fontWeight: 300,
-  fontSize: "20px",
-});
+  fontSize: "14px",
+  [theme.breakpoints.up("xs")]: {
+    border: "2px solid red",
+    maxWidth: "300px",
+    border: "2px solid red",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "16px",
+    maxWidth: "400px",
+    border: "2px solid green",
+  },
+
+  [theme.breakpoints.up("md")]: {
+    maxWidth: "500px",
+    fontSize: "18px",
+    border: "2px solid yellow",
+  },
+}));
 
 const VideoPlayerWrapper = styled("div")(({ theme }) => ({
   height: "90vh",
@@ -270,24 +287,37 @@ const StyledIframe = styled("iframe")({
   height: "100%",
 });
 
+const commonFontSize = (theme) => ({
+  color: "var(--light-yellow)",
+  // [theme.breakpoints.up("xs")]: {
+  //   fontSize: "28px",
+  // },
+  // [theme.breakpoints.up("sm")]: {
+  //   fontSize: "36px",
+  // },
+});
+
+const commonFontSize2 = {
+  fontSize: "33px",
+};
 const CustomLikedIcon = styled(ThumbUpIcon)({
   color: "var(--light-yellow2)",
-  fontSize: "33px",
+  ...commonFontSize2,
 });
 
 const CustomNeutralThumbIcon = styled(ThumbUpOffAltIcon)({
   color: "var(--light-yellow)",
-  fontSize: "36px",
+  ...commonFontSize,
 });
 
 const CustomNotDislikedIcon = styled(ThumbDownOffAltIcon)({
   color: "var(--light-yellow)",
-  fontSize: "36px",
+  ...commonFontSize,
 });
 
 const CustomDislikedIcon = styled(ThumbDownAltIcon)({
   color: "var(--light-yellow2)",
-  fontSize: "33px",
+  ...commonFontSize2,
 });
 
 const CustomPlaylistAddIcon = styled(PlaylistAddIcon)({
@@ -413,12 +443,18 @@ function SingleVideo() {
           >
             <DescriptionContainer>
               <PlayCircleIcon
-                sx={{ color: "var(--light-yellow)", fontSize: "36px" }}
+                sx={{
+                  color: "var(--light-yellow)",
+                  fontSize: {
+                    xs: "24px",
+                    sm: "36px",
+                  },
+                }}
               />
-              <SingleVideoTitle>{singleVideo.title} </SingleVideoTitle>{" "}
+              <SingleVideoTitle>{singleVideo.title}</SingleVideoTitle>{" "}
             </DescriptionContainer>
           </Box>
-          <Box>
+          <Box sx={{ border: "2px solid red" }}>
             <IconButton onClick={token ? likeHandler : null}>
               {token ? (
                 isItemInLIkedVideos ? (

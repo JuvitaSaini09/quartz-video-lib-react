@@ -132,7 +132,6 @@ const LandingPage = () => {
       <Box
         sx={{
           backgroundColor: "var(--background-color2)",
-          border: "2px solid red",
         }}
       >
         <LandingPageContainer>
