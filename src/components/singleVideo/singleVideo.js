@@ -201,8 +201,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const SingleVideoContainer = styled("div")(({ theme }) => ({}));
 const VideoOptions = styled("div")({
-  backgroundColor: "#08090b", //one
-  // backgroundColor: "red",
+  backgroundColor: "#08090b",
 
   padding: "20px 20px 10px 20px",
   display: "flex",
@@ -232,7 +231,7 @@ const StyledIcon = styled("i")({
 });
 
 const DescriptionContainer = styled("div")({
-  backgroundColor: "#08090b", //two
+  backgroundColor: "#08090b", 
   display: "flex",
   alignItems: "center",
   gap: "10px",
@@ -321,7 +320,6 @@ const CustomNotDislikedIcon = styled(ThumbDownOffAltIcon)(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     fontSize: "40px",
   },
-  border: "2px solid red",
 }));
 
 const CustomDislikedIcon = styled(ThumbDownAltIcon)(({ theme }) => ({
