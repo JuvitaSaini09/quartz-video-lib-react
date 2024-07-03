@@ -8,6 +8,7 @@ import logo6 from "./logo6.jpg";
 import logo7 from "./logo7.jpg";
 import animeHeroes from "./AnimeHeroes.png";
 import animeWorldLogo from "./animeWorldLogo.png";
+import playlistHero from "./playlist.png"
 
 export {
   addToList,
@@ -20,4 +21,5 @@ export {
   logo7,
   animeHeroes,
   animeWorldLogo,
+  playlistHero,
 };
