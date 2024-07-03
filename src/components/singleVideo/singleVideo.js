@@ -252,20 +252,16 @@ const SingleVideoTitle = styled("h4")(({ theme }) => ({
   fontWeight: 300,
   fontSize: "14px",
   [theme.breakpoints.up("xs")]: {
-    border: "2px solid red",
     maxWidth: "300px",
-    border: "2px solid red",
   },
   [theme.breakpoints.up("sm")]: {
     fontSize: "16px",
     maxWidth: "400px",
-    border: "2px solid green",
   },
 
   [theme.breakpoints.up("md")]: {
     maxWidth: "500px",
     fontSize: "18px",
-    border: "2px solid yellow",
   },
 }));
 
@@ -287,48 +283,88 @@ const StyledIframe = styled("iframe")({
   height: "100%",
 });
 
-const commonFontSize = (theme) => ({
-  color: "var(--light-yellow)",
-  // [theme.breakpoints.up("xs")]: {
-  //   fontSize: "28px",
-  // },
-  // [theme.breakpoints.up("sm")]: {
-  //   fontSize: "36px",
-  // },
-});
-
-const commonFontSize2 = {
-  fontSize: "33px",
-};
-const CustomLikedIcon = styled(ThumbUpIcon)({
+const CustomLikedIcon = styled(ThumbUpIcon)(({ theme }) => ({
   color: "var(--light-yellow2)",
-  ...commonFontSize2,
-});
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+}));
 
-const CustomNeutralThumbIcon = styled(ThumbUpOffAltIcon)({
+const CustomNeutralThumbIcon = styled(ThumbUpOffAltIcon)(({ theme }) => ({
   color: "var(--light-yellow)",
-  ...commonFontSize,
-});
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+}));
 
-const CustomNotDislikedIcon = styled(ThumbDownOffAltIcon)({
+const CustomNotDislikedIcon = styled(ThumbDownOffAltIcon)(({ theme }) => ({
   color: "var(--light-yellow)",
-  ...commonFontSize,
-});
 
-const CustomDislikedIcon = styled(ThumbDownAltIcon)({
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+  border: "2px solid red",
+}));
+
+const CustomDislikedIcon = styled(ThumbDownAltIcon)(({ theme }) => ({
   color: "var(--light-yellow2)",
-  ...commonFontSize2,
-});
 
-const CustomPlaylistAddIcon = styled(PlaylistAddIcon)({
-  color: "var(--light-yellow)",
-  fontSize: "44px",
-});
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+}));
 
-const CustomMoreVertIcon = styled(MoreVertIcon)({
+const CustomPlaylistAddIcon = styled(PlaylistAddIcon)(({ theme }) => ({
   color: "var(--light-yellow)",
-  fontSize: "40px",
-});
+
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+}));
+
+const CustomMoreVertIcon = styled(MoreVertIcon)(({ theme }) => ({
+  color: "var(--light-yellow)",
+
+  [theme.breakpoints.up("xs")]: {
+    fontSize: "28px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "36px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "40px",
+  },
+}));
 
 function SingleVideo() {
   const { token } = useAuth();
@@ -454,7 +490,7 @@ function SingleVideo() {
               <SingleVideoTitle>{singleVideo.title}</SingleVideoTitle>{" "}
             </DescriptionContainer>
           </Box>
-          <Box sx={{ border: "2px solid red" }}>
+          <Box>
             <IconButton onClick={token ? likeHandler : null}>
               {token ? (
                 isItemInLIkedVideos ? (
