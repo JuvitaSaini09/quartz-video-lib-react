@@ -190,10 +190,18 @@ import {
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useToast } from "../../context/toastContext/toastContext";
 import { styled } from "@mui/material/styles";
-import { Box, Typography, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Icon,
+  IconButton,
+} from "@mui/material";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { playlistHero } from "../../images/allImages";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const PlaylistContainer = styled(Box)(({ theme }) => ({
   marginTop: "1rem",
@@ -224,7 +232,7 @@ const CreatePlaylistButton = styled(Button)(({ theme }) => ({
   marginBottom: "1rem",
   fontFamily: "Poppins, sans-serif",
   backgroundColor: "var(--light-yellow)",
-  color: "#1c1c1c",
+  color: "#1c1c1c ",
 
   "&:hover": {
     backgroundColor: "var(--light-yellow2)",
@@ -379,13 +387,20 @@ function Playlist() {
 
       <Box
         className={display ? "modal dialog-box-true" : "modal dialog-box-false"}
-        sx={{ border: "5px solid green" }}
+        sx={{ backgroundColor: "#121212" }}
       >
-        <Box className="modal-navbar">
-          <span onClick={hideDialog}>
-            <i className="fas fa-times"></i>
-          </span>
+        <Box sx={{ display: "grey" }}>
+          <IconButton
+            onClick={hideDialog}
+            sx={{
+              backgroundColor: "#121212 !important",
+              border: "none !important",
+            }}
+          >
+            <ClearIcon sx={{ color: "white" }} />
+          </IconButton>
         </Box>
+
         <Box className="modal-footer flex-row"></Box>
         <Box className="create-newPlaylist-wrapper mt-2">
           <TextField
@@ -397,13 +412,32 @@ function Playlist() {
             placeholder="Enter new playlist name"
             value={playlistNameValue}
             fullWidth
+            sx={{
+              backgroundColor: "#121212 !important",
+              "& .MuiInputBase-root": {
+                color: "white",
+              },
+              "& .MuiInputBase-input::placeholder": {
+                color: "rgba(255, 255, 255, 0.7)",
+                opacity: 1,
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "rgba(255, 255, 255, 0.2)",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "rgba(255, 255, 255, 0.5)",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "white",
+              },
+            }}
           />
           <br />
-          <Button
+          <CreatePlaylistButton
             onClick={() => createNewPlaylistHandler(undefined, playlistTitle)}
           >
             Create
-          </Button>
+          </CreatePlaylistButton>
         </Box>
       </Box>
 
