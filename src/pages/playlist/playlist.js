@@ -174,7 +174,9 @@
 import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+
 import {
   EmptyPage,
   Navbar,
@@ -189,7 +191,7 @@ import {
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useToast } from "../../context/toastContext/toastContext";
 import { styled } from "@mui/material/styles";
-import { Box, Typography, Button, TextField, IconButton } from "@mui/material";
+import { Box, Typography, Button, TextField, IconButton, Grid, Card, CardMedia, CardContent } from "@mui/material";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { playlistHero } from "../../images/allImages";
@@ -229,11 +231,51 @@ const CreatePlaylistButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+
+  const CardTitle = styled(Typography)({
+    color: "white",
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: 600,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  });
+
+  const CardSubTitle = styled(Typography)({
+    color: "white",
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: 300,
+  });
+
+  const HoverCard = styled(Card)({
+    position: "relative",
+    "&:hover": {
+      "& img": {
+        filter: "blur(1.5px)",
+      },
+      "& > div": {
+        opacity: 1,
+      },
+    },
+  });
+
+  const PlayButtonOverlay = styled(Box)({
+    position: "absolute",
+    top: "40%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    opacity: 0,
+    transition: "opacity 0.3s ease",
+  });
+
+
+
 function Playlist() {
   const { setToast, toastState, toastDispatch } = useToast();
   const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
   const { setVideosInPlaylist } = useVideoOfPlaylist();
   const { display, setdisplay } = useSingleVideo();
+  const navigate = useNavigate();
 
   const {
     allPlaylistFromApi,
@@ -274,7 +316,6 @@ function Playlist() {
     setPlaylistNameValue("");
     setPlaylistTitle("");
   };
-
   const deletePlaylist = (item) => {
     deletePlaylistApi(item._id, playlistVideoDispatch, setToast, toastDispatch);
   };
@@ -296,7 +337,7 @@ function Playlist() {
           }}
         >
           <Sidebar />
-          <Box sx={{ flexGrow: 1, padding: "2rem" }}>
+          <Box sx={{ flexGrow: 1, padding: "2rem", mt: 8 }}>
             <Typography
               variant="h4"
               color="white"
@@ -317,7 +358,7 @@ function Playlist() {
               </CreatePlaylistButton>
             </Box>
 
-            {allPlaylistFromApi.map((item) => (
+            {/* {allPlaylistFromApi.map((item) => (
               <Box
                 key={item._id}
                 sx={{ position: "relative", marginBottom: "1rem" }}
@@ -343,7 +384,58 @@ function Playlist() {
                   <DeleteIcon />
                 </IconButton>
               </Box>
-            ))}
+            ))} */}
+
+            <Grid container spacing={2}>
+              {allPlaylistFromApi.map((item) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+                  <HoverCard>
+                    <NavLink
+                      onClick={() => setVideosInPlaylist(item.videos)}
+                      to="/playlist"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image={item.thumbnail}
+                        alt={item.title}
+                      />
+                      <PlayButtonOverlay>
+                        <IconButton
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setVideosInPlaylist(item.videos);
+                            navigate("/playlist");
+                          }}
+                        >
+                          <PlayArrowRoundedIcon
+                            sx={{ fontSize: 60, color: "white" }}
+                          />
+                        </IconButton>
+                      </PlayButtonOverlay>
+                      <CardContent>
+                        <CardTitle variant="h6">{item.title}</CardTitle>
+                        <CardSubTitle variant="body2">
+                          {item.videos.length} videos
+                        </CardSubTitle>
+                      </CardContent>
+                    </NavLink>
+                    <IconButton
+                      onClick={() => deletePlaylist(item)}
+                      sx={{
+                        position: "absolute",
+                        top: "1rem",
+                        right: "1rem",
+                        color: "white",
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </HoverCard>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Box>
 
