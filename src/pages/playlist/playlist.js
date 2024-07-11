@@ -406,7 +406,7 @@ function Playlist() {
                         <CardMedia
                           component="img"
                           height="140"
-                          image={allPlaylistFromApi[0].thumbnail}
+                          image={item.videos[0].thumbnailUrl}
                           alt={item.title}
                         />
                         <PlayButtonOverlay>
