@@ -394,7 +394,7 @@ function Playlist() {
 
             <Grid container spacing={2}>
               {allPlaylistFromApi.map((item) => {
-                console.log("item", item);
+                console.log("item", allPlaylistFromApi);
                 return (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                     <HoverCard>
