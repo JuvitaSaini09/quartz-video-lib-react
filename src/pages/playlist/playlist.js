@@ -171,7 +171,6 @@
 // }
 
 // export { Playlist };
-
 import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
@@ -190,14 +189,7 @@ import {
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useToast } from "../../context/toastContext/toastContext";
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Typography,
-  Button,
-  TextField,
-  Icon,
-  IconButton,
-} from "@mui/material";
+import { Box, Typography, Button, TextField, IconButton } from "@mui/material";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { playlistHero } from "../../images/allImages";
@@ -230,10 +222,8 @@ const CreatePlaylistButton = styled(Button)(({ theme }) => ({
   border: "none",
   borderRadius: "2px",
   marginBottom: "1rem",
-  fontFamily: "Poppins, sans-serif",
   backgroundColor: "var(--light-yellow)",
-  color: "#1c1c1c ",
-
+  color: "#1c1c1c",
   "&:hover": {
     backgroundColor: "var(--light-yellow2)",
   },
@@ -243,8 +233,7 @@ function Playlist() {
   const { setToast, toastState, toastDispatch } = useToast();
   const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
   const { setVideosInPlaylist } = useVideoOfPlaylist();
-  const { display } = useSingleVideo();
-  const { setdisplay } = useSingleVideo();
+  const { display, setdisplay } = useSingleVideo();
 
   const {
     allPlaylistFromApi,
@@ -253,13 +242,9 @@ function Playlist() {
     playlistVideoDispatch,
   } = usePlaylistVideoContext();
 
-  const showDialog = () => {
-    setdisplay(true);
-  };
+  const showDialog = () => setdisplay(true);
+  const hideDialog = () => setdisplay(false);
 
-  const hideDialog = () => {
-    setdisplay(false);
-  };
   const playlistTitleHandler = (event) => {
     setPlaylistTitle(event.target.value);
     setPlaylistNameValue(event.target.value);
@@ -267,10 +252,10 @@ function Playlist() {
 
   const createNewPlaylistHandler = (video, playlistTitle) => {
     if (playlistTitle) {
-      const isPlaylistNameAlreadyUsed = allPlaylistFromApi.filter(
+      const isPlaylistNameAlreadyUsed = allPlaylistFromApi.find(
         (e) => playlistTitle === e.title
       );
-      if (isPlaylistNameAlreadyUsed[0] === undefined)
+      if (!isPlaylistNameAlreadyUsed) {
         createPlaylistApi(
           video,
           playlistTitle,
@@ -278,7 +263,7 @@ function Playlist() {
           setToast,
           toastDispatch
         );
-      else {
+      } else {
         toastDispatch({ type: "PLAYLIST_ALREADY_EXIST" });
         setToast(true);
       }
@@ -297,148 +282,146 @@ function Playlist() {
   return (
     <>
       <Box
-        // className={display ? "body-open-modal" : ""}
         sx={{
           minHeight: "100vh",
           backgroundColor: "var(--background-color)",
-          outline: "5px solid orange",
         }}
       >
         <Navbar />
-        {/* <Box className="main-page playlist-page"> */}
         <Box
           sx={{
+            display: "flex",
             background:
-              "linear-gradient(to bottom, rgba(255, 255, 255, 0.2), 10%,rgba(255, 255, 255, 0))",
+              "linear-gradient(to bottom, rgba(255, 255, 255, 0.2), 10%, rgba(255, 255, 255, 0))",
           }}
         >
           <Sidebar />
-          <Box>
-            {allPlaylistFromApi[0] === undefined ||
-            allPlaylistFromApi === null ? (
-              <Typography
-                variant="h4"
-                color="white"
-                sx={{ paddingTop: "10rem", fontFamily: "Poppins, sans-serif" }}
-              >
-                You have not created any playlist
-              </Typography>
-            ) : (
-              <Typography
-                variant="h4"
-                className="playlistHeading"
-                sx={{ fontFamily: "Poppins, sans-serif" }}
-              >
-                All Playlists
-              </Typography>
-            )}
+          <Box sx={{ flexGrow: 1, padding: "2rem" }}>
+            <Typography
+              variant="h4"
+              color="white"
+              sx={{
+                fontFamily: "Poppins, sans-serif",
+                marginBottom: "2rem",
+                textAlign: "center",
+              }}
+            >
+              {allPlaylistFromApi.length > 0
+                ? "All Playlists"
+                : "You have not created any playlist"}
+            </Typography>
 
-            <Box>
+            <Box sx={{ textAlign: "center" }}>
               <CreatePlaylistButton onClick={showDialog}>
                 + Create Playlist
               </CreatePlaylistButton>
             </Box>
-            {allPlaylistFromApi.map((item) => {
-              return (
-                <Box className="playlist" key={item._id}>
-                  <NavLink
-                    to="/videosInPlaylistPage"
-                    onClick={() => {
-                      setVideosInPlaylist(item.videos);
-                    }}
-                  >
-                    <PlaylistContainer className="PlaylistContainer">
-                      <Typography variant="h6">{item.title}</Typography>
-                    </PlaylistContainer>
-                    <Typography variant="h6" className="play">
-                      <i className="fas fa-play"></i>play
-                    </Typography>
-                    <Box className="playlistIcon">
-                      <PlaylistPlayIcon
-                        style={{ fontSize: "4rem", color: "white" }}
-                      />
-                    </Box>
-                  </NavLink>
 
-                  <DeleteIcon
-                    onClick={() => deletePlaylist(item)}
-                    className="playlistDustbin"
-                    style={{ fontSize: "2rem" }}
-                  />
-                </Box>
-              );
-            })}
+            {allPlaylistFromApi.map((item) => (
+              <Box
+                key={item._id}
+                sx={{ position: "relative", marginBottom: "1rem" }}
+              >
+                <NavLink
+                  to="/videosInPlaylistPage"
+                  onClick={() => setVideosInPlaylist(item.videos)}
+                  style={{ textDecoration: "none" }}
+                >
+                  <PlaylistContainer>
+                    <Typography variant="h6">{item.title}</Typography>
+                  </PlaylistContainer>
+                </NavLink>
+                <IconButton
+                  onClick={() => deletePlaylist(item)}
+                  sx={{
+                    position: "absolute",
+                    top: "1rem",
+                    right: "1rem",
+                    color: "white",
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Box>
+            ))}
           </Box>
         </Box>
 
-        <Box>
-          <img
-            style={{
-              height: "20rem",
-              position: "absolute",
-              left: "0",
-              bottom: "0",
-            }}
-            src={playlistHero}
-            alt="playlistImg"
-          />
-        </Box>
+        <Box
+          component="img"
+          src={playlistHero}
+          alt="playlistImg"
+          sx={{
+            height: "20rem",
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+          }}
+        />
       </Box>
 
       <Box
-        className={display ? "modal dialog-box-true" : "modal dialog-box-false"}
-        sx={{ backgroundColor: "#121212" }}
+        sx={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "#121212",
+          width: "400px",
+          padding: "2rem",
+          borderRadius: "10px",
+          display: display ? "block" : "none",
+        }}
       >
-        <Box sx={{ display: "grey" }}>
-          <IconButton
-            onClick={hideDialog}
-            sx={{
-              backgroundColor: "#121212 !important",
-              border: "none !important",
-            }}
-          >
-            <ClearIcon sx={{ color: "white" }} />
-          </IconButton>
-        </Box>
+        <IconButton
+          onClick={hideDialog}
+          sx={{
+            position: "absolute",
+            top: "0.5rem",
+            right: "0.5rem",
+            color: "white",
+          }}
+        >
+          <ClearIcon />
+        </IconButton>
 
-        <Box className="modal-footer flex-row"></Box>
-        <Box className="create-newPlaylist-wrapper mt-2">
-          <TextField
-            onChange={(e) => playlistTitleHandler(e)}
-            className="create-newPlaylist"
-            type="text"
-            id="newPlaylist"
-            name="newPlaylist"
-            placeholder="Enter new playlist name"
-            value={playlistNameValue}
-            fullWidth
-            sx={{
-              backgroundColor: "#121212 !important",
-              "& .MuiInputBase-root": {
-                color: "white",
-              },
-              "& .MuiInputBase-input::placeholder": {
-                color: "rgba(255, 255, 255, 0.7)",
-                opacity: 1,
-              },
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "rgba(255, 255, 255, 0.2)",
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                borderColor: "rgba(255, 255, 255, 0.5)",
-              },
-              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "white",
-              },
-            }}
-          />
-          <br />
-          <CreatePlaylistButton
-            onClick={() => createNewPlaylistHandler(undefined, playlistTitle)}
-          >
-            Create
-          </CreatePlaylistButton>
-        </Box>
+        <Typography variant="h6" color="white" sx={{ marginBottom: "1rem" }}>
+          Create New Playlist
+        </Typography>
+
+        <TextField
+          onChange={playlistTitleHandler}
+          type="text"
+          placeholder="Enter new playlist name"
+          value={playlistNameValue}
+          fullWidth
+          sx={{
+            marginBottom: "1rem",
+            "& .MuiInputBase-root": {
+              color: "white",
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "rgba(255, 255, 255, 0.7)",
+              opacity: 1,
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "rgba(255, 255, 255, 0.2)",
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "rgba(255, 255, 255, 0.5)",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "white",
+            },
+          }}
+        />
+
+        <CreatePlaylistButton
+          onClick={() => createNewPlaylistHandler(undefined, playlistTitle)}
+          fullWidth
+        >
+          Create
+        </CreatePlaylistButton>
       </Box>
 
       <Toast text={toastState} />
