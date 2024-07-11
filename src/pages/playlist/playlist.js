@@ -320,6 +320,11 @@ function Playlist() {
     deletePlaylistApi(item._id, playlistVideoDispatch, setToast, toastDispatch);
   };
 
+  const handlePlaylistClick = (item) => {
+    setVideosInPlaylist(item.videos);
+    navigate("/playlist");
+  };
+
   return (
     <>
       <Box
@@ -390,10 +395,9 @@ function Playlist() {
               {allPlaylistFromApi.map((item) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                   <HoverCard>
-                    <NavLink
-                      onClick={() => setVideosInPlaylist(item.videos)}
-                      to="/playlist"
-                      style={{ textDecoration: "none" }}
+                    <Box
+                      onClick={() => handlePlaylistClick(item)}
+                      sx={{ cursor: "pointer" }}
                     >
                       <CardMedia
                         component="img"
@@ -402,13 +406,7 @@ function Playlist() {
                         alt={item.title}
                       />
                       <PlayButtonOverlay>
-                        <IconButton
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setVideosInPlaylist(item.videos);
-                            navigate("/playlist");
-                          }}
-                        >
+                        <IconButton>
                           <PlayArrowRoundedIcon
                             sx={{ fontSize: 60, color: "white" }}
                           />
@@ -420,9 +418,12 @@ function Playlist() {
                           {item.videos.length} videos
                         </CardSubTitle>
                       </CardContent>
-                    </NavLink>
+                    </Box>
                     <IconButton
-                      onClick={() => deletePlaylist(item)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deletePlaylist(item);
+                      }}
                       sx={{
                         position: "absolute",
                         top: "1rem",
