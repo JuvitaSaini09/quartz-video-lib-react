@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/playlist" element={<Playlist />} />
+        {/* <Route path="/playlist" element={<Playlist />} /> */}
         <Route path="/video" element={<Video />} />
 
         <Route element={<AuthRoute />}>
@@ -35,7 +35,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/likedVideo" element={<LikedVideoPage />} />
           <Route path="/historyVideo" element={<HistoryVideoPage />} />
-          {/* <Route path="/playlist" element={<Playlist />} /> */}
+          <Route path="/playlist" element={<Playlist />} />
           <Route
             path="/videosInPlaylistPage"
             element={<VideosInPlaylistPage />}
