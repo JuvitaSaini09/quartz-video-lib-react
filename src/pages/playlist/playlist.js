@@ -393,52 +393,55 @@ function Playlist() {
             ))} */}
 
             <Grid container spacing={2}>
-              {allPlaylistFromApi.map((item) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-                  <HoverCard>
-                    <Link
-                      to="/videosInPlaylistPage"
-                      onClick={() => setVideosInPlaylist(item.videos)}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={item.thumbnail}
-                        alt={item.title}
-                      />
-                      <PlayButtonOverlay>
-                        <IconButton>
-                          <PlayArrowRoundedIcon
-                            sx={{ fontSize: 60, color: "white" }}
-                          />
-                        </IconButton>
-                      </PlayButtonOverlay>
-                      <CardContent>
-                        <CardTitle variant="h6">{item.title}</CardTitle>
-                        <CardSubTitle variant="body2">
-                          {item.videos.length} videos
-                        </CardSubTitle>
-                      </CardContent>
-                    </Link>
-                    <IconButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        deletePlaylist(item);
-                      }}
-                      sx={{
-                        position: "absolute",
-                        top: "1rem",
-                        right: "1rem",
-                        color: "white",
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </HoverCard>
-                </Grid>
-              ))}
+              {allPlaylistFromApi.map((item) => {
+                console.log("item", item);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+                    <HoverCard>
+                      <Link
+                        to="/videosInPlaylistPage"
+                        onClick={() => setVideosInPlaylist(item.videos)}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <CardMedia
+                          component="img"
+                          height="140"
+                          image={allPlaylistFromApi[0].thumbnail}
+                          alt={item.title}
+                        />
+                        <PlayButtonOverlay>
+                          <IconButton>
+                            <PlayArrowRoundedIcon
+                              sx={{ fontSize: 60, color: "white" }}
+                            />
+                          </IconButton>
+                        </PlayButtonOverlay>
+                        <CardContent>
+                          <CardTitle variant="h6">{item.title}</CardTitle>
+                          <CardSubTitle variant="body2">
+                            {item.videos.length} videos
+                          </CardSubTitle>
+                        </CardContent>
+                      </Link>
+                      <IconButton
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          deletePlaylist(item);
+                        }}
+                        sx={{
+                          position: "absolute",
+                          top: "1rem",
+                          right: "1rem",
+                          color: "white",
+                        }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </HoverCard>
+                  </Grid>
+                );
+              })}
             </Grid>
           </Box>
         </Box>
