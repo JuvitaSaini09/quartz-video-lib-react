@@ -174,7 +174,7 @@
 import React from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 
 import {
@@ -191,7 +191,17 @@ import {
 import { useVideoOfPlaylist } from "../../context/playlist/videosInPlaylistContext";
 import { useToast } from "../../context/toastContext/toastContext";
 import { styled } from "@mui/material/styles";
-import { Box, Typography, Button, TextField, IconButton, Grid, Card, CardMedia, CardContent } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  IconButton,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+} from "@mui/material";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { playlistHero } from "../../images/allImages";
@@ -231,51 +241,47 @@ const CreatePlaylistButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+const CardTitle = styled(Typography)({
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 600,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+});
 
-  const CardTitle = styled(Typography)({
-    color: "white",
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: 600,
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-  });
+const CardSubTitle = styled(Typography)({
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 300,
+});
 
-  const CardSubTitle = styled(Typography)({
-    color: "white",
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: 300,
-  });
-
-  const HoverCard = styled(Card)({
-    position: "relative",
-    "&:hover": {
-      "& img": {
-        filter: "blur(1.5px)",
-      },
-      "& > div": {
-        opacity: 1,
-      },
+const HoverCard = styled(Card)({
+  position: "relative",
+  "&:hover": {
+    "& img": {
+      filter: "blur(1.5px)",
     },
-  });
+    "& > div": {
+      opacity: 1,
+    },
+  },
+});
 
-  const PlayButtonOverlay = styled(Box)({
-    position: "absolute",
-    top: "40%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    opacity: 0,
-    transition: "opacity 0.3s ease",
-  });
-
-
+const PlayButtonOverlay = styled(Box)({
+  position: "absolute",
+  top: "40%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  opacity: 0,
+  transition: "opacity 0.3s ease",
+});
 
 function Playlist() {
   const { setToast, toastState, toastDispatch } = useToast();
   const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
   const { setVideosInPlaylist } = useVideoOfPlaylist();
   const { display, setdisplay } = useSingleVideo();
-  const navigate = useNavigate();
 
   const {
     allPlaylistFromApi,
@@ -318,11 +324,6 @@ function Playlist() {
   };
   const deletePlaylist = (item) => {
     deletePlaylistApi(item._id, playlistVideoDispatch, setToast, toastDispatch);
-  };
-
-  const handlePlaylistClick = (item) => {
-    setVideosInPlaylist(item.videos);
-    navigate("/playlist");
   };
 
   return (
@@ -395,9 +396,10 @@ function Playlist() {
               {allPlaylistFromApi.map((item) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                   <HoverCard>
-                    <Box
-                      onClick={() => handlePlaylistClick(item)}
-                      sx={{ cursor: "pointer" }}
+                    <Link
+                      to="/videosInPlaylistPage"
+                      onClick={() => setVideosInPlaylist(item.videos)}
+                      style={{ textDecoration: "none" }}
                     >
                       <CardMedia
                         component="img"
@@ -418,9 +420,10 @@ function Playlist() {
                           {item.videos.length} videos
                         </CardSubTitle>
                       </CardContent>
-                    </Box>
+                    </Link>
                     <IconButton
                       onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
                         deletePlaylist(item);
                       }}
