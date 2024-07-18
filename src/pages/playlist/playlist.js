@@ -206,6 +206,7 @@ import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { playlistHero } from "../../images/allImages";
 import ClearIcon from "@mui/icons-material/Clear";
+import { videos } from "../../backend/db/videos";
 
 const PlaylistContainer = styled(Box)(({ theme }) => ({
   marginTop: "1rem",
@@ -276,6 +277,85 @@ const PlayButtonOverlay = styled(Box)({
   opacity: 0,
   transition: "opacity 0.3s ease",
 });
+
+const testData = [
+  {
+    title: "new",
+    videos: [
+      {
+        categoryName: "Adventure",
+        creator: "Kinema Citrus",
+        description:
+          "Although cheerful and delicate, Sakura Sakurakouji is a skilled martial artist with a sense of fairness that never falters—no matter the situation. Upon witnessing people burning in blue flames while on a bus ride home, she calls the police to bring their murderer to justice only to find that no evidence remains. However, all her doubts about what she saw vanish when the next day, the new transfer student Rei Oogami joins her class; he is the very boy she watched commit murder in cold blood. Rei is kind, sweet, and quickly becomes popular, contradicting Sakura's accusations. Soon enough, she learns his true nature: a Code Breaker, or one who does not exist. To Sakura's shock, Rei—armed with mysterious powers—seeks to exact justice according to the principle of an eye for an eye. Determined to bring Rei to the right path, Sakura keeps close to him in the hopes of redeeming him from his ways before others are hurt.",
+        id: "5",
+        logoUrl: "",
+        thumbnailUrl:
+          "https://m.media-amazon.com/images/M/MV5BODRjYThmZWItZTk3MC00ZWE5LThjMjktMDljMGEzZGM5MDhiXkEyXkFqcGdeQXVyMTA1OTEwNjE@._V1_.jpg",
+        title: "Code:Breaker",
+        videoId: "xYXx-rR2s-w",
+        videoUrl: "https://www.youtube.com/watch?v=xYXx-rR2s-w",
+        _id: "8012dc35-e719-4fd6-bdb3-9d6cc69545a0",
+      },
+    ],
+  },
+  {
+    title: "new",
+    videos: [
+      {
+        categoryName: "Adventure",
+        creator: "Kinema Citrus",
+        description:
+          "Although cheerful and delicate, Sakura Sakurakouji is a skilled martial artist with a sense of fairness that never falters—no matter the situation. Upon witnessing people burning in blue flames while on a bus ride home, she calls the police to bring their murderer to justice only to find that no evidence remains. However, all her doubts about what she saw vanish when the next day, the new transfer student Rei Oogami joins her class; he is the very boy she watched commit murder in cold blood. Rei is kind, sweet, and quickly becomes popular, contradicting Sakura's accusations. Soon enough, she learns his true nature: a Code Breaker, or one who does not exist. To Sakura's shock, Rei—armed with mysterious powers—seeks to exact justice according to the principle of an eye for an eye. Determined to bring Rei to the right path, Sakura keeps close to him in the hopes of redeeming him from his ways before others are hurt.",
+        id: "5",
+        logoUrl: "",
+        thumbnailUrl:
+          "https://m.media-amazon.com/images/M/MV5BODRjYThmZWItZTk3MC00ZWE5LThjMjktMDljMGEzZGM5MDhiXkEyXkFqcGdeQXVyMTA1OTEwNjE@._V1_.jpg",
+        title: "Code:Breaker",
+        videoId: "xYXx-rR2s-w",
+        videoUrl: "https://www.youtube.com/watch?v=xYXx-rR2s-w",
+        _id: "8012dc35-e719-4fd6-bdb3-9d6cc69545a0",
+      },
+    ],
+  },
+  {
+    title: "new",
+    videos: [
+      {
+        categoryName: "Adventure",
+        creator: "Kinema Citrus",
+        description:
+          "Although cheerful and delicate, Sakura Sakurakouji is a skilled martial artist with a sense of fairness that never falters—no matter the situation. Upon witnessing people burning in blue flames while on a bus ride home, she calls the police to bring their murderer to justice only to find that no evidence remains. However, all her doubts about what she saw vanish when the next day, the new transfer student Rei Oogami joins her class; he is the very boy she watched commit murder in cold blood. Rei is kind, sweet, and quickly becomes popular, contradicting Sakura's accusations. Soon enough, she learns his true nature: a Code Breaker, or one who does not exist. To Sakura's shock, Rei—armed with mysterious powers—seeks to exact justice according to the principle of an eye for an eye. Determined to bring Rei to the right path, Sakura keeps close to him in the hopes of redeeming him from his ways before others are hurt.",
+        id: "5",
+        logoUrl: "",
+        thumbnailUrl:
+          "https://m.media-amazon.com/images/M/MV5BODRjYThmZWItZTk3MC00ZWE5LThjMjktMDljMGEzZGM5MDhiXkEyXkFqcGdeQXVyMTA1OTEwNjE@._V1_.jpg",
+        title: "Code:Breaker",
+        videoId: "xYXx-rR2s-w",
+        videoUrl: "https://www.youtube.com/watch?v=xYXx-rR2s-w",
+        _id: "8012dc35-e719-4fd6-bdb3-9d6cc69545a0",
+      },
+    ],
+  },
+  {
+    title: "new",
+    videos: [
+      {
+        categoryName: "Adventure",
+        creator: "Kinema Citrus",
+        description:
+          "Although cheerful and delicate, Sakura Sakurakouji is a skilled martial artist with a sense of fairness that never falters—no matter the situation. Upon witnessing people burning in blue flames while on a bus ride home, she calls the police to bring their murderer to justice only to find that no evidence remains. However, all her doubts about what she saw vanish when the next day, the new transfer student Rei Oogami joins her class; he is the very boy she watched commit murder in cold blood. Rei is kind, sweet, and quickly becomes popular, contradicting Sakura's accusations. Soon enough, she learns his true nature: a Code Breaker, or one who does not exist. To Sakura's shock, Rei—armed with mysterious powers—seeks to exact justice according to the principle of an eye for an eye. Determined to bring Rei to the right path, Sakura keeps close to him in the hopes of redeeming him from his ways before others are hurt.",
+        id: "5",
+        logoUrl: "",
+        thumbnailUrl:
+          "https://m.media-amazon.com/images/M/MV5BODRjYThmZWItZTk3MC00ZWE5LThjMjktMDljMGEzZGM5MDhiXkEyXkFqcGdeQXVyMTA1OTEwNjE@._V1_.jpg",
+        title: "Code:Breaker",
+        videoId: "xYXx-rR2s-w",
+        videoUrl: "https://www.youtube.com/watch?v=xYXx-rR2s-w",
+        _id: "8012dc35-e719-4fd6-bdb3-9d6cc69545a0",
+      },
+    ],
+  },
+];
 
 function Playlist() {
   const { setToast, toastState, toastDispatch } = useToast();
@@ -393,7 +473,8 @@ function Playlist() {
             ))} */}
 
             <Grid container spacing={2}>
-              {allPlaylistFromApi.map((item) => {
+              {/* allPlaylistFromApi */}
+              {testData.map((item) => {
                 console.log("item", allPlaylistFromApi);
                 return (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
@@ -404,19 +485,25 @@ function Playlist() {
                         style={{ textDecoration: "none" }}
                       >
                         <CardMedia
+                          sx={{ border: "1px solid red", height: "440px" }}
                           component="img"
                           height="140"
                           image={item.videos[0].thumbnailUrl}
                           alt={item.title}
                         />
-                        <PlayButtonOverlay>
+                        {/* <PlayButtonOverlay sx={{border:"2px solid green"}}>
                           <IconButton>
                             <PlayArrowRoundedIcon
                               sx={{ fontSize: 60, color: "white" }}
                             />
                           </IconButton>
-                        </PlayButtonOverlay>
-                        <CardContent>
+                        </PlayButtonOverlay> */}
+                        <CardContent
+                          sx={{
+                            border: "2px solid blue",
+                            backgroundColor: "var(--background-color)",
+                          }}
+                        >
                           <CardTitle variant="h6">{item.title}</CardTitle>
                           <CardSubTitle variant="body2">
                             {item.videos.length} videos
@@ -446,7 +533,8 @@ function Playlist() {
           </Box>
         </Box>
 
-        <Box
+        {/* Hero Section of page */}
+        {/* <Box
           component="img"
           src={playlistHero}
           alt="playlistImg"
@@ -456,7 +544,7 @@ function Playlist() {
             left: 0,
             bottom: 0,
           }}
-        />
+        /> */}
       </Box>
 
       <Box
