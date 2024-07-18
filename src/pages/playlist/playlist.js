@@ -552,7 +552,7 @@ function Playlist() {
 
             <Grid container spacing={2}>
               {/* allPlaylistFromApi */}
-              {testData.map((playlist, index) => (
+              {allPlaylistFromApi.map((playlist, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                   <PlaylistCard>
                     <Link
