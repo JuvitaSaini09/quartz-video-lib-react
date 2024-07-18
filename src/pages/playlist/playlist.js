@@ -357,6 +357,72 @@ const testData = [
   },
 ];
 
+const PlaylistCard = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: `${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
+  overflow: "hidden",
+  backgroundColor: theme.palette.background.paper,
+  "&:hover": {
+    "& .deleteButton": {
+      opacity: 1,
+    },
+  },
+}));
+
+const ThumbnailContainer = styled("div")({
+  position: "relative",
+  paddingTop: "56.25%", // 16:9 aspect ratio
+});
+
+const Thumbnail = styled("img")({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+});
+
+const VideoCount = styled(Typography)(({ theme }) => ({
+  position: "absolute",
+  bottom: theme.spacing(1),
+  right: theme.spacing(1),
+  padding: theme.spacing(0.5, 1),
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
+  color: theme.palette.common.white,
+  borderRadius: theme.shape.borderRadius,
+}));
+
+const InfoContainer = styled("div")(({ theme }) => ({}));
+
+const Title = styled(Typography)({
+  fontWeight: "bold",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  color: "white",
+  backgroundColor: "var(--background-color)",
+  textAlign: "start",
+  fontFamily: "Poppins, sans-serif",
+});
+
+const Creator = styled(Typography)({
+  color: "text.secondary",
+});
+
+const DeleteButton = styled(IconButton)(({ theme }) => ({
+  position: "absolute",
+  top: theme.spacing(1),
+  right: theme.spacing(1),
+  color: theme.palette.common.white,
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  opacity: 0,
+  transition: "opacity 0.2s",
+  "&:hover": {
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+  },
+}));
+
 function Playlist() {
   const { setToast, toastState, toastDispatch } = useToast();
   const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
@@ -405,70 +471,6 @@ function Playlist() {
   const deletePlaylist = (item) => {
     deletePlaylistApi(item._id, playlistVideoDispatch, setToast, toastDispatch);
   };
-
-  const PlaylistCard = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-    "&:hover": {
-      "& .deleteButton": {
-        opacity: 1,
-      },
-    },
-  }));
-
-  const ThumbnailContainer = styled("div")({
-    position: "relative",
-    paddingTop: "56.25%", // 16:9 aspect ratio
-  });
-
-  const Thumbnail = styled("img")({
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  });
-
-  const VideoCount = styled(Typography)(({ theme }) => ({
-    position: "absolute",
-    bottom: theme.spacing(1),
-    right: theme.spacing(1),
-    padding: theme.spacing(0.5, 1),
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    color: theme.palette.common.white,
-    borderRadius: theme.shape.borderRadius,
-  }));
-
-  const InfoContainer = styled("div")(({ theme }) => ({
-    padding: theme.spacing(2),
-  }));
-
-  const Title = styled(Typography)({
-    fontWeight: "bold",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-  });
-
-  const Creator = styled(Typography)({
-    color: "text.secondary",
-  });
-
-  const DeleteButton = styled(IconButton)(({ theme }) => ({
-    position: "absolute",
-    top: theme.spacing(1),
-    right: theme.spacing(1),
-    color: theme.palette.common.white,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    opacity: 0,
-    transition: "opacity 0.2s",
-    "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.7)",
-    },
-  }));
 
   return (
     <>
@@ -538,7 +540,7 @@ function Playlist() {
 
             <Grid container spacing={2}>
               {/* allPlaylistFromApi */}
-              {allPlaylistFromApi.map((playlist, index) => (
+              {testData.map((playlist, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                   <PlaylistCard>
                     <Link
@@ -557,9 +559,6 @@ function Playlist() {
                       </ThumbnailContainer>
                       <InfoContainer>
                         <Title variant="subtitle1">{playlist.title}</Title>
-                        <Creator variant="body2">
-                          {playlist.videos[0].creator}
-                        </Creator>
                       </InfoContainer>
                     </Link>
                     <DeleteButton
