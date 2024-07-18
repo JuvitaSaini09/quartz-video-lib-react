@@ -123,8 +123,9 @@ const PlayButtonOverlay = styled(Box)({
 
 const PageContainer = styled("section")({
   display: "flex",
-  border: "2px solid green",
-  backgroundColor: "var(--background-black)",
+  backgroundColor: "rgb(36, 36, 40)",
+  minHeight: "100vh",
+  paddingTop: "4rem",
 });
 
 const Col2 = styled("div")({
@@ -150,14 +151,26 @@ function VideosInPlaylistPage() {
         <Sidebar />
         <Col2>
           {videosInPlaylist[0] === undefined || videosInPlaylist === null ? (
-            <EmptyPage text="Empty Playlist" />
+            <Typography
+              variant="h4"
+              color="white"
+              sx={{
+                fontFamily: "Poppins, sans-serif",
+                margin: "auto",
+                marginTop: "10rem",
+
+                textAlign: "center",
+              }}
+            >
+              Empty Playlist
+            </Typography>
           ) : (
             <PlaylistHeading>Videos</PlaylistHeading>
           )}
           <Grid
             container
             spacing={3}
-            sx={{ marginTop: "20px", width: "100%", margin: "auto" }}
+            sx={{ marginTop: "20px", width: "100%" }}
             justifyContent="center"
           >
             {videosInPlaylist.map((item) => (

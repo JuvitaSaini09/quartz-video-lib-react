@@ -74,7 +74,6 @@ function VideoListing() {
         marginTop: "20px",
         width: "100%",
         margin: "auto",
-        border: "2px solid red",
       }}
       justifyContent="center"
     >
