@@ -70,7 +70,12 @@ function VideoListing() {
     <Grid
       container
       spacing={3}
-      sx={{ marginTop: "20px", width: "100%", margin: "auto" ,}}
+      sx={{
+        marginTop: "20px",
+        width: "100%",
+        margin: "auto",
+        border: "2px solid red",
+      }}
       justifyContent="center"
     >
       {videos.map((item) => (
