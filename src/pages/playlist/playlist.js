@@ -561,10 +561,18 @@ function Playlist() {
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       <ThumbnailContainer>
-                        <Thumbnail
+                        {playlist.videos.length > 0 ? (
+                          <Thumbnail
+                            src={playlist.videos[0].thumbnailUrl}
+                            alt={playlist.title}
+                          />
+                        ) : (
+                          <Thumbnail src={playlistHero} alt={playlist.title} />
+                        )}
+                        {/* <Thumbnail
                           src={playlist.videos[0].thumbnailUrl}
                           alt={playlist.title}
-                        />
+                        /> */}
                         <VideoCount variant="caption">
                           {playlist.videos.length} videos
                         </VideoCount>
