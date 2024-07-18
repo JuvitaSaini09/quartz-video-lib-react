@@ -362,7 +362,17 @@ const PlaylistCard = styled("div")(({ theme }) => ({
   borderRadius: `${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
   overflow: "hidden",
   backgroundColor: theme.palette.background.paper,
+  "& .deleteButton": {
+    opacity: 1,
+  },
+
   "&:hover": {
+    "& img": {
+      filter: "blur(1.5px)",
+    },
+    "& > div": {
+      opacity: 1,
+    },
     "& .deleteButton": {
       opacity: 1,
     },
@@ -443,6 +453,8 @@ function Playlist() {
     setPlaylistTitle(event.target.value);
     setPlaylistNameValue(event.target.value);
   };
+
+  console.log(allPlaylistFromApi);
 
   const createNewPlaylistHandler = (video, playlistTitle) => {
     if (playlistTitle) {
@@ -540,7 +552,7 @@ function Playlist() {
 
             <Grid container spacing={2}>
               {/* allPlaylistFromApi */}
-              {testData.map((playlist, index) => (
+              {allPlaylistFromApi.map((playlist, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                   <PlaylistCard>
                     <Link
