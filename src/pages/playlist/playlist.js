@@ -280,7 +280,7 @@ const PlayButtonOverlay = styled(Box)({
 
 const testData = [
   {
-    title: "new",
+    title: "Title of Playlist",
     videos: [
       {
         categoryName: "Adventure",
@@ -406,6 +406,70 @@ function Playlist() {
     deletePlaylistApi(item._id, playlistVideoDispatch, setToast, toastDispatch);
   };
 
+  const PlaylistCard = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+    "&:hover": {
+      "& .deleteButton": {
+        opacity: 1,
+      },
+    },
+  }));
+
+  const ThumbnailContainer = styled("div")({
+    position: "relative",
+    paddingTop: "56.25%", // 16:9 aspect ratio
+  });
+
+  const Thumbnail = styled("img")({
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  });
+
+  const VideoCount = styled(Typography)(({ theme }) => ({
+    position: "absolute",
+    bottom: theme.spacing(1),
+    right: theme.spacing(1),
+    padding: theme.spacing(0.5, 1),
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    color: theme.palette.common.white,
+    borderRadius: theme.shape.borderRadius,
+  }));
+
+  const InfoContainer = styled("div")(({ theme }) => ({
+    padding: theme.spacing(2),
+  }));
+
+  const Title = styled(Typography)({
+    fontWeight: "bold",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  });
+
+  const Creator = styled(Typography)({
+    color: "text.secondary",
+  });
+
+  const DeleteButton = styled(IconButton)(({ theme }) => ({
+    position: "absolute",
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    color: theme.palette.common.white,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    opacity: 0,
+    transition: "opacity 0.2s",
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+    },
+  }));
+
   return (
     <>
       <Box
@@ -474,61 +538,43 @@ function Playlist() {
 
             <Grid container spacing={2}>
               {/* allPlaylistFromApi */}
-              {testData.map((item) => {
-                console.log("item", allPlaylistFromApi);
-                return (
-                  <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-                    <HoverCard>
-                      <Link
-                        to="/videosInPlaylistPage"
-                        onClick={() => setVideosInPlaylist(item.videos)}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <CardMedia
-                          sx={{ border: "1px solid red", height: "440px" }}
-                          component="img"
-                          height="140"
-                          image={item.videos[0].thumbnailUrl}
-                          alt={item.title}
+              {allPlaylistFromApi.map((playlist, index) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                  <PlaylistCard>
+                    <Link
+                      to="/videosInPlaylistPage"
+                      onClick={() => setVideosInPlaylist(playlist.videos)}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <ThumbnailContainer>
+                        <Thumbnail
+                          src={playlist.videos[0].thumbnailUrl}
+                          alt={playlist.title}
                         />
-                        {/* <PlayButtonOverlay sx={{border:"2px solid green"}}>
-                          <IconButton>
-                            <PlayArrowRoundedIcon
-                              sx={{ fontSize: 60, color: "white" }}
-                            />
-                          </IconButton>
-                        </PlayButtonOverlay> */}
-                        <CardContent
-                          sx={{
-                            border: "2px solid blue",
-                            backgroundColor: "var(--background-color)",
-                          }}
-                        >
-                          <CardTitle variant="h6">{item.title}</CardTitle>
-                          <CardSubTitle variant="body2">
-                            {item.videos.length} videos
-                          </CardSubTitle>
-                        </CardContent>
-                      </Link>
-                      <IconButton
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          deletePlaylist(item);
-                        }}
-                        sx={{
-                          position: "absolute",
-                          top: "1rem",
-                          right: "1rem",
-                          color: "white",
-                        }}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </HoverCard>
-                  </Grid>
-                );
-              })}
+                        <VideoCount variant="caption">
+                          {playlist.videos.length} videos
+                        </VideoCount>
+                      </ThumbnailContainer>
+                      <InfoContainer>
+                        <Title variant="subtitle1">{playlist.title}</Title>
+                        <Creator variant="body2">
+                          {playlist.videos[0].creator}
+                        </Creator>
+                      </InfoContainer>
+                    </Link>
+                    <DeleteButton
+                      className="deleteButton"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        deletePlaylist(playlist);
+                      }}
+                    >
+                      <DeleteIcon />
+                    </DeleteButton>
+                  </PlaylistCard>
+                </Grid>
+              ))}
             </Grid>
           </Box>
         </Box>
