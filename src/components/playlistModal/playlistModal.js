@@ -208,7 +208,6 @@
 
 // export { PlaylistModal };
 
-
 import React, { useState } from "react";
 import { usePlaylistVideoContext } from "../../context/playlist/playlistContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
@@ -285,107 +284,107 @@ const CreatePlaylistButton = styled(Button)(({ theme }) => ({
 }));
 
 function PlaylistModal() {
-const {
-  videosInPlaylist,
-  setwatchLaterCheckbox,
-  setWatchLaterCheckboxDisptach,
-} = useWatchLaterCheckbox();
-const { setToast, toastState, toastDispatch } = useToast();
-const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
-const { setTrackVideoAddedRemoved } = usePlaylistVideoContext();
-const [isCreatePlaylistClicked, setIsCreatePlaylistClicked] = useState(false);
-const {  setdisplay, singleVideo } = useSingleVideo();
-const {
-  playlistTitle,
-  setPlaylistTitle,
-  playlistVideoDispatch,
-  allPlaylistFromApi,
-} = usePlaylistVideoContext();
+  const {
+    videosInPlaylist,
+    setwatchLaterCheckbox,
+    setWatchLaterCheckboxDisptach,
+  } = useWatchLaterCheckbox();
+  const { setToast, toastState, toastDispatch } = useToast();
+  const { playlistNameValue, setPlaylistNameValue } = usePlaylistVideoContext();
+  const { setTrackVideoAddedRemoved } = usePlaylistVideoContext();
+  const [isCreatePlaylistClicked, setIsCreatePlaylistClicked] = useState(false);
+  const { display, setdisplay, singleVideo } = useSingleVideo();
+  const {
+    playlistTitle,
+    setPlaylistTitle,
+    playlistVideoDispatch,
+    allPlaylistFromApi,
+  } = usePlaylistVideoContext();
 
-const display=true
-const hideDialog = () => {
-  setdisplay(false);
-  setIsCreatePlaylistClicked(false);
-};
+  // const display=true
+  const hideDialog = () => {
+    setdisplay(false);
+    setIsCreatePlaylistClicked(false);
+  };
 
-//create new playlist handler
-const createNewPlaylistHandler = (video, playlistTitle) => {
-  if (playlistTitle) {
-    const isPlaylistNameAlreadyUsed = allPlaylistFromApi.filter(
-      (e) => playlistTitle === e.title
-    );
-    if (isPlaylistNameAlreadyUsed[0] === undefined)
-      createPlaylistApi(
-        video,
-        playlistTitle,
-        playlistVideoDispatch,
+  //create new playlist handler
+  const createNewPlaylistHandler = (video, playlistTitle) => {
+    if (playlistTitle) {
+      const isPlaylistNameAlreadyUsed = allPlaylistFromApi.filter(
+        (e) => playlistTitle === e.title
+      );
+      if (isPlaylistNameAlreadyUsed[0] === undefined)
+        createPlaylistApi(
+          video,
+          playlistTitle,
+          playlistVideoDispatch,
+          setToast,
+          toastDispatch
+        );
+      else {
+        //code to show toast here --->
+        toastDispatch({ type: "PLAYLIST_ALREADY_EXIST" });
+        setToast(true);
+      }
+    } else {
+      //code to show toast here --->
+      toastDispatch({ type: "ENTER_PLAYLIST_NAME" });
+      setToast(true);
+    }
+    setPlaylistNameValue("");
+    setPlaylistTitle("");
+  };
+
+  const playlistTitleHandler = (event) => {
+    setPlaylistTitle(event.target.value);
+    setPlaylistNameValue(event.target.value);
+  };
+
+  const addRemoveVideoFromPlaylist = (isVideoInPlaylist, currentPlaylist) => {
+    if (isVideoInPlaylist[0] === undefined) {
+      //call a function which will add singleVideo to the playlist
+      addVideoToPlaylistApi(
+        singleVideo,
+        currentPlaylist._id,
         setToast,
         toastDispatch
       );
-    else {
-      //code to show toast here --->
-      toastDispatch({ type: "PLAYLIST_ALREADY_EXIST" });
-      setToast(true);
+    } else {
+      // call a fucntion to delete a video ="singleVideo" Object from the" playlist" array of objects
+      deleteVideoFromPlaylistApi(
+        singleVideo,
+        currentPlaylist._id,
+        singleVideo._id,
+        setToast,
+        toastDispatch
+      );
     }
-  } else {
-    //code to show toast here --->
-    toastDispatch({ type: "ENTER_PLAYLIST_NAME" });
-    setToast(true);
-  }
-  setPlaylistNameValue("");
-  setPlaylistTitle("");
-};
+    setTrackVideoAddedRemoved((prev) => !prev);
+  };
 
-const playlistTitleHandler = (event) => {
-  setPlaylistTitle(event.target.value);
-  setPlaylistNameValue(event.target.value);
-};
+  //check whether video is in watchLater
+  const isVideoInWatchLater = videosInPlaylist.filter(
+    (element) => element._id === singleVideo._id
+  );
 
-const addRemoveVideoFromPlaylist = (isVideoInPlaylist, currentPlaylist) => {
-  if (isVideoInPlaylist[0] === undefined) {
-    //call a function which will add singleVideo to the playlist
-    addVideoToPlaylistApi(
-      singleVideo,
-      currentPlaylist._id,
-      setToast,
-      toastDispatch
-    );
-  } else {
-    // call a fucntion to delete a video ="singleVideo" Object from the" playlist" array of objects
-    deleteVideoFromPlaylistApi(
-      singleVideo,
-      currentPlaylist._id,
-      singleVideo._id,
-      setToast,
-      toastDispatch
-    );
-  }
-  setTrackVideoAddedRemoved((prev) => !prev);
-};
-
-//check whether video is in watchLater
-const isVideoInWatchLater = videosInPlaylist.filter(
-  (element) => element._id === singleVideo._id
-);
-
-const watchLaterHandler = () => {
-  if (isVideoInWatchLater[0] === undefined) {
-    addToWatchLater(
-      singleVideo,
-      setWatchLaterCheckboxDisptach,
-      toastDispatch,
-      setToast
-    );
-  } else {
-    removeFromWatchLater(
-      singleVideo,
-      setWatchLaterCheckboxDisptach,
-      toastDispatch,
-      setToast
-    );
-  }
-  setwatchLaterCheckbox((prev) => !prev);
-};
+  const watchLaterHandler = () => {
+    if (isVideoInWatchLater[0] === undefined) {
+      addToWatchLater(
+        singleVideo,
+        setWatchLaterCheckboxDisptach,
+        toastDispatch,
+        setToast
+      );
+    } else {
+      removeFromWatchLater(
+        singleVideo,
+        setWatchLaterCheckboxDisptach,
+        toastDispatch,
+        setToast
+      );
+    }
+    setwatchLaterCheckbox((prev) => !prev);
+  };
 
   return (
     <>
