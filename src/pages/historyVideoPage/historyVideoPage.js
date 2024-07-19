@@ -165,6 +165,13 @@ const Title = styled(Typography)({
 
 const Category = styled(Typography)({
   color: "text.secondary",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  backgroundColor: "var(--background-color)",
+  textAlign: "start",
 });
 
 const DeleteButton = styled(IconButton)(({ theme }) => ({
