@@ -98,7 +98,8 @@ const HoverCard = styled(Card)({
   position: "relative",
   backgroundColor: "var(--background-black)",
   borderRadius: "0px",
-
+  border: "none",
+  boxShadow: "none", // Ensure no shadow
   "&:hover": {
     "& img": {
       filter: "blur(1.5px)",
@@ -170,7 +171,7 @@ function LikedVideoPage() {
             justifyContent="center"
           >
             {likedVideoState.map((item) => (
-              <Grid item xs={6} sm={4} md={3} lg={3} key={item._id}>
+              <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
                 <HoverCard>
                   <NavLink onClick={() => setSingleVideo(item)} to="/video">
                     <CardMedia
