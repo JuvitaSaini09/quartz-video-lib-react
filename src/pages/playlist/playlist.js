@@ -569,7 +569,7 @@ function Playlist() {
                         ) : (
                           <Thumbnail src={playlistHero} alt={playlist.title} />
                         )}
-
+                       
                         <VideoCount variant="caption">
                           {playlist.videos.length} videos
                         </VideoCount>
