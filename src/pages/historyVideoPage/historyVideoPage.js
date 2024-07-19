@@ -98,7 +98,6 @@
 
 // export { HistoryVideoPage };
 
-
 import React from "react";
 import { useHistoryVideoContext } from "../../context/historyVideoContext/historyVideoContext";
 import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
@@ -151,9 +150,7 @@ const Thumbnail = styled("img")({
   objectFit: "cover",
 });
 
-const InfoContainer = styled("div")(({ theme }) => ({
-  padding: theme.spacing(1),
-}));
+const InfoContainer = styled("div")(({ theme }) => ({}));
 
 const Title = styled(Typography)({
   fontWeight: "bold",
@@ -162,6 +159,8 @@ const Title = styled(Typography)({
   whiteSpace: "nowrap",
   color: "white",
   fontFamily: "Poppins, sans-serif",
+  backgroundColor: "var(--background-color)",
+  textAlign: "start",
 });
 
 const Category = styled(Typography)({
