@@ -569,10 +569,7 @@ function Playlist() {
                         ) : (
                           <Thumbnail src={playlistHero} alt={playlist.title} />
                         )}
-                        {/* <Thumbnail
-                          src={playlist.videos[0].thumbnailUrl}
-                          alt={playlist.title}
-                        /> */}
+
                         <VideoCount variant="caption">
                           {playlist.videos.length} videos
                         </VideoCount>

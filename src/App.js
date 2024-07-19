@@ -31,6 +31,10 @@ function App() {
           element={<VideosInPlaylistPage />}
         />
 
+        <Route path="/likedVideo" element={<LikedVideoPage />} />
+        <Route path="/historyVideo" element={<HistoryVideoPage />} />
+        <Route path="/watchlater" element={<WatchLater />} />
+
         <Route element={<AuthRoute />}>
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/signupPage" element={<SingupPage />} />
@@ -38,14 +42,14 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="/likedVideo" element={<LikedVideoPage />} />
-          <Route path="/historyVideo" element={<HistoryVideoPage />} />
+          {/* <Route path="/likedVideo" element={<LikedVideoPage />} />
+          <Route path="/historyVideo" element={<HistoryVideoPage />} /> */}
           {/* <Route path="/playlist" element={<Playlist />} /> */}
           {/* <Route
             path="/videosInPlaylistPage"
             element={<VideosInPlaylistPage />}
           /> */}
-          <Route path="/watchlater" element={<WatchLater />} />
+          {/* <Route path="/watchlater" element={<WatchLater />} /> */}
         </Route>
       </Routes>
     </div>
