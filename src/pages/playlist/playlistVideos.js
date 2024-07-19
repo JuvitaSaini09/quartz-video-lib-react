@@ -101,7 +101,8 @@ const HoverCard = styled(Card)({
   position: "relative",
   backgroundColor: "var(--background-black)",
   borderRadius: "0px",
-
+  border: "none",
+  boxShadow: "none", // Ensure no shadow
   "&:hover": {
     "& img": {
       filter: "blur(1.5px)",
