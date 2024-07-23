@@ -4,6 +4,7 @@ import { animeHeroes, animeWorldLogo } from "../../images/allImages";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import PlayCircleFilledWhiteRoundedIcon from "@mui/icons-material/PlayCircleFilledWhiteRounded";
 import { useNavigate } from "react-router-dom";
+import { heroLandingPage } from "../../images/allImages";
 
 const LandingPageContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "var(--background-color)",
@@ -171,7 +172,7 @@ const LandingPage = () => {
               justifyContent="center"
             >
               <AnimeHeroesContainer>
-                <AnimeHeroesImg src="https://aniwatchtv.to/images/anw-min.webp"></AnimeHeroesImg>
+                <AnimeHeroesImg src={heroLandingPage}></AnimeHeroesImg>
               </AnimeHeroesContainer>
             </CustomGrid2>
           </Grid>

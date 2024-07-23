@@ -24,6 +24,7 @@ import tmakoLoveStroy from "./tmakoLoveStroy.jpg";
 import Twilight from "./Twilight.jpg";
 import valleyOfLanterns from "./valleyOfLanterns.jpg";
 import yourName from "./yourName.jpg";
+import heroLandingPage from "./heroLandingPage.webp";
 
 export {
   addToList,
@@ -52,4 +53,5 @@ export {
   tmakoLoveStroy,
   aWhiskerWay,
   Twilight,
+  heroLandingPage,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import {
@@ -121,13 +121,16 @@ const Navbar = () => {
               <MenuIcon sx={{ color: "white", fontSize: "30px" }} />
             </IconButton>
           </Stack>
-          <Stack direction="row" alignItems="center">
-            <Logo src={animeWorldLogo} alt="logo" />
-            <Stack textAlign="start">
-              <LogoText>ani</LogoText>
-              <LogoSubText>World</LogoSubText>
+
+          <Link to="/">
+            <Stack direction="row" alignItems="center">
+              <Logo src={animeWorldLogo} alt="logo" />
+              <Stack textAlign="start">
+                <LogoText>ani</LogoText>
+                <LogoSubText>World</LogoSubText>
+              </Stack>
             </Stack>
-          </Stack>
+          </Link>
         </Stack>
 
         <Stack direction="row" alignItems="center">
