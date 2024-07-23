@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Stack, Typography, styled, Button } from "@mui/material";
-import { animeHeroes, animeWorldLogo } from "../../images/allImages";
+import { animeWorldLogo } from "../../images/allImages";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import PlayCircleFilledWhiteRoundedIcon from "@mui/icons-material/PlayCircleFilledWhiteRounded";
 import { useNavigate } from "react-router-dom";
@@ -31,8 +31,7 @@ const CustomGrid2 = styled(Grid)({});
 const AnimeHeroesContainer = styled(Box)(({ theme }) => ({
   width: "600px",
   height: "473.2px",
-  // backgroundImage:
-  //   "radial-gradient(circle 180px at center, rgba(255, 192, 203, 0.5), transparent), radial-gradient(circle 180px at center, rgba(255, 255, 255, 0.5), transparent)",
+
   [theme.breakpoints.down("1073px")]: {
     width: "400px",
     height: "auto",

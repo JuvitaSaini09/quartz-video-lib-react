@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Navbar,
   PlaylistModal,
-  Sidebar,
   SingleVideo,
   VideoRec,
 } from "../../components/allComponents";
@@ -35,9 +34,6 @@ function Video() {
 
   const VideoContainer = styled("div")(({ theme }) => ({
     marginTop: "1.5rem",
-    // display: "flex",
-    // justifyContent: "space-evenly",
-    // flexWrap: "wrap",
   }));
 
   const CustomVideoHeading = styled(Typography)({
@@ -51,7 +47,6 @@ function Video() {
       <StyledBox display={display}>
         <Navbar />
         <MainPageVideo sx={{ padding: "0 20px" }}>
-          {/* <Sidebar /> */}
           <Stack direction="row" spacing={1} sx={{ marginLeft: "10px" }}>
             <CustomVideoHeading>
               Video{" "}

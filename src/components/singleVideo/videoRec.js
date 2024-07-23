@@ -27,7 +27,6 @@ const CardTitle = styled(Typography)({
 const CardSubTitle = styled(Typography)({
   color: "white",
   fontFamily: "Poppins, sans-serif",
-  // fontSize: "26px",
   fontWeight: 300,
 });
 

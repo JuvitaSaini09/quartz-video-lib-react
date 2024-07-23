@@ -25,7 +25,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/video" element={<Video />} />
 
-        <Route path="/playlist" element={<Playlist />} />
+        {/* remove */}
+        {/* <Route path="/playlist" element={<Playlist />} />
         <Route
           path="/videosInPlaylistPage"
           element={<VideosInPlaylistPage />}
@@ -33,7 +34,7 @@ function App() {
 
         <Route path="/likedVideo" element={<LikedVideoPage />} />
         <Route path="/historyVideo" element={<HistoryVideoPage />} />
-        <Route path="/watchlater" element={<WatchLater />} />
+        <Route path="/watchlater" element={<WatchLater />} /> */}
 
         <Route element={<AuthRoute />}>
           <Route path="/loginPage" element={<LoginPage />} />
@@ -42,14 +43,14 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          {/* <Route path="/likedVideo" element={<LikedVideoPage />} />
-          <Route path="/historyVideo" element={<HistoryVideoPage />} /> */}
-          {/* <Route path="/playlist" element={<Playlist />} /> */}
-          {/* <Route
+          <Route path="/likedVideo" element={<LikedVideoPage />} />
+          <Route path="/historyVideo" element={<HistoryVideoPage />} />
+          <Route path="/playlist" element={<Playlist />} />
+          <Route
             path="/videosInPlaylistPage"
             element={<VideosInPlaylistPage />}
-          /> */}
-          {/* <Route path="/watchlater" element={<WatchLater />} /> */}
+          />
+          <Route path="/watchlater" element={<WatchLater />} />
         </Route>
       </Routes>
     </div>

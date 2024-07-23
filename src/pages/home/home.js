@@ -3,7 +3,6 @@ import React from "react";
 import {
   CategoryButtons,
   Navbar,
-  Sidebar,
   VideoListing,
 } from "../../components/allComponents";
 import "./home.css";
@@ -48,7 +47,6 @@ function Home() {
         sx={{
           minHeight: "100vh",
           backgroundColor: "var(--background-color)",
-          // padding: "100px 30px 0 30px",
           padding: {
             xs: "100px 10px 0 0px", // under 'sm' screen
             sm: "100px 30px 0 30px", // over 'sm' screen
