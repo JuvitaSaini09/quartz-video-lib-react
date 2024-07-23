@@ -7,13 +7,15 @@ const ApiProvider = ({ children }) => {
   const [apiVideos, setAllVideos] = useState([]);
   const [category, setCategory] = useState("All");
 
-  const iceCreamVideos = apiVideos.filter(
-    (object) => object.categoryName === "Ice Cream"
+  const sciFiVideos = apiVideos.filter(
+    (object) => object.categoryName === "Sci-Fi"
   );
-  const cakeVideos = apiVideos.filter((video) => video.categoryName === "Cake");
+  const adventureVideos = apiVideos.filter(
+    (video) => video.categoryName === "Adventure"
+  );
 
-  const sweetDishVideos = apiVideos.filter(
-    (object) => object.categoryName === "Sweet Dish"
+  const dramaVideos = apiVideos.filter(
+    (object) => object.categoryName === "Drama"
   );
 
   useEffect(() => {
@@ -35,9 +37,9 @@ const ApiProvider = ({ children }) => {
         setAllVideos,
         category,
         setCategory,
-        cakeVideos,
-        sweetDishVideos,
-        iceCreamVideos,
+        adventureVideos,
+        sciFiVideos,
+        dramaVideos,
       }}
     >
       {children}

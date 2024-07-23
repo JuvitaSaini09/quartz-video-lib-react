@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext/AuthContext";
 import { useToast } from "../../context/toastContext/toastContext";
@@ -16,18 +16,17 @@ import { styled } from "@mui/material/styles";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-const SignupContainer = styled(Container)(({ theme }) => ({
+const LoginContainer = styled(Container)(({ theme }) => ({
   width: "100%",
   maxWidth: "40rem",
-  padding: "1rem", // Added padding for inner spacing
-  margin: "0 auto 2rem auto",
+  padding: "8px",
+  margin: "0rem auto 4rem auto",
   border: `2px solid ${theme.palette.grey[800]}`,
   backgroundColor: "#1c1c1c",
   borderRadius: "8px",
 
- 
   [theme.breakpoints.down("md")]: {
-    maxWidth: "24rem",
+    maxWidth: "30rem",
   },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "25rem",
@@ -38,7 +37,7 @@ const SignupContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-const SignupTitle = styled(Typography)(({ theme }) => ({
+const LoginTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   color: "var(--light-yellow)",
   fontFamily: "Poppins, sans-serif",
@@ -47,7 +46,7 @@ const SignupTitle = styled(Typography)(({ theme }) => ({
 const InputContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   margin: "auto",
-  padding: "0.25rem 0",
+  padding: "1rem 0",
   border: "none",
   borderRadius: "4px",
 }));
@@ -58,10 +57,12 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
   "& .MuiInputLabel-root": {
     color: "white",
+    
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       borderColor: "rgba(255, 255, 255, 0.2)",
+
     },
     "&:hover fieldset": {
       borderColor: "rgba(255, 255, 255, 0.5)",
@@ -72,8 +73,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-const SignupButton = styled(Button)(({ theme }) => ({
-  height: "2.5rem",
+const LoginButton = styled(Button)(({ theme }) => ({
+  height: "3rem",
   width: "100%",
   border: "none",
   borderRadius: "2px",
@@ -87,25 +88,46 @@ const SignupButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-function Signup() {
-  const { toastState, toastDispatch, setToast } = useToast();
-  const { signUp } = useAuth();
-  const [newUser, setNewUser] = useState({
-    email: "",
-    fname: "",
-    lname: "",
-    password: "",
-  });
-  const [showPassword, setShowPassword] = useState(false);
+const TestButton = styled(Button)(({ theme }) => ({
+  fontFamily: "Poppins, sans-serif",
+  color: "white",
+  backgroundColor: theme.palette.grey[800],
+  height: "3rem",
+  width: "100%",
+  border: "none",
+  borderRadius: "2px",
+  marginBottom: "1rem",
+  "&:hover": {
+    backgroundColor: theme.palette.grey[700],
+  },
+}));
 
-  const signUpBtnClick = (e) => {
-    if (newUser.email && newUser.fname && newUser.lname && newUser.password) {
-      signUp(e, newUser);
+function Login() {
+  const { toastState, toastDispatch, setToast } = useToast();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const { login, accNotFound } = useAuth();
+  const [LoginClick, setLoginClick] = useState(null);
+
+  const loginBtn = (e) => {
+    setLoginClick(e);
+    if (email && password) {
+      login(e, email, password);
+      setEmail("");
+      setPassword("");
     } else {
       toastDispatch({ type: "INPUT_ALL_VALUES" });
       setToast(true);
     }
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token") && LoginClick !== null) {
+      toastDispatch({ type: "LOGIN_ACC_NOT_Found" });
+      setToast(true);
+    }
+  }, [accNotFound]);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -118,15 +140,15 @@ function Signup() {
   return (
     <Box
       sx={{
-        paddingTop: "100px",
+        paddingTop: "110px",
         backgroundColor: "#121212",
         minHeight: "100vh",
       }}
     >
-      <SignupContainer maxWidth="sm">
-        <SignupTitle variant="h5" gutterBottom>
-          Create an Account{" "}
-        </SignupTitle>
+      <LoginContainer maxWidth="sm">
+        <LoginTitle variant="h4" gutterBottom>
+          Welcome back!
+        </LoginTitle>
         <Box component="form" noValidate autoComplete="off">
           <InputContainer>
             <StyledTextField
@@ -135,39 +157,16 @@ function Signup() {
               label="E-mail"
               type="email"
               variant="outlined"
-              value={newUser.email}
-              onChange={(e) =>
-                setNewUser({ ...newUser, email: e.target.value })
-              }
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               InputProps={{
-                endAdornment: <i className="fas fa-envelope" />,
+                endAdornment: (
+                  <i
+                    className="fas fa-envelope"
+                    style={{ color: "rgba(255, 255, 255, 0.7)" }}
+                  />
+                ),
               }}
-            />
-          </InputContainer>
-          <InputContainer>
-            <StyledTextField
-              fullWidth
-              margin="normal"
-              label="First Name"
-              type="text"
-              variant="outlined"
-              value={newUser.fname}
-              onChange={(e) =>
-                setNewUser({ ...newUser, fname: e.target.value })
-              }
-            />
-          </InputContainer>
-          <InputContainer>
-            <StyledTextField
-              fullWidth
-              margin="normal"
-              label="Last Name"
-              type="text"
-              variant="outlined"
-              value={newUser.lname}
-              onChange={(e) =>
-                setNewUser({ ...newUser, lname: e.target.value })
-              }
             />
           </InputContainer>
           <InputContainer>
@@ -177,10 +176,8 @@ function Signup() {
               label="Password"
               type={showPassword ? "text" : "password"}
               variant="outlined"
-              value={newUser.password}
-              onChange={(e) =>
-                setNewUser({ ...newUser, password: e.target.value })
-              }
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -199,32 +196,38 @@ function Signup() {
             />
           </InputContainer>
           <Box textAlign="center" mt={2}>
-            <SignupButton
+            <LoginButton variant="contained" onClick={(e) => loginBtn(e)}>
+              Login
+            </LoginButton>
+            <TestButton
               variant="contained"
-              onClick={(e) => signUpBtnClick(e)}
+              onClick={() => {
+                setEmail("adarshbalika@gmail.com");
+                setPassword("adarshBalika123");
+              }}
             >
-              Sign Up
-            </SignupButton>
+              Test credentials
+            </TestButton>
             <Typography
               sx={{ fontFamily: "Poppins, sans-serif", color: "white" }}
             >
-              Already have an account?{" "}
+              Create Account{" "}
               <NavLink
-                to="/loginPage"
+                to="/signupPage"
                 style={{
                   color: "var(--light-yellow)",
                   fontFamily: "Poppins, sans-serif",
                 }}
               >
-                Log In
+                Sign up
               </NavLink>
             </Typography>
           </Box>
         </Box>
         <Toast text={toastState} />
-      </SignupContainer>
+      </LoginContainer>
     </Box>
   );
 }
 
-export { Signup };
+export { Login };

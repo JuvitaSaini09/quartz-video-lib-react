@@ -1,23 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-:root{
-  --white:white;
-  --black :black ;
-  --black-light :rgb(37, 37, 37) ;
-  --grey-light:rgb(204, 195, 195) ;
-  --grey:grey ;
-  --white:white ;
-  --pink-dark:#a30b22 ;
-  --pink-primary1:#EC0023 ;
-  --pink-primary2:#c6142f ;
-  --pink-primary3:#f34d66 ;
-  --pink-sec1:#CC3E53 ;
-  --pink-sec2:#D55C70;
-  --pink-sec3:#DB7084;
-  --pink:#E18397;
-  --pink2:#EDADBE;
-  --pink-light1:#f5bbce;
-  --pink-light2:#F9D5E5;
+:root {
+  --white: white;
+  --black: black;
+  --black-light: rgb(37, 37, 37);
+  --grey-light: rgb(204, 195, 195);
+  --grey: grey;
+  --white: white;
+  --pink-dark: #a30b22;
+  --pink-primary1: #ec0023;
+  --pink-primary2: #c6142f;
+  --pink-primary3: #f34d66;
+  --pink-sec1: #cc3e53;
+  --pink-sec2: #d55c70;
+  --pink-sec3: #db7084;
+  --pink: #e18397;
+  --pink2: #edadbe;
+  --pink-light1: #f5bbce;
+  --pink-light2: #f9d5e5;
 
+  /* new colors - */
+  --background-color0: rgb(40, 40, 43);
+  --background-color: rgb(36, 36, 40);
+  --background-color2:rgb(25, 25, 26);
+  --light-yellow: #ffdd95;
+  --light-yellow2: #e0ae44;
 }
 * {
   margin: 0;
@@ -25,41 +32,45 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Roboto Condensed', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
-a{
+a {
   text-decoration: none;
 }
-li{
+li {
   list-style: none;
 }
 
-.flex-row{
-  display:flex;
+.flex-row {
+  display: flex;
 }
 
-.flex-column{
-  display:flex;
-  flex-direction:column;
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
-.mt-1{
-  margin-top:1rem;
+.mt-1 {
+  margin-top: 1rem;
 }
 
-.mt-2{
-  margin-top:2rem;
+.mt-2 {
+  margin-top: 2rem;
 }
-.mt-3{
-  margin-top:3rem;
+.mt-3 {
+  margin-top: 3rem;
 }
-.mt-4{
-  margin-top:4rem;
+.mt-4 {
+  margin-top: 4rem;
 }
-.mt-5{
-  margin-top:5rem;
+.mt-5 {
+  margin-top: 5rem;
 }
-.mt-6{
-  margin-top:6rem;
+.mt-6 {
+  margin-top: 6rem;
 }

@@ -1,47 +1,133 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useApi } from "../../context/apiContext/api";
-import { useSingleVideo } from '../../context/singleVideoContext/singleVideoContext'
+import { useSingleVideo } from "../../context/singleVideoContext/singleVideoContext";
+import {
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  IconButton,
+  Stack,
+  styled,
+  Box,
+} from "@mui/material";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+
+const CardTitle = styled(Typography)({
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 600,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+});
+
+const CardSubTitle = styled(Typography)({
+  color: "white",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 300,
+});
+
+const HoverCard = styled(Card)({
+  position: "relative",
+
+  "&:hover": {
+    "& img": {
+      filter: "blur(1.5px)", // Apply blur effect on image hover
+    },
+    "& > div": {
+      opacity: 1, // Show the play button icon on image hover
+    },
+  },
+});
+
+const PlayButtonOverlay = styled(Box)({
+  position: "absolute",
+  top: "40%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  opacity: 0,
+  transition: "opacity 0.3s ease",
+});
 
 function VideoRec() {
   const { apiVideos } = useApi();
-  const {singleVideo,setSingleVideo}=useSingleVideo();
-  const recommededVideos=apiVideos.filter(item=>item.categoryName===singleVideo.categoryName)
+  const { singleVideo, setSingleVideo } = useSingleVideo();
+  const recommededVideos = apiVideos.filter(
+    (item) => item.categoryName === singleVideo.categoryName
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="video-recommendation">
-      {recommededVideos.map((item) => {
-        return (
-          
-            <div className="video-card" key={item.id}>
-            <NavLink onClick={() => setSingleVideo(item)} to="/video">
-              <img
-                className="img-thumbnail"
-                src={item.thumbnailUrl}
-                alt={item.title}
-              />
-              <h1 className="play">
-                <i className="fas fa-play"></i>play
-              </h1>
+    <>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          marginTop: "20px",
+          width: "100%",
+          margin: "auto",
+        }}
+        justifyContent="center"
+      >
+        {" "}
+        {recommededVideos.map((item) => (
+          <Grid item xs={6} sm={4} md={3} lg={3} key={item.id}>
+            <HoverCard
+              sx={{
+                width: "100%",
+                height: "100%",
+
+                backgroundColor: "var(--background-black)",
+                borderRadius: "0px",
+              }}
+              elevation={0}
+            >
+              <NavLink onClick={() => setSingleVideo(item)} to="/video">
+                <CardMedia
+                  component="img"
+                  // height="auto"
+                  height="80%"
+                  image={item.thumbnailUrl}
+                  alt={item.title}
+                />
               </NavLink>
-              <div className="video-description">
-                <img className="video-logo" src={item.logoUrl} alt="log" />
-                <h4 className="video-title">
-                  {item.title}
-                  <br />
-                  <span style={{ fontWeight: "lighter" }}>
+
+              <PlayButtonOverlay
+                onClick={() => {
+                  setSingleVideo(item);
+                  navigate("/video");
+                }}
+              >
+                <IconButton
+                  style={{
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <PlayArrowRoundedIcon />
+                </IconButton>
+              </PlayButtonOverlay>
+              <CardContent sx={{ padding: "0" }}>
+                <Stack sx={{ textAlign: "left", width: "80%" }}>
+                  <CardTitle variant="subtitle1"> {item.title}</CardTitle>
+                  <CardSubTitle variant="subtitle2">
+                    {" "}
                     {item.categoryName}
-                  </span>
-                </h4>
-                <div className="video-setting">
-                  <i className="fas fa-ellipsis-v"></i>
-                </div>
-              </div>
-            </div>
-         
-          
-        );
-      })}
-    </div>
+                  </CardSubTitle>
+                </Stack>
+              </CardContent>
+            </HoverCard>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 }
 

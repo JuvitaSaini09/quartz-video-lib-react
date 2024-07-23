@@ -1,111 +1,78 @@
 import React, { useState } from "react";
 import "./categoryButtons.css";
 import { useApi } from "../../context/apiContext/api";
+import { Box, Button, styled } from "@mui/material";
+
+const StyledButton = styled(Button)(({ theme, isActive, borderRadius }) => ({
+  fontSize: "9px",
+  color: isActive ? "var(--background-color)" : "white",
+  backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
+  borderColor: isActive ? "var(--light-yellow)" : "#343a40",
+  borderRadius: borderRadius || 0,
+  "&:hover": {
+    color: isActive ? "var(--background-color)" : "white",
+    backgroundColor: isActive ? "var(--light-yellow)" : "#343a40",
+    borderColor: isActive ? "var(--light-yellow)" : "#343a40",
+  },
+
+  //600+
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "13px",
+  },
+}));
 
 function CategoryButtons() {
   const { setCategory } = useApi();
+
   const [isActiveCategory, setIsActiveCategory] = useState({
-    "All": true,
-    "Ice Cream": false,
-    "Cake": false,
-    "Sweet Dish": false,
+    All: true,
+    "Sci-Fi": false,
+    Adventure: false,
+    Drama: false,
   });
 
-  const allVideos = (e) => {
-    setCategory("All");
+  const handleCategoryChange = (category) => {
+    setCategory(category);
     setIsActiveCategory({
-      "All": true,
-      "Ice Cream": false,
-      "Cake": false,
-      "Sweet Dish": false,
+      All: category === "All",
+      "Sci-Fi": category === "Sci-Fi",
+      Adventure: category === "Adventure",
+      Drama: category === "Drama",
     });
   };
-  const iceCreamVideos = (e) => {
-    setCategory("Ice Cream");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": true,
-      "Cake": false,
-      "Sweet Dish": false,
-    });
-  };
-
-  const cakeVideos = (e) => {
-    setCategory("Cake");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": false,
-      "Cake": true,
-      "Sweet Dish": false,
-    });
-  };
-  const sweetDishVideos = (e) => {
-    setCategory("Sweet Dish");
-    setIsActiveCategory({
-      "All": false,
-      "Ice Cream": false,
-      "Cake": false,
-      "Sweet Dish": true,
-    });
-  };
-
-  const activeCategoryButtonStyle = {
-    color: "white",
-    backgroundColor: "#EC0023",
-  };
-
-  const inActiveCategoryButtonStyle = {
-    color: "#EC0023",
-    backgroundColor: "white",
-  };
-
   return (
-    <div className="btn-category">
-      <button
-        className="btn-all"
-        onClick={(e) => allVideos(e)}
-        style={
-          isActiveCategory.All
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+    <Box>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory.All}
+        onClick={() => handleCategoryChange("All")}
+        borderRadius="5px 0 0 5px"
       >
         All
-      </button>
-      <button
-        className="btn-iceCream"
-        onClick={(e) => iceCreamVideos(e)}
-        style={
-          isActiveCategory["Ice Cream"]
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory["Sci-Fi"]}
+        onClick={() => handleCategoryChange("Sci-Fi")}
       >
-        Ice Cream
-      </button>
-      <button
-        className="btn-cake"
-        onClick={(e) => cakeVideos(e)}
-        style={
-          isActiveCategory.Cake
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+        Sci-Fi
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory.Adventure}
+        onClick={() => handleCategoryChange("Adventure")}
       >
-        Cake
-      </button>
-      <button
-        className="btn-chocolate"
-        onClick={(e) => sweetDishVideos(e)}
-        style={
-          isActiveCategory["Sweet Dish"]
-            ? activeCategoryButtonStyle
-            : inActiveCategoryButtonStyle
-        }
+        Adventure
+      </StyledButton>
+      <StyledButton
+        variant="outlined"
+        isActive={isActiveCategory["Drama"]}
+        onClick={() => handleCategoryChange("Drama")}
+        borderRadius="0 5px 5px 0"
       >
-        Sweet Dish
-      </button>
-    </div>
+        Drama
+      </StyledButton>
+    </Box>
   );
 }
 
