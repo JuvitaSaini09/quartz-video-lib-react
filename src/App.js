@@ -17,7 +17,6 @@ import { PrivateRoute } from "./components/authentication/privateRoute";
 import LandingPage from "./pages/landingPage/landingPage";
 
 function App() {
-  //improve design
   return (
     <div className="App">
       <Routes>
