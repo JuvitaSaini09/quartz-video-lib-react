@@ -8,7 +8,22 @@ import logo6 from "./logo6.jpg";
 import logo7 from "./logo7.jpg";
 import animeHeroes from "./AnimeHeroes.png";
 import animeWorldLogo from "./animeWorldLogo.png";
-import playlistHero from "./playlist.png"
+import playlistHero from "./playlist.png";
+import aSilentVoice from "./aSilentVoice.jpg";
+import aWhiskerWay from "./aWhiskerWay.jpg";
+import campfireCooking from "./campfireCooking.jpg";
+import codeBreaker from "./codeBreakers.jpg";
+import helloWorld from "./HelloWorld.jpg";
+import fiveCentimeters from "./fiveCentimeters.jpg";
+import gardenOfWords from "./gardenOfWords.jpg";
+import orange from "./orange.jpg";
+import OriginSpiritsOfThePast from "./OriginSpiritsOfThePast.png";
+import PsychicSchoolWars from "./PsychicSchoolWars.jpg";
+import ThePlacePromised from "./ThePlacePromised.jpg";
+import tmakoLoveStroy from "./tmakoLoveStroy.jpg";
+import Twilight from "./Twilight.jpg";
+import valleyOfLanterns from "./valleyOfLanterns.jpg";
+import yourName from "./yourName.jpg";
 
 export {
   addToList,
@@ -22,4 +37,19 @@ export {
   animeHeroes,
   animeWorldLogo,
   playlistHero,
+  gardenOfWords,
+  campfireCooking,
+  yourName,
+  valleyOfLanterns,
+  codeBreaker,
+  aSilentVoice,
+  ThePlacePromised,
+  OriginSpiritsOfThePast,
+  PsychicSchoolWars,
+  helloWorld,
+  orange,
+  fiveCentimeters,
+  tmakoLoveStroy,
+  aWhiskerWay,
+  Twilight,
 };

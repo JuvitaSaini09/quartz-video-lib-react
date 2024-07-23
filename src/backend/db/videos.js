@@ -2,11 +2,21 @@ import { v4 as uuid } from "uuid";
 import {
   logo1,
   logo2,
-  logo3,
-  logo4,
-  logo5,
-  logo6,
-  logo7,
+  gardenOfWords,
+  campfireCooking,
+  yourName,
+  valleyOfLanterns,
+  codeBreaker,
+  aSilentVoice,
+  ThePlacePromised,
+  OriginSpiritsOfThePast,
+  PsychicSchoolWars,
+  helloWorld,
+  orange,
+  fiveCentimeters,
+  tmakoLoveStroy,
+  aWhiskerWay,
+  Twilight,
 } from "../../images/allImages";
 
 /**
@@ -14,16 +24,13 @@ import {
  * You can add products of your wish with different attributes
  * */
 
-// Sci-Fi,Drama, Adventure,All
-
 export const videos = [
   {
     _id: uuid(),
     categoryName: "Drama",
     creator: " Cix Wave Films",
     videoUrl: "https://www.youtube.com/watch?v=64cu3yhoOQo",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BMTJjZmQ5MGQtMWU0My00ZTMzLWFmNTMtNDgzNmU4Y2MxOGUxXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg",
+    thumbnailUrl: gardenOfWords,
     title: "The Garden of Words",
 
     logoUrl: logo2,
@@ -37,8 +44,7 @@ export const videos = [
     categoryName: "Adventure",
     creator: "MAPPA",
     videoUrl: "https://www.youtube.com/watch?v=Y2kGBN52p58",
-    thumbnailUrl:
-      "https://img.flawlessfiles.com/_r/300x400/100/8c/51/8c51c91ae9cf62c968cf84a67a666cc9/8c51c91ae9cf62c968cf84a67a666cc9.jpg",
+    thumbnailUrl: campfireCooking,
     title: "Campfire Cooking in Another World with My Absurd Skill",
     logoUrl: logo1,
     videoId: "Y2kGBN52p58",
@@ -51,8 +57,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "Anime Adventures",
     videoUrl: "https://www.youtube.com/watch?v=fdk_OMwgjpA",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BNGYyNmI3M2YtNzYzZS00OTViLTkxYjAtZDIyZmE1Y2U1ZmQ2XkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg",
+    thumbnailUrl: yourName,
     title: "Your Name",
     logoUrl: logo2,
     videoId: "fdk_OMwgjpA",
@@ -64,8 +69,7 @@ export const videos = [
     categoryName: "Adventure",
     creator: "Family Central",
     videoUrl: "https://www.youtube.com/watch?v=UTAvGzCK6ok",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BNjM4MWE2N2EtMzkwOC00Njg5LTg4MzAtNjY4MjQ2MGFjZGZkXkEyXkFqcGdeQXVyMTA4ODY5ODY@._V1_FMjpg_UX1000_.jpg",
+    thumbnailUrl: valleyOfLanterns,
     logoUrl: logo2,
     title: "Valley of the Lanterns",
     videoId: "UTAvGzCK6ok",
@@ -77,8 +81,7 @@ export const videos = [
     categoryName: "Adventure",
     creator: " Kinema Citrus",
     videoUrl: "https://www.youtube.com/watch?v=xYXx-rR2s-w",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BODRjYThmZWItZTk3MC00ZWE5LThjMjktMDljMGEzZGM5MDhiXkEyXkFqcGdeQXVyMTA1OTEwNjE@._V1_.jpg",
+    thumbnailUrl: codeBreaker,
     title: "Code:Breaker",
     logoUrl: logo2,
     videoId: "xYXx-rR2s-w",
@@ -90,8 +93,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "Kyoto Animation",
     videoUrl: "https://www.youtube.com/watch?v=mXYvNHlVSsQ",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BZGRkOGMxYTUtZTBhYS00NzI3LWEzMDQtOWRhMmNjNjJjMzM4XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+    thumbnailUrl: aSilentVoice,
     title: "A Silent Voice",
     logoUrl: logo1,
     videoId: "mXYvNHlVSsQ",
@@ -104,8 +106,7 @@ export const videos = [
     categoryName: "Sci-Fi",
     creator: "CoMix Wave Films",
     videoUrl: "https://www.youtube.com/watch?v=quCsu8KS_bA",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BMTNkOGFhZTktNzMzNy00NWM2LWIxNjMtNDg1YzNjMWQ5ZTg4XkEyXkFqcGdeQXVyODIyOTEyMzY@._V1_.jpg",
+    thumbnailUrl: ThePlacePromised,
     title: "The Place Promised in Our Early Days",
     logoUrl: logo2,
     videoId: "quCsu8KS_bA",
@@ -118,8 +119,7 @@ export const videos = [
     categoryName: "Adventure",
     creator: "Gonzo",
     videoUrl: "https://www.youtube.com/watch?v=LAy0wo2BEAo",
-    thumbnailUrl:
-      "https://upload.wikimedia.org/wikipedia/en/7/75/Origin_Spirits_of_the_Past_poster.png",
+    thumbnailUrl: OriginSpiritsOfThePast,
     title: "Origin: Spirits of the Past",
 
     logoUrl: logo2,
@@ -133,8 +133,7 @@ export const videos = [
     categoryName: "Sci-Fi",
     creator: "Sunrise",
     videoUrl: "https://www.youtube.com/watch?v=4bZk1tjz95M",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BZWNhZTcxOGUtNjFiYi00MDk4LTk3MTUtNzI1NDQwNTU5MDUxXkEyXkFqcGdeQXVyNDgyODgxNjE@._V1_.jpg",
+    thumbnailUrl: PsychicSchoolWars,
     title: "Psychic School Wars",
     logoUrl: logo1,
     videoId: "4bZk1tjz95M",
@@ -146,8 +145,7 @@ export const videos = [
     categoryName: "Sci-Fi",
     creator: "CK Anime",
     videoUrl: "https://www.youtube.com/watch?v=EgrehrOCpcA",
-    thumbnailUrl:
-      "https://i.pinimg.com/1200x/85/3a/31/853a31366bf7f60e92ea303bc700bd6b.jpg",
+    thumbnailUrl: helloWorld,
     title: "Hello World New Sci-Fi Anime",
     logoUrl: logo1,
     videoId: "EgrehrOCpcA",
@@ -160,8 +158,7 @@ export const videos = [
     categoryName: "Sci-Fi",
     creator: "Manga",
     videoUrl: "https://www.youtube.com/watch?v=GHiosL7ZLz8",
-    thumbnailUrl:
-      "https://cdn.myanimelist.net/images/anime/4/78530l.jpg?_gl=1*819jjw*_ga*Mjk5Mzc0NjU4LjE3MTcxNDU5NTU.*_ga_26FEP9527K*MTcxNzM3MDUxOS4xLjAuMTcxNzM3MDUyMS41OC4wLjA.",
+    thumbnailUrl: orange,
     title: "Orange",
     logoUrl: logo2,
     videoId: "GHiosL7ZLz8",
@@ -174,8 +171,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "CoMix Wave Films",
     videoUrl: "https://www.youtube.com/watch?v=r-hFIoLhCaE",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BOTY0MDg1YmMtZDFlYi00NzQ2LTlmODUtYTYzZjRlYzI5NDBiXkEyXkFqcGdeQXVyMTQyMTMwOTk0._V1_.jpg",
+    thumbnailUrl: fiveCentimeters,
     title: "5 CENTIMETRES PER SECOND IN ENGLISH DUB",
     logoUrl: logo2,
     videoId: "r-hFIoLhCaE",
@@ -187,8 +183,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "Kyoto Animation",
     videoUrl: "https://www.youtube.com/watch?v=y5lPfXKDym0",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BMTYzOGU4OTItNmU4NC00MmViLWEyNzctMmZkMzgxZjM5MjExXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg",
+    thumbnailUrl: tmakoLoveStroy,
     title: "Tamako Love Story",
     logoUrl: logo2,
     videoId: "y5lPfXKDym0",
@@ -200,8 +195,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "Studio Colorido",
     videoUrl: "https://www.youtube.com/watch?v=y1DFqAQHUcE",
-    thumbnailUrl:
-      "https://m.media-amazon.com/images/M/MV5BZGVjOTRlYzAtNGNhZC00ZmNlLTk2MWQtZTUwNDYxNWQwNmRjXkEyXkFqcGdeQXVyMTQyMTMwOTk0._V1_.jpg",
+    thumbnailUrl: aWhiskerWay,
     title: "A Whisker Away",
     logoUrl: logo2,
     videoId: "y1DFqAQHUcE",
@@ -213,8 +207,7 @@ export const videos = [
     categoryName: "Drama",
     creator: "Twilight Studio",
     videoUrl: "https://www.youtube.com/watch?v=trExdyeD01E",
-    thumbnailUrl:
-      "https://e0.pxfuel.com/wallpapers/599/410/desktop-wallpaper-non-non-biyori-repeat-the-infinite-zenith.jpg",
+    thumbnailUrl: Twilight,
     title: "Twilight",
     logoUrl: logo2,
     videoId: "trExdyeD01E",
@@ -222,30 +215,3 @@ export const videos = [
       "Hakubo revolves around the daily life of Sachi Koyama, a high school violinist with promising talent. Although Sachi is content with her school life and retains friends within the music club, her favorite pastime is appreciating the scenery around her neighborhood in Iwaki, Fukushima while walking to her bus stop alone.However, during one of Sachi's after-school walks, she has an unexpected meeting with Yuusuke Kijinami, a boy whom she often notices on her bus ride home. After offering to help Kijinami find a perfect view of the evening landscape—the subject of his next painting for his art club's exhibition—the two forge a bond over their mutual admiration of the beautiful scenery bathed in sunset. This chance encounter brings together these two souls who yearn to cherish the present, knowing full well how easily it can all slip away.",
   },
 ];
-
-// {
-//     _id: uuid(),
-//     categoryName: "",
-//     creator: "",
-//     videoUrl: "",
-//     thumbnailUrl:
-//       "",
-//     title: "",
-//     logoUrl: logo2,
-//     videoId: "",
-//     description:
-//       "",
-//   }
-
-//  {
-//     _id: uuid(),
-//     categoryName: "Sweet Dish",
-//     creator: "Hebbars Kitchen",
-//     videoUrl: "https://www.youtube.com/watch?v=7uCqAtSVJU4",
-//     thumbnailUrl: "https://img.youtube.com/vi/7uCqAtSVJU4/maxresdefault.jpg",
-//     title:
-//       "Just 10 Minutes Dessert with few Ingredients | Instant & Easy Dessert Recipe",
-//     logoUrl: logo1,
-//     description:
-//       "kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with detailed photo and video recipe. a popular indian sweet dessert recipe made with powdered cashew and sugar syrup. it is perhaps one of the popular indian sweet recipe which is made for all the celebrations, occasions and festival seasons. it is a simple and easy sweet snack recipe made with only 2 ingredients, but can be tricky with the sugar syrup consistency which may actually spoil the texture.kaju katli recipe | kaju barfi recipe | kaju katli sweet | kaju ki barfi with step by step photo and video recipe. dry fruits based sweets or desserts are very common recipes across india. it is generally made with just one choice of nuts, but can also be used as a combination of dry fruits to make a sugarless sweet snack. out of these the premium sweet recipe is the kaju katli recipe or the kaju barfi known for its mouth-watering and soothing texture and taste.",
-//   },
